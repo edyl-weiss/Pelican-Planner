@@ -1,4 +1,63 @@
 export const messages: Record<string,string> = Object.fromEntries(`
+Next day|下一天
+Set tomorrow’s weather and luck|设置明天的天气和运势
+Tiny sparkles, happy harvests and a little Krobus wiggle. Respects your device’s reduced-motion setting.|轻盈的像素闪光、收获时的小庆祝，还有科罗布斯的扭扭舞。遵循设备的减少动态效果设置。
+Moving computers? Pack up your journal, including changes you haven’t saved yet.|要换电脑？把日记一起带上吧，还没保存的改动也会打包。
+Download journal backup|下载日记备份
+Restore journal backup|恢复日记备份
+Your farm, crops, inventory, donations, notes, hidden suggestions, planning choices, language and effects all come along.|农场、作物、物品、献祭进度、笔记、隐藏的建议、规划偏好、语言和特效设置都会一起带上。
+Download your backup here.|在这里下载备份。
+On your other computer, open More and choose Restore journal backup.|在另一台电脑上，打开“更多”，选择“恢复日记备份”。
+Check the preview, restore it, then choose Save farm.|核对预览，恢复日记，再点击“保存农场”。
+This moves your journal. Your Stardew game save travels separately.|这里转移的是农场日记，游戏存档需要另外转移。
+Import from the game instead|从游戏导入
+Import the full, uncompressed Stardew save. Game files are read in your browser and never modified.|导入完整、未压缩的星露谷存档。文件只在浏览器中读取，不会被修改。
+Backup downloaded. Your farm is packed and ready to travel.|备份已下载，农场已经打包好，可以出发啦。
+The download did not work. Try again before closing this tab.|下载没成功。关闭这个页面之前，请再试一次。
+That file could not be read. Choose a journal JSON backup and try again.|无法读取这个文件，请选择日记 JSON 备份后重试。
+That backup belongs to a different app. Choose a Farm Journal backup.|这份备份来自其他应用，请选择农场日记备份。
+This backup needs a newer version of the journal. Update the site, then try again.|这份备份需要更新版本的日记，请更新网站后重试。
+Choose a journal JSON backup. Game saves can be imported with Import save.|请选择日记 JSON 备份。游戏存档请使用“导入存档”。
+IN KROBUS WE TRUST|我们信克罗布斯。
+A good day, one step at a time|把今天过好，一步一步来
+A gentle day|轻松的一天
+Lots to look forward to|今天有不少期待
+If you do one thing|今天先做这一件
+Then, if you like|接下来，有空再做
+Only if it sounds fun|想做的时候再做
+Today at a glance|今天一览
+Update weather & luck|更新天气和运势
+Welcome tomorrow|迎接新一天
+Ready in your fields|田里有东西快成熟啦
+A little harvest check, for today and the next few days.|看看今天和接下来几天有哪些作物可以收获。
+Open crop planner|打开作物计划
+Ready today|今天可以收获
+Coming up|就快成熟
+Record harvest|记录收获
+Safe in your chests|箱子里的收纳
+These came from your save. They stay separate from your backpack until you move them in your game.|这些物品来自你的存档。在游戏里拿到背包前，会和背包物品分开显示。
+Look what we found|看看这次带来了什么
+Chest stacks|箱子物品堆
+Completed standard bundles|已完成的标准收集包
+A few things to double-check|还有几样可以顺手核对
+Your farm basics|农场小档案
+Let’s make this feel like your farm|让这里更像你的农场
+Walk me through setup|带我一步步设置
+A few little preferences|挑几项小偏好
+Planning style|规划风格
+How much detail|计划细致程度
+Suggestions I tucked away|我暂时收起的建议
+Change your mind any time. Removing one here lets that kind of suggestion pop back into your plan.|随时可以改变主意。在这里点回来，那类建议就会重新出现在计划里。
+Nothing hidden. Your suggestions are all welcome.|还没有收起任何建议，欢迎来点灵感。
+Show again|重新显示
+How’s the farm feeling today?|农场今天怎么样？
+Tell me what’s new, and I’ll freshen up today’s plan.|告诉我农场有什么新变化，我来帮你更新今天的计划。
+Why it could be a good fit|它为什么适合今天
+If today gets busy|如果今天有点忙
+Checking this off saves your progress. Update gold, supplies and harvests whenever you like.|勾选后会记下进度。金币、物资和收获可以在方便的时候更新。
+Hide this kind of suggestion|不再显示这类建议
+The crop catalog covers|作物目录收录了
+crops, plus all 30 standard bundles, seasonal events and common bundle fish. Each suggestion gives you a little reason to consider it.|种作物，还有全部30个标准收集包、季节活动和常见收集包鱼类。每条建议都会告诉你它为什么可能有帮助。
 Game import reads farm details and supported growing crops. Review the preview and import limits before applying.|导入会读取农场信息和支持的在种作物。应用前请核对预览及导入范围。
 Imported farm details, backpack items, professions, recognized unlocks and supported growing crops. Your game file was not modified.|已导入农场信息、背包物品、职业、已识别的解锁内容和支持的在种作物。游戏文件未被修改。
 Existing crop added. Your calendar and forecasts are updated.|已补录作物，日历与收获预测已更新。
@@ -42,7 +101,7 @@ Choose an unlocked floor for the ore you need|选择已解锁且产出所需矿�
 Good luck can improve rock drops and ladder chances. Bring food; rewards are still random.|好运可改善岩石掉落和发现梯子的概率。带上食物，收益仍有随机性。
 Choose today’s weather before starting the day.|开始新一天前，请选择今天的天气。
 Stardew Farm Journal|星露谷农场手记
-A LITTLE PLAN. A GOOD DAY.|小小计划，好好过一天。
+IN KROBUS WE TRUST|我们信克罗布斯。
 Play|今天
 Plan|计划
 Collection|收藏

@@ -32,7 +32,7 @@ export function plantingCapacity(run:RunState,totalTiles:number){
 }
 export function plantingOptions(run:RunState,totalTiles:number){
  const {free}=plantingCapacity(run,totalTiles);
- return crops.filter(c=>c.seasons.includes(run.date.season)).map(c=>{
+ return crops.filter(c=>c.buyable!==false&&c.seasons.includes(run.date.season)).map(c=>{
   const quantity=Math.min(free,Math.floor(available(run,'Gold')/c.seed));
   return {crop:c,quantity,result:cropEconomics(c,run.date,quantity,run.tiller)};
  }).sort((a,b)=>b.result.profit-a.result.profit);
@@ -44,10 +44,11 @@ export function lastPlantDay(c:Crop,season:GameDate['season']){return c.seasons.
 export function plotCrop(p:Plot):Crop|undefined{return p.customCrop?{name:p.crop,days:0,seed:0,...p.customCrop}:crops.find(c=>c.name===p.crop)}
 export function plotAlive(p:Plot,date:GameDate):boolean{const c=plotCrop(p);if(!c||absoluteDay(date)<absoluteDay(p.planted))return false;if(p.location&&p.location!=='Farm')return true;for(let day=absoluteDay(p.planted);day<=absoluteDay(date);){const d=fromDay(day);if(!c.seasons.includes(d.season))return false;day+=29-d.day;}return c.seasons.includes(date.season)}
 export interface Task{id:string;name:string;entity:string;detail:string;why:string;skip:string;group:0|1|2;category:string;confidence:string}
+export const suggestionKey=(task:Pick<Task,'category'|'entity'>)=>task.category+'::'+task.entity;
 export function makePlan(run:RunState):Task[]{
  const lucky=['Good','Very good'].includes(run.luck);const unlucky=['Bad','Very bad'].includes(run.luck);
  const list:Task[]=[];let plantingBudget=available(run,'Gold');const day=absoluteDay(run.date);const d=run.date;
- const add=(id:string,name:string,entity:string,detail:string,why:string,skip:string,group:0|1|2,category:string,confidence='Conditional')=>list.push({id:`${day}:${id}`,name,entity,detail,why,skip,group,category,confidence});
+ const add=(id:string,name:string,entity:string,detail:string,why:string,skip:string,group:0|1|2,category:string,confidence='Conditional')=>{let priority:0|1|2=group;if(run.goal==='Community Center'&&category==='Bundle')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Maximum Profit'&&category==='Farming')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Mining'&&category==='Mining')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Friendship'&&category==='Friendship')priority=Math.max(0,group-1) as 0|1|2;const task={id:day+':'+id,name,entity,detail,why,skip,group:priority,category,confidence};if(!run.mutedSuggestions.includes(suggestionKey(task)))list.push(task)};
  for(const e of eventsOn(run,d)){
   if(e.type==='festival'&&run.festivals&&(!e.requires||run.unlocks.includes(e.requires)))add('event-'+e.name,e.name,'Calendar','Today · check entry times','This event has a fixed date. Plan farm chores around it.','It returns next year (multi-day events may continue tomorrow).',0,'Event','Scheduled');
   if(e.type==='birthday'&&run.goal==='Friendship'&&!(run.weather==='Green Rain'&&d.year===1))add('birthday-'+e.name,`Give ${e.name} a birthday gift`,e.name,'Birthday today','Birthday gifts give a larger friendship boost. Check the villager’s preferred gifts.','You can build friendship on other days.',1,'Friendship','Scheduled');
@@ -64,7 +65,7 @@ export function makePlan(run:RunState):Task[]{
   }
  }
  if(run.goal==='Maximum Profit'){
- const best=crops.filter(c=>c.seasons.includes(d.season)&&!(c.name==='Strawberry'&&d.day!==13)).map(c=>({c,e:cropEconomics(c,d,1,run.tiller)})).filter(x=>x.e.harvests&&available(run,'Gold')>=x.c.seed).sort((a,b)=>b.e.profit-a.e.profit)[0];
+ const best=crops.filter(c=>c.buyable!==false&&c.seasons.includes(d.season)&&!(c.name==='Strawberry'&&d.day!==13)).map(c=>({c,e:cropEconomics(c,d,1,run.tiller)})).filter(x=>x.e.harvests&&available(run,'Gold')>=x.c.seed).sort((a,b)=>b.e.profit-a.e.profit)[0];
  if(best)add('profit',`Plant ${best.c.name}`,best.c.name,`Up to ${gold(best.e.profit)} net / tile this season`,'Highest conservative seasonal profit per tile among tracked crops. Assumes daily watering and timely replanting; buying seeds depends on shop access.','Gold stays available for upgrades and other priorities.',0,'Farming');
  }
  const living=run.plots.filter(p=>plotAlive(p,d));

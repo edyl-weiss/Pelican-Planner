@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./valley-theme.css";
 import {LocaleProvider} from "./locale-provider";
 import PixelEffects from "./pixel-effects";
 

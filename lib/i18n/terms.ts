@@ -20,6 +20,20 @@ Eggplant|茄子
 Yam|山药
 Bok Choy|小白菜
 Wheat|小麦
+Garlic|大蒜
+Kale|羽衣甘蓝
+Rhubarb|大黄
+Radish|萝卜
+Starfruit|杨桃
+Artichoke|洋蓟
+Beet|甜菜
+Amaranth|苋菜
+Ancient Fruit|上古水果
+Sweet Gem Berry|甜宝石浆果
+Carrot|胡萝卜
+Summer Squash|夏南瓜
+Broccoli|西兰花
+Powdermelon|粉红甜瓜
 Wild Horseradish|野山葵
 Daffodil|黄水仙
 Leek|韭葱

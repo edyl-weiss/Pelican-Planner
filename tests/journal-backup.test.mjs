@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {newRun} from '../.sites-runtime/test-modules/state.js';
+import {createJournalBackup,readJournalBackup} from '../.sites-runtime/test-modules/journal-backup.js';
+import {importSave} from '../.sites-runtime/test-modules/import-save.js';
+const run={...newRun(),name:'My suitcase farm',gold:15432,goal:'Mining',weather:'Rain',luck:'Good',mutedSuggestions:['Fishing::Catfish'],donated:['spring-crops:0'],done:['task:1'],notes:[{id:'note-1',label:'Bring Abigail a pumpkin',date:{season:'Fall',day:13,year:2},done:false}],plots:[{id:'custom-1',crop:'Moon carrot',quantity:12,planted:{season:'Spring',day:1,year:1},nextHarvest:9,harvests:0,missedDays:1,customCrop:{seasons:['Spring'],regrow:2,sell:120,yield:2}}],chestContents:[{name:'Wood',quantity:44,quality:0}],inventory:[{name:'Parsnip',quantity:15,quality:2}],reservations:[{id:'reserve',name:'Seeds',resource:'Gold',quantity:500}],history:['Pinned a task.']};
+const preferences={locale:'zh-CN',effects:false,taskLimit:3};let count=0;
+function test(name,fn){fn();console.log('PASS '+name);count++}
+test('Portable backup preserves the complete journal and device preferences',()=>{const backup=createJournalBackup(run,preferences);const restored=readJournalBackup(JSON.stringify(backup));assert.deepEqual(restored.run,run);assert.deepEqual(restored.preferences,preferences);assert(restored.exportedAt);assert(!('revision' in backup));assert(!('cookies' in backup));assert.deepEqual(importSave(JSON.stringify(backup),newRun()).run,run)});
+test('Export is a detached snapshot and does not mutate the current draft',()=>{const backup=createJournalBackup(run,preferences);backup.run.notes[0].label='Edited copy';assert.equal(run.notes[0].label,'Bring Abigail a pumpkin')});
+test('Older plain JSON backups keep their farm and leave device preferences alone',()=>{const restored=readJournalBackup(JSON.stringify(run));assert.deepEqual(restored.run,run);assert.equal(restored.preferences,undefined);assert.equal(importSave(JSON.stringify(run),newRun()).preferences,undefined)});
+test('Invalid preferences reject the whole backup before it can be applied',()=>{const backup=createJournalBackup(run,preferences);backup.preferences.effects='false';assert.throws(()=>readJournalBackup(JSON.stringify(backup)));backup.preferences.effects=false;backup.preferences.taskLimit=4;assert.throws(()=>readJournalBackup(JSON.stringify(backup)))});
+test('Malformed and unrelated files do not create a partial farm',()=>{assert.throws(()=>readJournalBackup('{oops'),/could not be read/);assert.throws(()=>readJournalBackup('{}'));assert.throws(()=>readJournalBackup('null'));assert.throws(()=>readJournalBackup(JSON.stringify({...createJournalBackup(run,preferences),app:'another-app'})),/different app/)});
+test('Future backup versions fail with a useful message',()=>{assert.throws(()=>readJournalBackup(JSON.stringify({...createJournalBackup(run,preferences),backupVersion:2})),/newer version/)});
+test('Oversize backups fail before parsing',()=>assert.throws(()=>readJournalBackup(' '.repeat(20000001)),/20 MB/));
+test('Invalid saved values cannot be exported as a valid portable backup',()=>assert.throws(()=>createJournalBackup({...run,gold:-1},preferences)));
+console.log(`${count} journal transfer checks passed.`);

@@ -1,13 +1,14 @@
 import {newRun,runSchema,type RunState} from './state';
-import {FARM_TYPES,SEASONS,crops} from './data';
-import {absoluteDay} from './planner';
-const harvestNames:Record<string,string>={'24':'Parsnip','188':'Green Bean','190':'Cauliflower','192':'Potato','400':'Strawberry','258':'Blueberry','254':'Melon','256':'Tomato','260':'Hot Pepper','270':'Corn','282':'Cranberries','276':'Pumpkin','272':'Eggplant','280':'Yam','278':'Bok Choy','262':'Wheat'};
-export function importSave(text:string,current:RunState):{run:RunState;summary:string;warnings?:string[]}{
+import {readJournalBackup,type JournalPreferences} from './journal-backup';
+import {FARM_TYPES,SEASONS,crops,bundles} from './data';
+import {absoluteDay,slotKey} from './planner';
+const harvestNames:Record<string,string>={'24':'Parsnip','188':'Green Bean','190':'Cauliflower','192':'Potato','400':'Strawberry','258':'Blueberry','254':'Melon','256':'Tomato','260':'Hot Pepper','270':'Corn','282':'Cranberries','276':'Pumpkin','272':'Eggplant','280':'Yam','278':'Bok Choy','262':'Wheat','248':'Garlic','250':'Kale','252':'Rhubarb','264':'Radish','266':'Red Cabbage','268':'Starfruit','274':'Artichoke','284':'Beet','299':'Amaranth','398':'Grape','421':'Sunflower','454':'Ancient Fruit','417':'Sweet Gem Berry','966':'Carrot','967':'Summer Squash','969':'Broccoli','971':'Powdermelon'};
+export function importSave(text:string,current:RunState):{run:RunState;summary:string;warnings?:string[];preferences?:JournalPreferences;exportedAt?:string}{
  if(text.length>20000000)throw new Error('Choose a save smaller than 20 MB.');
- if(text.trim().startsWith('{'))return {run:runSchema.parse(JSON.parse(text)),summary:'Journal backup loaded. Review it, then save.'};
+ if(text.trim().startsWith('{'))return {...readJournalBackup(text),summary:'Journal backup loaded. Review it, then save.'};
  if(/<!DOCTYPE|<!ENTITY/i.test(text))throw new Error('This XML format is not supported.');
  const doc=new DOMParser().parseFromString(text,'application/xml');if(doc.querySelector('parsererror')||doc.documentElement.tagName!=='SaveGame')throw new Error('Choose the full Stardew Valley save file, not SaveGameInfo or a screenshot.');
- const root=doc.documentElement;const read=(parent:Element,tag:string)=>Array.from(parent.children).find(c=>c.tagName===tag)?.textContent??'';
+ const root=doc.documentElement;const read=(parent:Element,tag:string)=>Array.from(parent.children).find(c=>c.tagName.toLowerCase()===tag.toLowerCase())?.textContent??'';
  const player=Array.from(root.children).find(c=>c.tagName==='player');if(!player)throw new Error('The save does not contain a main player.');
  const seasonRaw=read(root,'currentSeason');const season=SEASONS.find(s=>s.toLowerCase()===seasonRaw.toLowerCase());const day=Number(read(root,'dayOfMonth'));const year=Number(read(root,'year'));
  if(!season||!day||!year)throw new Error('Could not read the save date. Your current run was not changed.');
@@ -19,8 +20,9 @@ export function importSave(text:string,current:RunState):{run:RunState;summary:s
  run.tiller=professionIds.includes(0);run.artisan=professionIds.includes(4);
  const items=Array.from(player.children).find(c=>c.tagName==='items');
  if(items)for(const element of Array.from(items.children)){const name=read(element,'name');const quantity=Number(read(element,'stack')||1);const quality=runSchema.shape.inventory.element.shape.quality.parse(Number(read(element,'quality')||0));if(name&&quantity>0)run.inventory.push({name,quantity,quality});}
+ const chestItems=new Map<string,{name:string;quantity:number;quality:0|1|2|4}>();for(const chest of Array.from(root.querySelectorAll('*')).filter(node=>node.getAttribute('xsi:type')==='Chest'||node.getAttributeNS('http://www.w3.org/2001/XMLSchema-instance','type')==='Chest')){const contents=Array.from(chest.children).find(node=>node.tagName==='items');if(!contents)continue;for(const item of Array.from(contents.children)){const name=read(item,'name'),quantity=Number(read(item,'stack')||1),rawQuality=Number(read(item,'quality')||0);if(!name||!Number.isInteger(quantity)||quantity<1||![0,1,2,4].includes(rawQuality))continue;const quality=rawQuality as 0|1|2|4,key=name+':'+quality,previous=chestItems.get(key);if(previous)previous.quantity=Math.min(999999999,previous.quantity+quantity);else chestItems.set(key,{name,quantity,quality})}}run.chestContents=Array.from(chestItems.values()).slice(0,2000);
  const mail=Array.from(player.children).find(c=>c.tagName==='mailReceived');const flags=new Set(Array.from(mail?.children??[]).map(e=>e.textContent));
- if(flags.has('ccVault'))run.unlocks.push('Bus');if(flags.has('ccPantry'))run.unlocks.push('Greenhouse');if(flags.has('ccBoilerRoom'))run.unlocks.push('Minecarts');if(flags.has('ccIsComplete'))run.unlocks.push('Community Center');
+ if(flags.has('ccVault'))run.unlocks.push('Bus');if(flags.has('ccPantry'))run.unlocks.push('Greenhouse');if(flags.has('ccBoilerRoom'))run.unlocks.push('Minecarts');if(flags.has('ccIsComplete'))run.unlocks.push('Community Center');const roomFlags:Record<string,string>={'ccCraftsRoom':'Crafts Room','ccPantry':'Pantry','ccFishTank':'Fish Tank','ccBoilerRoom':'Boiler Room','ccBulletinBoard':'Bulletin Board','ccVault':'Vault'};for(const [flag,room] of Object.entries(roomFlags))if(flags.has(flag)||flags.has('ccIsComplete'))for(const bundle of bundles.filter(b=>b.room===room))for(let i=0;i<bundle.items.length;i++)run.donated.push(slotKey(bundle,i));
  // A crop's saved phase lengths already include growth-speed adjustments.
  // The final phase is a mature sentinel, not additional growth time.
  const groups=new Map<string,RunState['plots'][number]>();
@@ -51,8 +53,8 @@ export function importSave(text:string,current:RunState):{run:RunState;summary:s
  run.plots=Array.from(groups.values());
  if(skipped)warnings.push(`${skipped} crop tiles were not imported (unsupported crops, locations or growth data).`);
  if(dead)warnings.push(`${dead} dead crop tiles were excluded.`);
- warnings.push('Only the 16 crops in the journal catalog are supported. Chests, animals, bundle donations and modded content are not imported.');
+ warnings.push('Completed standard bundle rooms are included. Partial bundle donations, remixed bundles, animals and modded content still need a quick check.');
  warnings.push('Growth assumes daily watering after import. Import again after playing to refresh the journal; this is not a live Steam connection.');
- run.history=['Imported game save and recognized growing crops. Review unsupported content before planning.'];
- return {run:runSchema.parse(run),warnings,summary:'Imported farm details, backpack items, professions, recognized unlocks and supported growing crops. Your game file was not modified.'};
+ run.history=['Imported farm details, backpack and chest items, completed rooms and recognized growing crops.'];
+ return {run:runSchema.parse(run),warnings,summary:'Your farm, backpack, chest contents, completed bundle rooms and supported growing crops are ready to review. The game file was not changed.'};
 }

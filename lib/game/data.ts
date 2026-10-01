@@ -3,7 +3,7 @@ export type Season = typeof SEASONS[number];
 export const DAYS_PER_SEASON = 28;
 export const SOURCE_ROOT = 'https://stardewvalleywiki.com/';
 export const wiki = (name: string) => SOURCE_ROOT + encodeURIComponent(name.replaceAll(' ', '_'));
-export interface Crop { name: string; seasons: Season[]; days: number; regrow: number; seed: number; sell: number; yield: number; fruit?: boolean; note?: string }
+export interface Crop { name: string; seasons: Season[]; days: number; regrow: number; seed: number; sell: number; yield: number; fruit?: boolean; note?: string; buyable?:boolean }
 export const crops: Crop[] = [
  {name:'Parsnip',seasons:['Spring'],days:4,regrow:0,seed:20,sell:35,yield:1},
  {name:'Green Bean',seasons:['Spring'],days:10,regrow:3,seed:60,sell:40,yield:1,note:'Trellis crop. Leave a path to reach it.'},
@@ -21,6 +21,24 @@ export const crops: Crop[] = [
  {name:'Yam',seasons:['Fall'],days:10,regrow:0,seed:60,sell:160,yield:1},
  {name:'Bok Choy',seasons:['Fall'],days:4,regrow:0,seed:50,sell:80,yield:1},
  {name:'Wheat',seasons:['Summer','Fall'],days:4,regrow:0,seed:10,sell:25,yield:1,note:'Random hay excluded.'},
+ {name:'Garlic',seasons:['Spring'],days:4,regrow:0,seed:40,sell:60,yield:1},
+ {name:'Kale',seasons:['Spring'],days:6,regrow:0,seed:70,sell:110,yield:1},
+ {name:'Rhubarb',seasons:['Spring'],days:13,regrow:0,seed:100,sell:220,yield:1,fruit:true},
+ {name:'Radish',seasons:['Summer'],days:6,regrow:0,seed:40,sell:90,yield:1},
+ {name:'Red Cabbage',seasons:['Summer'],days:9,regrow:0,seed:100,sell:260,yield:1},
+ {name:'Starfruit',seasons:['Summer'],days:13,regrow:0,seed:400,sell:750,yield:1,fruit:true},
+ {name:'Artichoke',seasons:['Fall'],days:8,regrow:0,seed:30,sell:160,yield:1},
+ {name:'Beet',seasons:['Fall'],days:6,regrow:0,seed:20,sell:100,yield:1},
+ {name:'Amaranth',seasons:['Fall'],days:7,regrow:0,seed:70,sell:150,yield:1},
+ {name:'Grape',seasons:['Summer','Fall'],days:10,regrow:3,seed:60,sell:80,yield:1,fruit:true,note:'Trellis crop. Leave a path to reach it.'},
+ {name:'Sunflower',seasons:['Summer','Fall'],days:8,regrow:0,seed:200,sell:80,yield:1},
+ {name:'Ancient Fruit',seasons:['Spring','Summer','Fall'],days:28,regrow:7,seed:0,sell:550,yield:1,fruit:true,buyable:false,note:'Not sold as a seed. Use a seed maker or an existing seed.'},
+ {name:'Sweet Gem Berry',seasons:['Fall'],days:24,regrow:0,seed:1000,sell:3000,yield:1,fruit:true,buyable:false,note:'Rare Seed is sold by the Traveling Cart.'},
+ {name:'Carrot',seasons:['Spring'],days:3,regrow:0,seed:15,sell:35,yield:1,buyable:false,note:'Carrot Seeds are not sold in shops.'},
+ {name:'Summer Squash',seasons:['Summer'],days:6,regrow:3,seed:20,sell:45,yield:1,buyable:false,note:'Seeds are not sold in shops.'},
+ {name:'Broccoli',seasons:['Fall'],days:8,regrow:4,seed:30,sell:70,yield:1,buyable:false,note:'Seeds are not sold in shops.'},
+ {name:'Powdermelon',seasons:['Winter'],days:7,regrow:0,seed:20,sell:60,yield:1,buyable:false,note:'Seeds are not sold in shops.'},
+
 ];
 export interface BundleItem { name: string; count: number; quality: number }
 export interface Bundle { id: string; room: string; name: string; required: number; items: BundleItem[]; season?: Season }

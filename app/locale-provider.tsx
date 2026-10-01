@@ -2,13 +2,13 @@
 /* eslint-disable react-hooks/set-state-in-effect -- Restore device-only preferences after hydration without changing the server-rendered HTML. */
 import {Children,createContext,useContext,useCallback,useEffect,useState,useMemo,cloneElement,isValidElement,type ReactNode,type ReactElement} from 'react';
 import {translate,localizedWiki,type Locale} from '@/lib/i18n/translate';
-type LocaleContextValue={locale:Locale;setLocale:(locale:Locale)=>void;effects:boolean;setEffects:(enabled:boolean)=>void};
-const LocaleContext=createContext<LocaleContextValue>({locale:'en',setLocale:()=>{},effects:true,setEffects:()=>{}});
+type LocaleContextValue={locale:Locale;setLocale:(locale:Locale)=>void;effects:boolean;setEffects:(enabled:boolean)=>void;taskLimit:3|5|99;setTaskLimit:(limit:number)=>void};
+const LocaleContext=createContext<LocaleContextValue>({locale:'en',setLocale:()=>{},effects:true,setEffects:()=>{},taskLimit:5,setTaskLimit:()=>{}});
 export function LocaleProvider({children}:{children:ReactNode}){
- const[locale,setLanguage]=useState<Locale>('en');const[effects,setMotion]=useState(true);
- useEffect(()=>{try{const saved=localStorage.getItem('farm-journal-language');const choice=saved==='zh-CN'||saved==='en'?saved:navigator.language.toLowerCase().startsWith('zh')?'zh-CN':'en';setLanguage(choice);setMotion(localStorage.getItem('farm-journal-effects')!=='off');}catch{}},[]);
- useEffect(()=>{document.documentElement.lang=locale;document.documentElement.dataset.effects=effects?'on':'off';document.title=translate('Stardew Farm Journal',locale);},[locale,effects]);
- const value=useMemo(()=>({locale,effects,setLocale:(next:Locale)=>{setLanguage(next);try{localStorage.setItem('farm-journal-language',next)}catch{}},setEffects:(next:boolean)=>{setMotion(next);try{localStorage.setItem('farm-journal-effects',next?'on':'off')}catch{}}}),[locale,effects]);
+ const[locale,setLanguage]=useState<Locale>('en');const[effects,setMotion]=useState(true);const[taskLimit,setLimit]=useState<3|5|99>(5);
+ useEffect(()=>{try{const saved=localStorage.getItem('farm-journal-language');const choice=saved==='zh-CN'||saved==='en'?saved:navigator.language.toLowerCase().startsWith('zh')?'zh-CN':'en';setLanguage(choice);setMotion(localStorage.getItem('farm-journal-effects')!=='off');const limit=Number(localStorage.getItem('farm-journal-task-limit'));if(limit===3||limit===5||limit===99)setLimit(limit);}catch{}},[]);
+ useEffect(()=>{document.documentElement.lang=locale;document.documentElement.dataset.effects=effects?'on':'off';document.title=translate('Stardew Farm Journal',locale);},[locale,effects,taskLimit]);
+ const value=useMemo(()=>({locale,effects,taskLimit,setTaskLimit:(next:number)=>{if(next!==3&&next!==5&&next!==99)return;setLimit(next);try{localStorage.setItem('farm-journal-task-limit',String(next))}catch{}},setLocale:(next:Locale)=>{setLanguage(next);try{localStorage.setItem('farm-journal-language',next)}catch{}},setEffects:(next:boolean)=>{setMotion(next);try{localStorage.setItem('farm-journal-effects',next?'on':'off')}catch{}}}),[locale,effects,taskLimit]);
  return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
 }
 // Translate only display text and accessible labels. IDs, form values, event handlers,

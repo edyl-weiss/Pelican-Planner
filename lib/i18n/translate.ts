@@ -3,6 +3,7 @@ import {messages} from './messages';
 export type Locale='en'|'zh-CN';
 export const dictionary:Record<string,string>={...terms,...messages,'Gold quality':'金星','Donate':'献祭','today':'今天','birthday':'生日','harvest':'收获','Festivals':'节日','Read today’s farm plan':'读取今日农场计划','Read the current farm date, priorities and deadlines without changing the farm.':'读取当前农场日期、优先任务和截止日期，不修改农场记录。','The imported farm data is invalid. Check the file and try again.':'导入的农场数据无效，请检查文件后重试。'};
 const templates: [RegExp,string][]=[
+ [/^The crop catalog covers (\\d+) crops, plus all 30 standard bundles, seasonal events and common bundle fish\\. Each suggestion gives you a little reason to consider it\\.$/,'作物目录收录了{0}种作物，还有全部30个标准收集包、季节活动和常见收集包鱼类。每条建议都会告诉你它为什么可能有帮助。'],
  [/^Moved to (.+)\. Plan recalculated\.$/,'已进入{0}，计划已重新计算。'],
  [/^Weather updated to (.+)\. Plan recalculated\.$/,'天气已更新为{0}，计划已重新计算。'],
  [/^Tomorrow’s forecast: (.+)\.$/,'明日天气预报：{0}。'],
