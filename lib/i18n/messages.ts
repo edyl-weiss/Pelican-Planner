@@ -529,4 +529,45 @@ Language|语言
 Interaction effects|互动特效
 Little pixel sparkles when you click. Respects your device’s reduced-motion setting.|点击时出现轻盈的像素闪光，并遵循设备的减少动态效果设置。
 Ready to gather, whenever you are.|准备好了，随时可以收获。
+Planner settings|计划设置
+Farm settings|农场设置
+Farm details|农场信息
+Planner preferences|计划偏好
+Animations & effects|动画与特效
+Show small visual effects when you interact with the planner. Your device’s reduced-motion setting is still respected.|与计划器互动时显示轻微视觉效果，并继续遵循设备的减少动态效果设置。
+Main planning goal|主要规划目标
+Plan detail:|计划详细程度：
+Show only the most important daily tasks.|只显示每天最重要的任务。
+Show core priorities plus useful optional tasks.|显示核心优先事项和实用的可选任务。
+Show more optimization opportunities and time-sensitive tasks. Exact travel routing is not modeled.|显示更多优化机会和时间敏感任务。目前不计算精确移动路线。
+Hide fishing tasks|隐藏钓鱼任务
+Include festival reminders|显示节日提醒
+Minimum gold reserve|最低金币预留
+Progress & unlocks|进度与解锁
+Unlocked areas & features|已解锁区域与功能
+Spoiler level|剧透程度
+Minimal and Normal keep locked late-game events off your calendar. Full shows their dates, but recommendations still respect your recorded unlocks.|“尽量不剧透”和“普通”不会显示尚未解锁的后期活动。“完整显示”会显示日期，但推荐仍会遵循你记录的解锁进度。
+Back up or move your planner|备份或迁移计划器
+Download a backup before switching devices, clearing browser data, or making major changes.|更换设备、清除浏览器数据或进行较大调整前，建议先下载备份。
+Download planner backup|下载计划器备份
+Restore planner backup|恢复计划器备份
+The backup includes your farm progress, crops, inventory, bundle tracking, notes, planner settings, language and effects.|备份包含农场进度、作物、物品栏、收集包记录、笔记、计划设置、语言和特效。
+On another device, open More and choose Restore planner backup.|在另一台设备上打开“更多”，选择“恢复计划器备份”。
+This backs up Pelican Planner only. Your Stardew Valley game save is a separate file.|这里仅备份 Pelican Planner。星露谷物语游戏存档是单独的文件。
+Import a Stardew Valley save|导入星露谷物语存档
+Import an uncompressed Stardew Valley save to fill in supported farm progress automatically. The file is read in your browser and is never modified.|导入未压缩的星露谷物语存档，可自动填写支持的农场进度。文件只会在浏览器中读取，不会被修改。
+Choose save file|选择存档文件
+Restore the previous cloud save|恢复上一份云端存档
+Pelican Planner keeps the previous successful cloud version for recovery. This browser uses a private cookie to identify the saved farm, so download a backup before clearing browser data or changing devices.|Pelican Planner 会保留上一份成功保存的云端版本以便恢复。浏览器通过私有 Cookie 识别农场，因此清除浏览器数据或更换设备前请先下载备份。
+Restore previous save|恢复上一份存档
+Recovered changes stay as a draft until you choose Save farm. If you are offline, keep this tab open or download a backup.|恢复后的更改会先作为草稿保留，直到你选择“保存农场”。离线时请保持此标签页打开，或下载备份。
+Planner data & limitations|计划数据与限制
+Built for standard Stardew Valley 1.6 runs. Core crop, bundle, fishing, shop and calendar rules were cross-checked again on October 1, 2026.|适用于标准的星露谷物语 1.6 存档。作物、收集包、钓鱼、商店与日历等核心规则已于 2026 年 10 月 1 日再次交叉核对。
+The planner uses the classic Community Center bundle set. Remixed bundles, exact travel routing, full artisan-processing optimization, fertilizer growth-speed bonuses and some modded or late-game systems are not fully modeled yet.|计划器使用经典社区中心收集包。混合收集包、精确路线规划、完整工匠加工优化、肥料生长速度加成，以及部分模组或后期系统尚未完整建模。
+Reset planner|重置计划器
+Reset this planner?|重置此计划器？
+Cancel|取消
+Discard draft & reload saved farm|放弃草稿并重新载入已保存农场
+Strategy|策略
+Tracked|已记录
 `.trim().split('\n').map(line=>line.split('|')));

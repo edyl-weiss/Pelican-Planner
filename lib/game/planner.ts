@@ -30,9 +30,16 @@ export function plantingCapacity(run:RunState,totalTiles:number){
  const occupied=run.plots.filter(p=>(!p.location||p.location==='Farm')&&plotAlive(p,run.date)).reduce((n,p)=>n+p.quantity,0);
  return {occupied,free:Math.max(0,totalTiles-occupied)};
 }
+export function cropAvailableToBuy(run:RunState,c:Crop,date=run.date){
+ if(c.buyable===false||!c.seasons.includes(date.season))return false;
+ if(c.name==='Strawberry')return date.season==='Spring'&&date.day===13;
+ if(['Rhubarb','Starfruit','Beet'].includes(c.name)&&!run.unlocks.includes('Bus'))return false;
+ if(['Garlic','Red Cabbage','Artichoke'].includes(c.name)&&date.year<2)return false;
+ return true;
+}
 export function plantingOptions(run:RunState,totalTiles:number){
  const {free}=plantingCapacity(run,totalTiles);
- return crops.filter(c=>c.buyable!==false&&c.seasons.includes(run.date.season)).map(c=>{
+ return crops.filter(c=>cropAvailableToBuy(run,c)).map(c=>{
   const quantity=Math.min(free,Math.floor(available(run,'Gold')/c.seed));
   return {crop:c,quantity,result:cropEconomics(c,run.date,quantity,run.tiller)};
  }).sort((a,b)=>b.result.profit-a.result.profit);
@@ -40,10 +47,7 @@ export function plantingOptions(run:RunState,totalTiles:number){
 // A small first-day shopping shortlist, respecting ordinary seed-shop access.
 export function seasonOpeningCrops(run:RunState){
  const date=nextDate({...run.date,day:28});
- return crops.filter(c=>c.buyable!==false&&c.seasons.includes(date.season)&&c.seed<=available(run,'Gold')&&c.name!=='Strawberry'
-  &&(!['Rhubarb','Starfruit','Beet'].includes(c.name)||run.unlocks.includes('Bus'))
-  &&(!['Garlic','Red Cabbage','Artichoke'].includes(c.name)||date.year>=2)
-  &&(c.name!=='Grape'||date.season==='Fall'))
+ return crops.filter(c=>cropAvailableToBuy(run,c,date)&&c.seed<=available(run,'Gold')&&c.name!=='Strawberry')
  .sort((a,b)=>cropEconomics(b,date,1,run.tiller).profit-cropEconomics(a,date,1,run.tiller).profit).slice(0,2);
 }
 export const eventsOn=(run:RunState,date:GameDate):CalendarEvent[]=>events.filter(e=>e.season===date.season&&e.day<=date.day&&(e.end??e.day)>=date.day&&(e.minYear??1)<=date.year&&(!e.requires||run.unlocks.includes(e.requires)||run.spoilers==='Full'));
@@ -57,7 +61,7 @@ export const suggestionKey=(task:Pick<Task,'category'|'entity'>)=>task.category+
 export function makePlan(run:RunState):Task[]{
  const lucky=['Good','Very good'].includes(run.luck);const unlucky=['Bad','Very bad'].includes(run.luck);
  const list:Task[]=[];let plantingBudget=available(run,'Gold');const day=absoluteDay(run.date);const d=run.date;
- const add=(id:string,name:string,entity:string,detail:string,why:string,skip:string,group:0|1|2,category:string,confidence='Conditional')=>{let priority:0|1|2=group;if(run.goal==='Community Center'&&category==='Bundle')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Maximum Profit'&&category==='Farming')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Mining'&&category==='Mining')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Friendship'&&category==='Friendship')priority=Math.max(0,group-1) as 0|1|2;const task={id:day+':'+id,name,entity,detail,why,skip,group:priority,category,confidence};if(!run.mutedSuggestions.includes(suggestionKey(task)))list.push(task)};
+ const add=(id:string,name:string,entity:string,detail:string,why:string,skip:string,group:0|1|2,category:string,confidence='Conditional')=>{let priority:0|1|2=group;if(run.goal==='Community Center'&&category==='Bundle')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Maximum Profit'&&category==='Farming')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Mining'&&category==='Mining')priority=Math.max(0,group-1) as 0|1|2;if(run.goal==='Friendship'&&category==='Friendship')priority=Math.max(0,group-1) as 0|1|2;const task={id:day+':'+id,name,entity,detail,why,skip,group:priority,category,confidence};list.push(task)};
  for(const e of eventsOn(run,d)){
   if(e.type==='festival'&&run.festivals&&(!e.requires||run.unlocks.includes(e.requires)))add('event-'+e.name,e.name,'Calendar','Today · check entry times','This event has a fixed date. Plan farm chores around it.','It returns next year (multi-day events may continue tomorrow).',0,'Event','Scheduled');
   if(e.type==='birthday'&&run.goal==='Friendship'&&!(run.weather==='Green Rain'&&d.year===1))add('birthday-'+e.name,`Give ${e.name} a birthday gift`,e.name,'Birthday today','Birthday gifts give a larger friendship boost. Check the villager’s preferred gifts.','You can build friendship on other days.',1,'Friendship','Scheduled');
@@ -70,13 +74,28 @@ export function makePlan(run:RunState):Task[]{
    if(owned(run,c.name)>0){add('donate-'+c.name,`Donate ${c.name}`,c.name,'Available in your tracked inventory','Completes a missing seasonal crop slot. Record donation in Collection.','Keep one safely in a chest for later.',1,'Bundle');continue;}
    if(run.plots.some(p=>p.crop===c.name&&plotAlive(p,d)))continue;
    const remaining=lastPlantDay(c,d.season)-d.day;
-   if(remaining>=0&&plantingBudget>=c.seed){plantingBudget-=c.seed;const closed=(d.day-1)%7===2&&!run.unlocks.includes('Community Center');add('plant-'+c.name,`Plant ${c.name}`,c.name,`${c.days} days · ${gold(c.seed)} per seed${closed?' · Pierre closed today':''}`,`Keep one for ${cropBundle.name}. ${closed?'Use owned seeds or another open seller. ':''}Water it every day.`,'Other sources may be available, but a missed seasonal harvest can delay this bundle.',remaining<=2?0:1,'Bundle');}
+   if(remaining>=0&&plantingBudget>=c.seed){plantingBudget-=c.seed;const closed=(d.day-1)%7===2&&!bundles.every(b=>bundleDone(run,b));add('plant-'+c.name,`Plant ${c.name}`,c.name,`${c.days} days · ${gold(c.seed)} per seed${closed?' · Pierre closed today':''}`,`Keep one for ${cropBundle.name}. ${closed?'Use owned seeds or another open seller. ':''}Water it every day.`,'Other sources may be available, but a missed seasonal harvest can delay this bundle.',remaining<=2?0:1,'Bundle');}
   }
  }
  if(run.goal==='Maximum Profit'){
- const best=crops.filter(c=>c.buyable!==false&&c.seasons.includes(d.season)&&!(c.name==='Strawberry'&&d.day!==13)).map(c=>({c,e:cropEconomics(c,d,1,run.tiller)})).filter(x=>x.e.harvests&&available(run,'Gold')>=x.c.seed).sort((a,b)=>b.e.profit-a.e.profit)[0];
+ const best=crops.filter(c=>cropAvailableToBuy(run,c,d)).map(c=>({c,e:cropEconomics(c,d,1,run.tiller)})).filter(x=>x.e.harvests&&available(run,'Gold')>=x.c.seed).sort((a,b)=>b.e.profit-a.e.profit)[0];
  if(best)add('profit',`Plant ${best.c.name}`,best.c.name,`Up to ${gold(best.e.profit)} net / tile this season`,'Highest conservative seasonal profit per tile among tracked crops. Assumes daily watering and timely replanting; buying seeds depends on shop access.','Gold stays available for upgrades and other priorities.',0,'Farming');
  }
+ const qualityBundle=bundles.find(b=>b.name==='Quality Crops');
+ if(qualityBundle&&!bundleDone(run,qualityBundle)&&['Spring','Summer','Fall'].includes(d.season)){
+  const seasonPreference:Record<string,string[]>={Spring:['Parsnip'],Summer:['Melon','Corn'],Fall:['Pumpkin','Corn']};
+  const qualityCrop=(seasonPreference[d.season]??[]).find(name=>{const c=crops.find(c=>c.name===name);const slot=qualityBundle.items.findIndex(item=>item.name===name);return !!c&&cropAvailableToBuy(run,c,d)&&slot>=0&&!run.donated.includes(slotKey(qualityBundle,slot));});
+  const slot=qualityCrop?qualityBundle.items.findIndex(item=>item.name===qualityCrop):-1;
+  const crop=qualityCrop?crops.find(c=>c.name===qualityCrop):undefined;
+  if(qualityCrop&&slot>=0&&crop){
+   const have=owned(run,qualityCrop,2);
+   if(have>=5)add('quality-donate-'+qualityCrop,`Donate 5 gold-quality ${qualityCrop}`,qualityCrop,`${have} tracked at gold quality or better`,'The Quality Crops Bundle needs 5 gold-quality crops from 3 of its 4 choices.','You can use another qualifying seasonal crop instead.',run.goal==='Fast Greenhouse'?0:1,'Bundle','Tracked');
+   else if(lastPlantDay(crop,d.season)>=d.day)add('quality-grow-'+qualityCrop,`Grow extra ${qualityCrop} for the Quality Crops Bundle`,qualityCrop,`Need 5 gold-quality · last standard planting day ${d.season} ${lastPlantDay(crop,d.season)}`,'Crop quality is decided at harvest and improves with Farming level and fertilizer. Growing extras gives you more chances to reach 5 gold-quality crops.','You only need 3 of the 4 Quality Crops options, so another season can cover this slot.',run.goal==='Fast Greenhouse'?0:2,'Bundle');
+  }
+ }
+ if(d.year===1&&d.season==='Spring'&&d.day>=2&&d.day<=12&&!run.noFishing&&(run.level>=4||run.goal==='Maximum Profit')&&run.gold<10000)add('startup-fishing','Fish for early-game gold','Sunfish','Spring Year 1 · flexible money route','Fishing is a strong early source of spendable gold before larger crop harvests arrive. Use the proceeds for seeds, backpack space, or tool progression.','Skip it if fishing is not fun or another goal matters more today.',1,'Fishing','Strategy');
+ if(d.year===1&&d.season==='Spring'&&d.day<=28&&run.farming<6&&(run.level>=3||run.goal==='Fast Greenhouse'||run.goal==='Maximum Profit'))add('farming-six','Work toward Farming level 6','Quality Sprinkler',`Current Farming level ${run.farming}`,'Farming level 6 unlocks Quality Sprinklers, which water 8 adjacent tiles and can make Summer much easier to scale.','You can reach level 6 later; this is a progression target, not a hard deadline.',2,'Farming','Strategy');
+ if(rainy(run.tomorrow)&&run.plots.some(p=>(!p.location||p.location==='Farm')&&plotAlive(p,d)))add('watering-upgrade-window','Consider a Watering Can upgrade','Watering Can','Rain forecast tomorrow','A rain forecast can create a useful tool-upgrade window: water crops today, hand the can to Clint, let rain cover tomorrow, then collect it when the upgrade is ready. Confirm Clint is open before committing.','Keep the can if you need it for indoor crops or cannot reach Clint in time.',1,'Farming','Conditional');
  const living=run.plots.filter(p=>plotAlive(p,d));
  const dryPlots=living.some(p=>p.location==='Greenhouse'||p.location==='IslandWest'||!rainy(run.weather));
  if(dryPlots)add('water','Water your crops','Watering Can','Check unwatered tiles',rainy(run.weather)?'Rain waters the outdoor farm. Check greenhouse pots and island crops separately; island weather can differ.':'Outdoor crops need water to grow. Sprinklers can cover this work.','Unwatered crops pause growth for a day.',0,'Farming');
@@ -92,7 +111,7 @@ export function makePlan(run:RunState):Task[]{
 }
 export interface Deadline{name:string;entity:string;detail:string;day:number;urgent:boolean}
 export function deadlines(run:RunState):Deadline[]{const results:Deadline[]=[];const d=run.date;
- for(const c of crops.filter(c=>needed(run,c.name)&&c.seasons.includes(d.season)&&!owned(run,c.name)&&!run.plots.some(p=>p.crop===c.name&&plotAlive(p,d))&&!c.seasons.includes(nextDate({...d,day:28}).season))){const last=lastPlantDay(c,d.season);if(last>=d.day)results.push({name:`Plant ${c.name}`,entity:c.name,detail:`By ${d.season} ${last} · ${last-d.day===0?'today':`${last-d.day} days left`}`,day:last,urgent:last-d.day<=3});}
+ for(const c of crops.filter(c=>needed(run,c.name)&&cropAvailableToBuy(run,c,d)&&c.seasons.includes(d.season)&&!owned(run,c.name)&&!run.plots.some(p=>p.crop===c.name&&plotAlive(p,d))&&!c.seasons.includes(nextDate({...d,day:28}).season))){const last=lastPlantDay(c,d.season);if(last>=d.day)results.push({name:`Plant ${c.name}`,entity:c.name,detail:`By ${d.season} ${last} · ${last-d.day===0?'today':`${last-d.day} days left`}`,day:last,urgent:last-d.day<=3});}
  for(const e of events.filter(e=>e.season===d.season&&e.type==='festival'&&(e.end??e.day)>=d.day&&(!e.requires||run.unlocks.includes(e.requires))))results.push({name:e.name,entity:'Calendar',detail:`${e.season} ${e.day}${e.end?'–'+e.end:''}`,day:Math.max(d.day,e.day),urgent:e.day-d.day<=2});
  if(rainy(run.tomorrow)&&!run.noFishing&&['Spring','Fall'].includes(d.season)&&needed(run,'Catfish'))results.push({name:'Catfish opportunity',entity:'Catfish',detail:'Rain forecast tomorrow · River',day:d.day+1,urgent:true});
  return results.sort((a,b)=>a.day-b.day).slice(0,5);
