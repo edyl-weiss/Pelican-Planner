@@ -1,5 +1,5 @@
 import {bundles,crops,events,fish,SEASONS,type Crop,type Bundle,type CalendarEvent} from './data';
-import type {RunState,GameDate,Plot} from './state';
+import {runSchema,type RunState,type GameDate,type Plot} from './state';
 export const absoluteDay=(d:GameDate)=>(d.year-1)*112+SEASONS.indexOf(d.season)*28+d.day;
 export function fromDay(n:number):GameDate{const t=Math.max(1,n)-1;return {year:Math.floor(t/112)+1,season:SEASONS[Math.floor(t%112/28)],day:t%28+1}}
 export const nextDate=(date:GameDate,delta=1)=>fromDay(absoluteDay(date)+delta);
@@ -19,11 +19,25 @@ export function cropEconomics(c:Crop,date:GameDate,quantity=1,tiller=false){
  const cost=seedCount*c.seed*quantity;
  return {harvests,firstHarvest:date.day+c.days,cost,revenue,profit:revenue-cost,profitPerDay:daysRemaining?(revenue-cost)/daysRemaining:0,roi:cost?(revenue-cost)/cost:0};
 }
+// Compare new outdoor plantings only in currently free tiles. Future crop sales
+// remain a forecast and never increase the spendable seed budget.
+export function plantingCapacity(run:RunState,totalTiles:number){
+ const occupied=run.plots.filter(p=>(!p.location||p.location==='Farm')&&plotAlive(p,run.date)).reduce((n,p)=>n+p.quantity,0);
+ return {occupied,free:Math.max(0,totalTiles-occupied)};
+}
+export function plantingOptions(run:RunState,totalTiles:number){
+ const {free}=plantingCapacity(run,totalTiles);
+ return crops.filter(c=>c.seasons.includes(run.date.season)).map(c=>{
+  const quantity=Math.min(free,Math.floor(available(run,'Gold')/c.seed));
+  return {crop:c,quantity,result:cropEconomics(c,run.date,quantity,run.tiller)};
+ }).sort((a,b)=>b.result.profit-a.result.profit);
+}
 export const eventsOn=(run:RunState,date:GameDate):CalendarEvent[]=>events.filter(e=>e.season===date.season&&e.day<=date.day&&(e.end??e.day)>=date.day&&(e.minYear??1)<=date.year&&(!e.requires||run.unlocks.includes(e.requires)||run.spoilers==='Full'));
 export function eligibleFish(run:RunState){return fish.filter(f=>f.seasons.includes(run.date.season)&&(f.weather==='Any'||(f.weather==='Rain'&&['Rain','Storm'].includes(run.weather))||(f.weather==='Sun'&&run.weather==='Sunny')))}
 export const clock=(hour:number)=>hour===24?'12am':hour===26?'2am':hour===12?'12pm':hour>12?`${hour-12}pm`:`${hour}am`;
 export function lastPlantDay(c:Crop,season:GameDate['season']){return c.seasons.includes(season)?28-c.days:0}
-export function plotAlive(p:Plot,date:GameDate):boolean{const c=crops.find(c=>c.name===p.crop);if(!c||absoluteDay(date)<absoluteDay(p.planted))return false;for(let day=absoluteDay(p.planted);day<=absoluteDay(date);){const d=fromDay(day);if(!c.seasons.includes(d.season))return false;day+=29-d.day;}return c.seasons.includes(date.season)}
+export function plotCrop(p:Plot):Crop|undefined{return p.customCrop?{name:p.crop,days:0,seed:0,...p.customCrop}:crops.find(c=>c.name===p.crop)}
+export function plotAlive(p:Plot,date:GameDate):boolean{const c=plotCrop(p);if(!c||absoluteDay(date)<absoluteDay(p.planted))return false;if(p.location&&p.location!=='Farm')return true;for(let day=absoluteDay(p.planted);day<=absoluteDay(date);){const d=fromDay(day);if(!c.seasons.includes(d.season))return false;day+=29-d.day;}return c.seasons.includes(date.season)}
 export interface Task{id:string;name:string;entity:string;detail:string;why:string;skip:string;group:0|1|2;category:string;confidence:string}
 export function makePlan(run:RunState):Task[]{
  const list:Task[]=[];let plantingBudget=available(run,'Gold');const day=absoluteDay(run.date);const d=run.date;
@@ -32,7 +46,7 @@ export function makePlan(run:RunState):Task[]{
   if(e.type==='festival'&&run.festivals&&(!e.requires||run.unlocks.includes(e.requires)))add('event-'+e.name,e.name,'Calendar','Today · check entry times','This event has a fixed date. Plan farm chores around it.','It returns next year (multi-day events may continue tomorrow).',0,'Event','Scheduled');
   if(e.type==='birthday'&&run.goal==='Friendship')add('birthday-'+e.name,`Give ${e.name} a birthday gift`,e.name,'Birthday today','Birthday gifts give a larger friendship boost. Check the villager’s preferred gifts.','You can build friendship on other days.',1,'Friendship','Scheduled');
  }
- for(const p of run.plots){const c=crops.find(c=>c.name===p.crop);if(!c)continue;const alive=plotAlive(p,d);if(alive&&day>=p.nextHarvest)add('harvest-'+p.id,`Harvest ${p.quantity} ${p.crop}`,p.crop,'Your recorded crop is ready',`The harvest date assumes daily watering. Record the harvest in Plan to update the next date.`,'Mature crops can wait, but crops that cannot survive next season will die.',0,'Farming');}
+ for(const p of run.plots){const c=plotCrop(p);if(!c)continue;const alive=plotAlive(p,d);if(alive&&day>=p.nextHarvest)add('harvest-'+p.id,`Harvest ${p.quantity} ${p.crop}`,p.crop,'Your recorded crop is ready',`The harvest date assumes daily watering. Record the harvest in Plan to update the next date.`,'Mature crops can wait, but crops that cannot survive next season will die.',0,'Farming');}
  if(!run.noFishing){const catches=eligibleFish(run).filter(f=>needed(run,f.name));for(const f of catches.slice(0,run.level>=4?3:1))add('fish-'+f.name,`Catch ${f.name}`,f.name,`${f.weather==='Rain'?'Rain · ':''}${f.location} · ${clock(f.start)}–${clock(f.end)}`,'Still needed for a standard Community Center bundle. Catch success depends on skill and chance.','Wait for another eligible day. Seasonal and rain requirements can delay completion.',f.weather==='Rain'?0:1,'Fishing','RNG');}
  const cropBundle=bundles.find(b=>b.name===`${d.season} Crops`);
  if(cropBundle&&run.goal!=='Maximum Profit'&&run.goal!=='Mining'){
@@ -62,8 +76,20 @@ export function deadlines(run:RunState):Deadline[]{const results:Deadline[]=[];c
  if(run.tomorrow==='Rain'&&!run.noFishing&&['Spring','Fall'].includes(d.season)&&needed(run,'Catfish'))results.push({name:'Catfish opportunity',entity:'Catfish',detail:'Rain forecast tomorrow · River',day:d.day+1,urgent:true});
  return results.sort((a,b)=>a.day-b.day).slice(0,5);
 }
-export function recordHarvest(run:RunState,id:string):RunState{const p=run.plots.find(p=>p.id===id);const c=crops.find(c=>c.name===p?.crop);if(!p||!c||absoluteDay(run.date)<p.nextHarvest||!plotAlive(p,run.date))return run;
+export function recordHarvest(run:RunState,id:string):RunState{const p=run.plots.find(p=>p.id===id);const c=p?plotCrop(p):undefined;if(!p||!c||absoluteDay(run.date)<p.nextHarvest||!plotAlive(p,run.date))return run;
  const inventory=run.inventory.map(x=>({...x}));const item=inventory.find(i=>i.name===c.name&&i.quality===0);if(item)item.quantity+=p.quantity*c.yield;else inventory.push({name:c.name,quantity:p.quantity*c.yield,quality:0});
  const plots=c.regrow?run.plots.map(x=>x.id===id?{...x,harvests:x.harvests+1,nextHarvest:absoluteDay(run.date)+c.regrow}:x):run.plots.filter(x=>x.id!==id);
  return {...run,inventory,plots};}
 export function addPlot(run:RunState,crop:string,quantity:number):Plot{const c=crops.find(c=>c.name===crop);if(!c||!c.seasons.includes(run.date.season)||!Number.isInteger(quantity)||quantity<1||quantity>9999)throw new Error('Choose an in-season crop and a valid quantity.');return {id:crypto.randomUUID(),crop,quantity,planted:run.date,nextHarvest:absoluteDay(run.date)+c.days,harvests:0,missedDays:0}}
+
+export function addExistingPlot(run:RunState,input:{crop:string;quantity:number;daysUntilHarvest:number;location:NonNullable<Plot['location']>;customCrop?:Plot['customCrop']}):Plot{
+ if(!Number.isInteger(input.daysUntilHarvest)||input.daysUntilHarvest<0||input.daysUntilHarvest>365)throw new Error('Days until harvest must be between 0 and 365.');
+ if(run.plots.length>=200)throw new Error('The journal supports up to 200 crop groups.');
+ const crop=input.crop.trim();
+ if(!crop)throw new Error('Enter a crop name.');
+ const plot=runSchema.shape.plots.element.parse({id:crypto.randomUUID(),crop,quantity:input.quantity,planted:run.date,nextHarvest:absoluteDay(run.date)+input.daysUntilHarvest,location:input.location,customCrop:input.customCrop,harvests:0,missedDays:0});
+ const data=plotCrop(plot);
+ if(!data)throw new Error('Add growth details for this custom crop.');
+ if(input.location==='Farm'&&!data.seasons.includes(run.date.season))throw new Error('Choose a growing season that includes today, or select an indoor location.');
+ return plot;
+}

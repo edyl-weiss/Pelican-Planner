@@ -1,4 +1,20 @@
 export const messages: Record<string,string> = Object.fromEntries(`
+Game import reads farm details and supported growing crops. Review the preview and import limits before applying.|导入会读取农场信息和支持的在种作物。应用前请核对预览及导入范围。
+Imported farm details, backpack items, professions, recognized unlocks and supported growing crops. Your game file was not modified.|已导入农场信息、背包物品、职业、已识别的解锁内容和支持的在种作物。游戏文件未被修改。
+Existing crop added. Your calendar and forecasts are updated.|已补录作物，日历与收获预测已更新。
+For winter, indoor or other crops, use Add an existing crop and enter the remaining growth time.|冬季、室内或其他作物，请使用“添加已种植作物”并填写剩余生长天数。
+Farm|农场
+Greenhouse|温室
+IslandWest|姜岛
+Days until harvest must be between 0 and 365.|距离收获天数必须在 0 到 365 之间。
+The journal supports up to 200 crop groups.|日记最多支持 200 组作物。
+Enter a crop name.|请输入作物名称。
+Add growth details for this custom crop.|请填写自定义作物的生长信息。
+Choose a growing season that includes today, or select an indoor location.|请选择包含当前季节的生长季节，或选择室内种植地点。
+Import your game save and growing crops|导入游戏存档和在种作物
+Total outdoor crop tiles|室外种植地块总数
+New planting tiles|新种植地块
+No free tiles or seed budget|无空地或种子预算
 Stardew Farm Journal|星露谷农场手记
 A LITTLE PLAN. A GOOD DAY.|小小计划，好好过一天。
 Play|今天
@@ -388,6 +404,41 @@ No previous saved version is available.|没有可恢复的上一份存档。
 Failed to fetch|网络连接失败，请保留草稿并重试。
 Load failed|网络连接失败，请保留草稿并重试。
 NetworkError when attempting to fetch resource.|网络连接失败，请保留草稿并重试。
+Welcome to your farm journal|欢迎来到你的农场手记
+Let’s set up your calendar|先来设置你的日历
+Tell the journal where you are in your save. It only takes a moment, and you can change everything later in More.|告诉手记你当前的存档进度。只需片刻，之后也可以随时在“更多”中修改。
+Start from a new save|从新存档开始
+Spring 1, Year 1 · 500g · fresh progress|第1年春季1日 · 500金 · 全新进度
+Continue an existing save|继续现有存档
+Set your current season, day, year and progress|设置当前季节、日期、年份与进度
+Already have your Stardew save file?|已经有星露谷存档文件？
+Import save instead|改为导入存档
+Use the default farm for now|暂时使用默认农场
+Setup · Step|设置 · 第
+Your farm & calendar|你的农场与日历
+How do you like to play?|你喜欢怎样游玩？
+Add your current progress|补充当前进度
+We’ll start on Spring 1, Year 1. Add a name and farm type so the journal feels like yours.|我们会从第1年春季1日开始。填写农场名称和类型，让手记更贴合你的农场。
+Match the journal to the date your current save is on.|让手记日期与你当前的游戏存档保持一致。
+Starting gold|初始金币
+Current gold|当前金币
+Spring 1 · Year 1|第1年春季1日
+You can advance the journal one day at a time from here.|之后可以每天推进一次手记日期。
+These choices shape how busy the daily plan feels and which kinds of goals it prioritizes.|这些选项会决定每日计划的紧凑程度，以及优先关注哪些目标。
+Lower settings keep the day loose. Higher settings surface more eligible tasks and opportunities.|较低强度会让每天更轻松；较高强度会显示更多可做任务和机会。
+These can stay at their defaults for a fresh save. Fill them in only if your run starts with custom progress.|新存档可保留默认值。只有在自定义开局时才需要填写这些内容。
+Optional, but adding these now makes recommendations more accurate immediately.|这些是可选项，但现在填写能让推荐立刻更准确。
+Unlocked in my game|我已解锁
+Professions|职业
+Change save type|更改存档类型
+Close guide|关闭向导
+Back|返回
+Continue|继续
+Start planning|开始规划
+You can edit all of this later in More.|之后可随时在“更多”中修改这些设置。
+Run setup guide|运行设置向导
+You can run the setup guide anytime from More.|你可以随时在“更多”中重新打开设置向导。
+Setup complete. Your calendar is ready.|设置完成，日历已经准备好了。
 Close|关闭
 Language|语言
 Interaction effects|互动特效

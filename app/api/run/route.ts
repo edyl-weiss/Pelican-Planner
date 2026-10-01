@@ -8,6 +8,7 @@ import { nextSavedRecord, savedRecordSchema } from '@/lib/game/saved-record';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 const COOKIE = process.env.NODE_ENV === 'production' ? '__Host-stardew-farm' : 'stardew-farm';
+const storeId=process.env.BLOB_STORE_ID||process.env.BLOB_READ_WRITE_TOKEN_STORE_ID;
 const MAX_BODY_BYTES = 500_000;
 const submissionSchema = z.object({ state: runSchema, revision: z.number().int().min(0).max(2_000_000_000) });
 
@@ -33,7 +34,7 @@ function validateOrigin(request: NextRequest) {
   return !crossSite && (!origin || origin === request.nextUrl.origin);
 }
 async function readRecord(secret: string) {
-  const result = await get(pathname(secret), { access: 'private', useCache: false });
+  const result = await get(pathname(secret), { access: 'private', useCache: false, ...(storeId?{storeId}:{}) });
   if (!result) return null;
   if (result.statusCode !== 200 || !result.stream) throw new Error('Saved farm could not be read.');
   if ((result.blob.size ?? 0) > 1_200_000) throw new Error('Saved farm exceeds the supported size.');
@@ -77,6 +78,7 @@ export async function PUT(request: NextRequest) {
     if ((current?.record.revision ?? 0) !== body.data.revision) return json({ error: 'This farm changed in another tab. Export this draft, then reload before saving.' }, 409);
     const next = nextSavedRecord(current?.record ?? null, body.data.state, body.data.revision);
     await put(pathname(secret), JSON.stringify(next), {
+      ...(storeId?{storeId}:{}),
       access: 'private', addRandomSuffix: false, allowOverwrite: Boolean(current), contentType: 'application/json', cacheControlMaxAge: 60,
       ...(current ? { ifMatch: current.etag } : {}),
     });
