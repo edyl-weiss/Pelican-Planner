@@ -1,0 +1,69 @@
+import {bundles,crops,events,fish,SEASONS,type Crop,type Bundle,type CalendarEvent} from './data';
+import type {RunState,GameDate,Plot} from './state';
+export const absoluteDay=(d:GameDate)=>(d.year-1)*112+SEASONS.indexOf(d.season)*28+d.day;
+export function fromDay(n:number):GameDate{const t=Math.max(1,n)-1;return {year:Math.floor(t/112)+1,season:SEASONS[Math.floor(t%112/28)],day:t%28+1}}
+export const nextDate=(date:GameDate,delta=1)=>fromDay(absoluteDay(date)+delta);
+export const dateLabel=(d:GameDate)=>`${d.season} ${d.day}, Year ${d.year}`;
+export const gold=(n:number)=>`${Math.round(n).toLocaleString('en-US')}g`;
+export const slotKey=(b:Bundle,i:number)=>`${b.id}:${i}`;
+export const bundleCount=(run:RunState,b:Bundle)=>b.items.filter((_,i)=>run.donated.includes(slotKey(b,i))).length;
+export const bundleDone=(run:RunState,b:Bundle)=>bundleCount(run,b)>=b.required;
+export const needed=(run:RunState,name:string)=>bundles.some(b=>!bundleDone(run,b)&&b.items.some((x,i)=>x.name===name&&!run.donated.includes(slotKey(b,i))));
+export const owned=(run:RunState,name:string,quality=0)=>run.inventory.filter(i=>i.name===name&&i.quality>=quality).reduce((a,b)=>a+b.quantity,0);
+export const available=(run:RunState,resource:string)=>Math.max(0,(resource==='Gold'?run.gold:owned(run,resource))-run.reservations.filter(r=>r.resource===resource).reduce((a,b)=>a+b.quantity,0)-(resource==='Gold'?run.reserve:0));
+export function cropEconomics(c:Crop,date:GameDate,quantity=1,tiller=false){
+ const daysRemaining=28-date.day;
+ const harvests=!c.seasons.includes(date.season)||daysRemaining<c.days?0:c.regrow?1+Math.floor((daysRemaining-c.days)/c.regrow):Math.floor(daysRemaining/c.days);
+ const seedCount=c.regrow?Number(harvests>0):harvests;
+ const revenue=harvests*c.yield*Math.floor(c.sell*(tiller?1.1:1))*quantity;
+ const cost=seedCount*c.seed*quantity;
+ return {harvests,firstHarvest:date.day+c.days,cost,revenue,profit:revenue-cost,profitPerDay:daysRemaining?(revenue-cost)/daysRemaining:0,roi:cost?(revenue-cost)/cost:0};
+}
+export const eventsOn=(run:RunState,date:GameDate):CalendarEvent[]=>events.filter(e=>e.season===date.season&&e.day<=date.day&&(e.end??e.day)>=date.day&&(e.minYear??1)<=date.year&&(!e.requires||run.unlocks.includes(e.requires)||run.spoilers==='Full'));
+export function eligibleFish(run:RunState){return fish.filter(f=>f.seasons.includes(run.date.season)&&(f.weather==='Any'||(f.weather==='Rain'&&['Rain','Storm'].includes(run.weather))||(f.weather==='Sun'&&run.weather==='Sunny')))}
+export const clock=(hour:number)=>hour===24?'12am':hour===26?'2am':hour===12?'12pm':hour>12?`${hour-12}pm`:`${hour}am`;
+export function lastPlantDay(c:Crop,season:GameDate['season']){return c.seasons.includes(season)?28-c.days:0}
+export function plotAlive(p:Plot,date:GameDate):boolean{const c=crops.find(c=>c.name===p.crop);if(!c||absoluteDay(date)<absoluteDay(p.planted))return false;for(let day=absoluteDay(p.planted);day<=absoluteDay(date);){const d=fromDay(day);if(!c.seasons.includes(d.season))return false;day+=29-d.day;}return c.seasons.includes(date.season)}
+export interface Task{id:string;name:string;entity:string;detail:string;why:string;skip:string;group:0|1|2;category:string;confidence:string}
+export function makePlan(run:RunState):Task[]{
+ const list:Task[]=[];let plantingBudget=available(run,'Gold');const day=absoluteDay(run.date);const d=run.date;
+ const add=(id:string,name:string,entity:string,detail:string,why:string,skip:string,group:0|1|2,category:string,confidence='Conditional')=>list.push({id:`${day}:${id}`,name,entity,detail,why,skip,group,category,confidence});
+ for(const e of eventsOn(run,d)){
+  if(e.type==='festival'&&run.festivals&&(!e.requires||run.unlocks.includes(e.requires)))add('event-'+e.name,e.name,'Calendar','Today · check entry times','This event has a fixed date. Plan farm chores around it.','It returns next year (multi-day events may continue tomorrow).',0,'Event','Scheduled');
+  if(e.type==='birthday'&&run.goal==='Friendship')add('birthday-'+e.name,`Give ${e.name} a birthday gift`,e.name,'Birthday today','Birthday gifts give a larger friendship boost. Check the villager’s preferred gifts.','You can build friendship on other days.',1,'Friendship','Scheduled');
+ }
+ for(const p of run.plots){const c=crops.find(c=>c.name===p.crop);if(!c)continue;const alive=plotAlive(p,d);if(alive&&day>=p.nextHarvest)add('harvest-'+p.id,`Harvest ${p.quantity} ${p.crop}`,p.crop,'Your recorded crop is ready',`The harvest date assumes daily watering. Record the harvest in Plan to update the next date.`,'Mature crops can wait, but crops that cannot survive next season will die.',0,'Farming');}
+ if(!run.noFishing){const catches=eligibleFish(run).filter(f=>needed(run,f.name));for(const f of catches.slice(0,run.level>=4?3:1))add('fish-'+f.name,`Catch ${f.name}`,f.name,`${f.weather==='Rain'?'Rain · ':''}${f.location} · ${clock(f.start)}–${clock(f.end)}`,'Still needed for a standard Community Center bundle. Catch success depends on skill and chance.','Wait for another eligible day. Seasonal and rain requirements can delay completion.',f.weather==='Rain'?0:1,'Fishing','RNG');}
+ const cropBundle=bundles.find(b=>b.name===`${d.season} Crops`);
+ if(cropBundle&&run.goal!=='Maximum Profit'&&run.goal!=='Mining'){
+  for(const item of cropBundle.items){const c=crops.find(c=>c.name===item.name);if(!c||!needed(run,c.name))continue;
+   if(owned(run,c.name)>0){add('donate-'+c.name,`Donate ${c.name}`,c.name,'Available in your tracked inventory','Completes a missing seasonal crop slot. Record donation in Collection.','Keep one safely in a chest for later.',1,'Bundle');continue;}
+   if(run.plots.some(p=>p.crop===c.name&&plotAlive(p,d)))continue;
+   const remaining=lastPlantDay(c,d.season)-d.day;
+   if(remaining>=0&&plantingBudget>=c.seed){plantingBudget-=c.seed;const closed=(d.day-1)%7===2&&!run.unlocks.includes('Community Center');add('plant-'+c.name,`Plant ${c.name}`,c.name,`${c.days} days · ${gold(c.seed)} per seed${closed?' · Pierre closed today':''}`,`Keep one for ${cropBundle.name}. ${closed?'Use owned seeds or another open seller. ':''}Water it every day.`,'Other sources may be available, but a missed seasonal harvest can delay this bundle.',remaining<=2?0:1,'Bundle');}
+  }
+ }
+ if(run.goal==='Maximum Profit'){
+ const best=crops.filter(c=>c.seasons.includes(d.season)&&!(c.name==='Strawberry'&&d.day!==13)).map(c=>({c,e:cropEconomics(c,d,1,run.tiller)})).filter(x=>x.e.harvests&&available(run,'Gold')>=x.c.seed).sort((a,b)=>b.e.profit-a.e.profit)[0];
+ if(best)add('profit',`Plant ${best.c.name}`,best.c.name,`Up to ${gold(best.e.profit)} net / tile this season`,'Highest conservative seasonal profit per tile among tracked crops. Assumes daily watering and timely replanting; buying seeds depends on shop access.','Gold stays available for upgrades and other priorities.',0,'Farming');
+ }
+ if(run.plots.some(p=>plotAlive(p,d))&& !['Rain','Storm'].includes(run.weather))add('water','Water your crops','Watering Can','Check unwatered tiles','Outdoor crops need water to grow. Sprinklers can cover this work.','Unwatered crops pause growth for a day.',0,'Farming');
+ if((d.day-1)%7===4||(d.day-1)%7===6)add('cart','Check the Traveling Cart','Traveling Cart','Cindersap Forest · 6am–8pm','The stock may include a missing bundle item. Buy only if it fits your budget.','Stock changes next visit. No item is guaranteed.',1,'Shopping','RNG');
+ if(day>=5&&run.mineFloor<120)add('mine',`Reach mine floor ${Math.min(120,(Math.floor(run.mineFloor/5)+1)*5)}`,'Pickaxe',`Currently floor ${run.mineFloor} · save an elevator checkpoint`,'Every five floors is a useful stopping point. Bring food and leave enough time to return.','Mine progression can move to another day.',run.goal==='Mining'?0:2,'Mining');
+ const forageBundle=bundles.find(b=>b.name===`${d.season} Foraging`);
+ if(forageBundle&&!bundleDone(run,forageBundle))add('forage','Gather seasonal forage',forageBundle.items.find((_,i)=>!run.donated.includes(slotKey(forageBundle,i)))?.name??'Daffodil',`${d.season} Foraging · ${bundleCount(run,forageBundle)}/${forageBundle.required} donated`,'Keep one of each missing item for the Crafts Room. Forage spawns are random.','Another walk this season may find the missing items.',2,'Foraging','RNG');
+ for(const n of run.notes.filter(n=>absoluteDay(n.date)===day&&!n.done))add('note-'+n.id,n.label,'Calendar','Your pinned task','Added by you.','Reschedule it in Plan when needed.',1,'Personal');
+ list.sort((a,b)=>a.group-b.group);if(list.length&&!list.some(t=>t.group===0))list[0].group=0;return run.goal==='Low Effort'?list.slice(0,3):list;
+}
+export interface Deadline{name:string;entity:string;detail:string;day:number;urgent:boolean}
+export function deadlines(run:RunState):Deadline[]{const results:Deadline[]=[];const d=run.date;
+ for(const c of crops.filter(c=>needed(run,c.name)&&c.seasons.includes(d.season)&&!owned(run,c.name)&&!run.plots.some(p=>p.crop===c.name&&plotAlive(p,d))&&!c.seasons.includes(nextDate({...d,day:28}).season))){const last=lastPlantDay(c,d.season);if(last>=d.day)results.push({name:`Plant ${c.name}`,entity:c.name,detail:`By ${d.season} ${last} · ${last-d.day===0?'today':`${last-d.day} days left`}`,day:last,urgent:last-d.day<=3});}
+ for(const e of events.filter(e=>e.season===d.season&&e.type==='festival'&&(e.end??e.day)>=d.day&&(!e.requires||run.unlocks.includes(e.requires))))results.push({name:e.name,entity:'Calendar',detail:`${e.season} ${e.day}${e.end?'–'+e.end:''}`,day:Math.max(d.day,e.day),urgent:e.day-d.day<=2});
+ if(run.tomorrow==='Rain'&&!run.noFishing&&['Spring','Fall'].includes(d.season)&&needed(run,'Catfish'))results.push({name:'Catfish opportunity',entity:'Catfish',detail:'Rain forecast tomorrow · River',day:d.day+1,urgent:true});
+ return results.sort((a,b)=>a.day-b.day).slice(0,5);
+}
+export function recordHarvest(run:RunState,id:string):RunState{const p=run.plots.find(p=>p.id===id);const c=crops.find(c=>c.name===p?.crop);if(!p||!c||absoluteDay(run.date)<p.nextHarvest||!plotAlive(p,run.date))return run;
+ const inventory=run.inventory.map(x=>({...x}));const item=inventory.find(i=>i.name===c.name&&i.quality===0);if(item)item.quantity+=p.quantity*c.yield;else inventory.push({name:c.name,quantity:p.quantity*c.yield,quality:0});
+ const plots=c.regrow?run.plots.map(x=>x.id===id?{...x,harvests:x.harvests+1,nextHarvest:absoluteDay(run.date)+c.regrow}:x):run.plots.filter(x=>x.id!==id);
+ return {...run,inventory,plots};}
+export function addPlot(run:RunState,crop:string,quantity:number):Plot{const c=crops.find(c=>c.name===crop);if(!c||!c.seasons.includes(run.date.season)||!Number.isInteger(quantity)||quantity<1||quantity>9999)throw new Error('Choose an in-season crop and a valid quantity.');return {id:crypto.randomUUID(),crop,quantity,planted:run.date,nextHarvest:absoluteDay(run.date)+c.days,harvests:0,missedDays:0}}

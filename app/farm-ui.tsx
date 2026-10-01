@@ -1,0 +1,12 @@
+'use client';
+/* eslint-disable @next/next/no-img-element -- Local pixel sprites must retain their original nearest-neighbor rendering. */
+import {useLocale} from './locale-provider';
+import {useId,useState} from 'react';
+import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue} from '@/components/ui/select';
+import {Checkbox} from '@/components/ui/checkbox';
+import assets from '@/lib/game/assets-source.json';
+const registry=assets as Record<string,{local_path:string}>;
+export function Sprite({name,size=48}:{name:string;size?:number}){const[failed,setFailed]=useState(false);const record=registry[name+' Icon']??registry[name]??registry['Bundle Green'];const filename=record?.local_path.split('/').pop();return filename&&!failed?<img className="sprite" src={'/sprites/'+filename} alt="" width={size} height={size} loading="lazy" onError={()=>setFailed(true)}/>:<span className="sprite-fallback" aria-hidden="true" style={{width:size,height:size}}>?</span>}
+export function Choice({label,value,options,onChange}:{label:string;value:string;options:readonly string[];onChange:(value:string)=>void}){const id=useId();const {render,t}=useLocale();return render( <div className="field"><label htmlFor={id}>{label}</label><Select value={value} onValueChange={onChange}><SelectTrigger id={id} className="choice"><SelectValue/></SelectTrigger><SelectContent className="choice-menu">{options.map(option=><SelectItem key={option} value={option}>{label==='Quality'&&option==='Gold'?t('Gold quality'):option}</SelectItem>)}</SelectContent></Select></div>)}
+export function Check({label,checked,onChange,translateLabel=true}:{label:string;checked:boolean;translateLabel?:boolean;onChange:(checked:boolean)=>void}){const id=useId();const {render}=useLocale();return render( <label translate={translateLabel?undefined:"no"} className="check-label" htmlFor={id}><Checkbox id={id} className="farm-check" checked={checked} onCheckedChange={value=>onChange(value===true)}/>{label}</label>)}
+export function NumberField({label,value,onChange,min=0,max=999999999}:{label:string;value:number;onChange:(n:number)=>void;min?:number;max?:number}){const {render}=useLocale();return render(<label className="field">{label}<input type="number" inputMode="numeric" min={min} max={max} value={value} onChange={e=>{const v=Number(e.target.value);if(Number.isFinite(v))onChange(Math.min(max,Math.max(min,Math.trunc(v))))}}/></label>)}

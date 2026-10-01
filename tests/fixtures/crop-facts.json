@@ -1,0 +1,146 @@
+{
+  "Parsnip": {
+    "growth_days": 4,
+    "regrowth_days": null,
+    "seed_price_g": 20,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 35,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Parsnip",
+    "checked_date": "2026-10-01"
+  },
+  "Green Bean": {
+    "growth_days": 10,
+    "regrowth_days": 3,
+    "seed_price_g": 60,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 40,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Green_Bean",
+    "checked_date": "2026-10-01"
+  },
+  "Cauliflower": {
+    "growth_days": 12,
+    "regrowth_days": null,
+    "seed_price_g": 80,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 175,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Cauliflower",
+    "checked_date": "2026-10-01"
+  },
+  "Potato": {
+    "growth_days": 6,
+    "regrowth_days": null,
+    "seed_price_g": 50,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 80,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Potato",
+    "checked_date": "2026-10-01"
+  },
+  "Strawberry": {
+    "growth_days": 8,
+    "regrowth_days": 4,
+    "seed_price_g": 100,
+    "seed_price_vendor": "Egg Festival",
+    "base_sale_price_g": 120,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Strawberry",
+    "checked_date": "2026-10-01"
+  },
+  "Blueberry": {
+    "growth_days": 13,
+    "regrowth_days": 4,
+    "seed_price_g": 80,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 50,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Blueberry",
+    "checked_date": "2026-10-01"
+  },
+  "Melon": {
+    "growth_days": 12,
+    "regrowth_days": null,
+    "seed_price_g": 80,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 250,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Melon",
+    "checked_date": "2026-10-01"
+  },
+  "Tomato": {
+    "growth_days": 11,
+    "regrowth_days": 4,
+    "seed_price_g": 50,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 60,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Tomato",
+    "checked_date": "2026-10-01"
+  },
+  "Hot Pepper": {
+    "growth_days": 5,
+    "regrowth_days": 3,
+    "seed_price_g": 40,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 40,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Hot_Pepper",
+    "checked_date": "2026-10-01"
+  },
+  "Corn": {
+    "growth_days": 14,
+    "regrowth_days": 4,
+    "seed_price_g": 150,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 50,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Corn",
+    "checked_date": "2026-10-01"
+  },
+  "Cranberries": {
+    "growth_days": 7,
+    "regrowth_days": 5,
+    "seed_price_g": 240,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 75,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Cranberries",
+    "checked_date": "2026-10-01"
+  },
+  "Pumpkin": {
+    "growth_days": 13,
+    "regrowth_days": null,
+    "seed_price_g": 100,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 320,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Pumpkin",
+    "checked_date": "2026-10-01"
+  },
+  "Eggplant": {
+    "growth_days": 5,
+    "regrowth_days": 5,
+    "seed_price_g": 20,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 60,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Eggplant",
+    "checked_date": "2026-10-01"
+  },
+  "Yam": {
+    "growth_days": 10,
+    "regrowth_days": null,
+    "seed_price_g": 60,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 160,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Yam",
+    "checked_date": "2026-10-01"
+  },
+  "Bok Choy": {
+    "growth_days": 4,
+    "regrowth_days": null,
+    "seed_price_g": 50,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 80,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Bok_Choy",
+    "checked_date": "2026-10-01"
+  },
+  "Wheat": {
+    "growth_days": 4,
+    "regrowth_days": null,
+    "seed_price_g": 10,
+    "seed_price_vendor": "Pierre",
+    "base_sale_price_g": 25,
+    "source_page_url": "https://stardewvalleywiki.com/Crops#Wheat",
+    "checked_date": "2026-10-01"
+  }
+}

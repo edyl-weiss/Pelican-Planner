@@ -1,0 +1,274 @@
+[
+  {
+    "name": "Kent",
+    "season": "spring",
+    "day": 4,
+    "icon_registry_key": "Kent Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Lewis",
+    "season": "spring",
+    "day": 7,
+    "icon_registry_key": "Lewis Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Vincent",
+    "season": "spring",
+    "day": 10,
+    "icon_registry_key": "Vincent Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Haley",
+    "season": "spring",
+    "day": 14,
+    "icon_registry_key": "Haley Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Pam",
+    "season": "spring",
+    "day": 18,
+    "icon_registry_key": "Pam Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Shane",
+    "season": "spring",
+    "day": 20,
+    "icon_registry_key": "Shane Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Pierre",
+    "season": "spring",
+    "day": 26,
+    "icon_registry_key": "Pierre Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Emily",
+    "season": "spring",
+    "day": 27,
+    "icon_registry_key": "Emily Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Jas",
+    "season": "summer",
+    "day": 4,
+    "icon_registry_key": "Jas Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Gus",
+    "season": "summer",
+    "day": 8,
+    "icon_registry_key": "Gus Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Maru",
+    "season": "summer",
+    "day": 10,
+    "icon_registry_key": "Maru Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Alex",
+    "season": "summer",
+    "day": 13,
+    "icon_registry_key": "Alex Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Sam",
+    "season": "summer",
+    "day": 17,
+    "icon_registry_key": "Sam Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Demetrius",
+    "season": "summer",
+    "day": 19,
+    "icon_registry_key": "Demetrius Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Dwarf",
+    "season": "summer",
+    "day": 22,
+    "icon_registry_key": "Dwarf Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Willy",
+    "season": "summer",
+    "day": 24,
+    "icon_registry_key": "Willy Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Leo",
+    "season": "summer",
+    "day": 26,
+    "icon_registry_key": "Leo Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_2",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Penny",
+    "season": "fall",
+    "day": 2,
+    "icon_registry_key": "Penny Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_3",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Elliott",
+    "season": "fall",
+    "day": 5,
+    "icon_registry_key": "Elliott Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_3",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Jodi",
+    "season": "fall",
+    "day": 11,
+    "icon_registry_key": "Jodi Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_3",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Abigail",
+    "season": "fall",
+    "day": 13,
+    "icon_registry_key": "Abigail Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_3",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Sandy",
+    "season": "fall",
+    "day": 15,
+    "icon_registry_key": "Sandy Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_3",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Marnie",
+    "season": "fall",
+    "day": 18,
+    "icon_registry_key": "Marnie Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_3",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Robin",
+    "season": "fall",
+    "day": 21,
+    "icon_registry_key": "Robin Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_3",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "George",
+    "season": "fall",
+    "day": 24,
+    "icon_registry_key": "George Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_3",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Krobus",
+    "season": "winter",
+    "day": 1,
+    "icon_registry_key": "Krobus Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Linus",
+    "season": "winter",
+    "day": 3,
+    "icon_registry_key": "Linus Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Caroline",
+    "season": "winter",
+    "day": 7,
+    "icon_registry_key": "Caroline Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Sebastian",
+    "season": "winter",
+    "day": 10,
+    "icon_registry_key": "Sebastian Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Harvey",
+    "season": "winter",
+    "day": 14,
+    "icon_registry_key": "Harvey Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Wizard",
+    "season": "winter",
+    "day": 17,
+    "icon_registry_key": "Wizard Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Evelyn",
+    "season": "winter",
+    "day": 20,
+    "icon_registry_key": "Evelyn Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Leah",
+    "season": "winter",
+    "day": 23,
+    "icon_registry_key": "Leah Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  },
+  {
+    "name": "Clint",
+    "season": "winter",
+    "day": 26,
+    "icon_registry_key": "Clint Icon",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar#Birthdays_4",
+    "checked_date": "2026-10-01"
+  }
+]

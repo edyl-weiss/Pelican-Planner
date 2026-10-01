@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import {readFile,mkdir,writeFile} from 'node:fs/promises';
+import ts from 'typescript';
+const out=new URL('../.sites-runtime/test-modules/',import.meta.url);
+await mkdir(out,{recursive:true});
+for(const name of ['state','data','planner','import-save','saved-record']){const input=await readFile(new URL(`../lib/game/${name}.ts`,import.meta.url),'utf8');const code=ts.transpileModule(input,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText.replace(/from '(\.\/[^']+)'/g,"from '$1.js'");await writeFile(new URL(name+'.js',out),code);}
+const {newRun,runSchema}=await import(new URL('state.js',out));
+const {crops,bundles,events}=await import(new URL('data.js',out));
+const {absoluteDay,fromDay,nextDate,cropEconomics,makePlan,deadlines,available,addPlot,recordHarvest,bundleDone,plotAlive}=await import(new URL('planner.js',out));
+let passed=0;function test(name,fn){fn();passed++;console.log('PASS',name)}
+const crop=name=>crops.find(c=>c.name===name);
+test('All game dates round-trip across five years',()=>{for(let d=1;d<=560;d++)assert.equal(absoluteDay(fromDay(d)),d)});
+test('Winter 28 advances to a new year',()=>assert.deepEqual(nextDate({season:'Winter',day:28,year:1}),{season:'Spring',day:1,year:2}));
+test('Planting on Spring 16 harvests cauliflower on Spring 28',()=>{const x=cropEconomics(crop('Cauliflower'),{season:'Spring',day:16,year:1});assert.equal(x.firstHarvest,28);assert.equal(x.harvests,1);assert.equal(x.profit,95)});
+test('Late cauliflower has no seasonal harvest',()=>assert.equal(cropEconomics(crop('Cauliflower'),{season:'Spring',day:17,year:1}).harvests,0));
+test('Blueberry regrowth includes day 26 and minimum triple yield',()=>{const x=cropEconomics(crop('Blueberry'),{season:'Summer',day:1,year:1});assert.equal(x.harvests,4);assert.equal(x.revenue,600);assert.equal(x.profit,520)});
+test('Repeat parsnip seed purchases are included',()=>{const x=cropEconomics(crop('Parsnip'),newRun().date);assert.equal(x.harvests,6);assert.equal(x.cost,120);assert.equal(x.profit,90)});
+test('Rain enables Catfish; no-fishing hard rule excludes it',()=>{const r={...newRun(),weather:'Rain'};assert(makePlan(r).some(t=>t.entity==='Catfish'));assert(!makePlan({...r,noFishing:true}).some(t=>t.category==='Fishing'));assert(!makePlan({...r,weather:'Sunny'}).some(t=>t.entity==='Catfish'))});
+test('Gold reservations cannot be spent twice',()=>{const r={...newRun(),gold:500,reserve:200,reservations:[{id:'a',name:'Upgrade',resource:'Gold',quantity:250}]};assert.equal(available(r,'Gold'),50);const tasks=makePlan(r).filter(t=>t.id.includes(':plant-'));assert(tasks.reduce((sum,t)=>sum+crop(t.entity).seed,0)<=50)});
+test('Select-three quality bundle needs three donation slots',()=>{const b=bundles.find(b=>b.id==='quality');assert.equal(bundleDone({...newRun(),donated:['quality:0','quality:1']},b),false);assert.equal(bundleDone({...newRun(),donated:['quality:0','quality:1','quality:2']},b),true)});
+test('Harvest cannot be recorded early or twice for a single-harvest crop',()=>{const r=newRun();const p=addPlot(r,'Parsnip',2);const planted={...r,plots:[p]};assert.equal(recordHarvest(planted,p.id),planted);const ready={...planted,date:{...r.date,day:5}};const harvested=recordHarvest(ready,p.id);assert.equal(harvested.inventory[0].quantity,2);assert.equal(harvested.plots.length,0);assert.equal(recordHarvest(harvested,p.id),harvested)});
+test('Regrowing crops restart from actual harvest day',()=>{const r={...newRun(),date:{season:'Summer',day:1,year:1}};const p=addPlot(r,'Blueberry',2);const ready={...r,plots:[p],date:{...r.date,day:16}};const harvested=recordHarvest(ready,p.id);assert.equal(harvested.inventory[0].quantity,6);assert.equal(harvested.plots[0].nextHarvest,absoluteDay(ready.date)+4)});
+test('Expired plants never resurrect next year; Corn survives summer into fall',()=>{const p=addPlot(newRun(),'Parsnip',1);assert.equal(plotAlive(p,{season:'Spring',day:5,year:2}),false);const corn=addPlot({...newRun(),date:{season:'Summer',day:20,year:1}},'Corn',1);assert.equal(plotAlive(corn,{season:'Fall',day:6,year:1}),true)});
+test('Summer corn is not treated as a summer-end missable',()=>assert(!deadlines({...newRun(),date:{season:'Summer',day:12,year:1}}).some(d=>d.entity==='Corn')));
+test('Malformed imported state is rejected',()=>{assert(!runSchema.safeParse({...newRun(),date:{season:'Spring',day:29,year:1}}).success);assert(!runSchema.safeParse({...newRun(),gold:-1}).success);assert(!runSchema.safeParse({...newRun(),inventory:[{name:'Parsnip',quantity:1,quality:3}]}).success)});
+test('Completed pinned tasks do not reappear',()=>{const r={...newRun(),notes:[{id:'a',label:'Custom task',date:newRun().date,done:true}]};assert(!makePlan(r).some(t=>t.id.includes(':note-a')))});
+test('Standard bundle catalog has 30 unique bundles and 6 rooms',()=>{assert.equal(bundles.length,30);assert.equal(new Set(bundles.map(b=>b.id)).size,30);assert.equal(new Set(bundles.map(b=>b.room)).size,6)});
+const facts=JSON.parse(await readFile(new URL('./fixtures/crop-facts.json',import.meta.url),'utf8'));
+test('Every modeled crop matches checked Wiki growth and price data',()=>{for(const c of crops){const f=facts[c.name];assert.equal(c.days,f.growth_days);assert.equal(c.regrow,f.regrowth_days??0);assert.equal(c.seed,f.seed_price_g);assert.equal(c.sell,f.base_sale_price_g)}});
+const birthdays=JSON.parse(await readFile(new URL('./fixtures/birthday-facts.json',import.meta.url),'utf8'));
+test('All birthday dates match the checked Wiki calendar',()=>{for(const f of birthdays)assert(events.some(e=>e.type==='birthday'&&e.name===f.name&&e.season.toLowerCase()===f.season&&e.day===f.day))});
+const {nextSavedRecord}=await import(new URL('saved-record.js',out));
+test('A first cloud save has revision one and no backup',()=>{const x=nextSavedRecord(null,newRun(),0);assert.equal(x.revision,1);assert.equal(x.backup,null)});
+test('Cloud save keeps the exact previous state as a recoverable backup',()=>{const first=nextSavedRecord(null,newRun(),0);const second=nextSavedRecord(first,{...newRun(),gold:999},1);assert.equal(second.revision,2);assert.equal(second.backup.gold,500);assert.equal(second.state.gold,999)});
+test('Stale cloud save revisions are rejected',()=>{const first=nextSavedRecord(null,newRun(),0);assert.throws(()=>nextSavedRecord(first,newRun(),0),/conflict/)});
+console.log(`${passed} planning and persistence tests passed.`);

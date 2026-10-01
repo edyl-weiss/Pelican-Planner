@@ -1,0 +1,1487 @@
+{
+  "Parsnip": {
+    "local_path": "/sprites/parsnip.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/db/Parsnip.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Green Bean": {
+    "local_path": "/sprites/green-bean.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/5c/Green_Bean.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Cauliflower": {
+    "local_path": "/sprites/cauliflower.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Cauliflower.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Potato": {
+    "local_path": "/sprites/potato.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/c2/Potato.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Strawberry": {
+    "local_path": "/sprites/strawberry.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/6d/Strawberry.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Blueberry": {
+    "local_path": "/sprites/blueberry.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Blueberry.png",
+    "source_page_url": "https://stardewvalleywiki.com/Lewis",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Melon": {
+    "local_path": "/sprites/melon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/19/Melon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Tomato": {
+    "local_path": "/sprites/tomato.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/9d/Tomato.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Hot Pepper": {
+    "local_path": "/sprites/hot-pepper.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Hot_Pepper.png",
+    "source_page_url": "https://stardewvalleywiki.com/Lewis",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Corn": {
+    "local_path": "/sprites/corn.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f8/Corn.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Cranberries": {
+    "local_path": "/sprites/cranberries.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/6e/Cranberries.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Pumpkin": {
+    "local_path": "/sprites/pumpkin.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/64/Pumpkin.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Eggplant": {
+    "local_path": "/sprites/eggplant.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/8/8f/Eggplant.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Yam": {
+    "local_path": "/sprites/yam.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/52/Yam.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Bok Choy": {
+    "local_path": "/sprites/bok-choy.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/4/40/Bok_Choy.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Wheat": {
+    "local_path": "/sprites/wheat.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/e2/Wheat.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Catfish": {
+    "local_path": "/sprites/catfish.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/99/Catfish.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sunfish": {
+    "local_path": "/sprites/sunfish.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/56/Sunfish.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Shad": {
+    "local_path": "/sprites/shad.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Shad.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Tiger Trout": {
+    "local_path": "/sprites/tiger-trout.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/0/01/Tiger_Trout.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Daffodil": {
+    "local_path": "/sprites/daffodil.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Leek": {
+    "local_path": "/sprites/leek.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/57/Leek.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Dandelion": {
+    "local_path": "/sprites/dandelion.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/b1/Dandelion.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Wild Horseradish": {
+    "local_path": "/sprites/wild-horseradish.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/90/Wild_Horseradish.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Pickaxe": {
+    "local_path": "/sprites/pickaxe.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/b7/Pickaxe.png",
+    "source_page_url": "https://stardewvalleywiki.com/Tools",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Watering Can": {
+    "local_path": "/sprites/watering-can.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/51/Watering_Can.png",
+    "source_page_url": "https://stardewvalleywiki.com/Tools",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Quality Sprinkler": {
+    "local_path": "/sprites/quality-sprinkler.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/af/Quality_Sprinkler.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Wood": {
+    "local_path": "/sprites/wood.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/df/Wood.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Stone": {
+    "local_path": "/sprites/stone.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/d4/Stone.png",
+    "source_page_url": "https://stardewvalleywiki.com/Stone",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Iron Bar": {
+    "local_path": "/sprites/iron-bar.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/6c/Iron_Bar.png",
+    "source_page_url": "https://stardewvalleywiki.com/Iron_Bar",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Gold": {
+    "local_path": "/sprites/gold.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 18,
+    "height": 18,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Bundle Green": {
+    "local_path": "/sprites/bundle-green.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/b3/Bundle_Green.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Calendar": {
+    "local_path": "/sprites/calendar.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/15/Calendar.png",
+    "source_page_url": "https://stardewvalleywiki.com/Calendar",
+    "width": 39,
+    "height": 54,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Traveling Cart Icon": {
+    "local_path": "/sprites/traveling-cart-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/a6/Traveling_Cart_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Traveling_Cart",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Haley": {
+    "local_path": "/sprites/haley.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Haley.png",
+    "source_page_url": "https://stardewvalleywiki.com/Haley",
+    "width": 128,
+    "height": 128,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Lewis": {
+    "local_path": "/sprites/lewis.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Lewis.png",
+    "source_page_url": "https://stardewvalleywiki.com/Lewis",
+    "width": 128,
+    "height": 128,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Grape": {
+    "local_path": "/sprites/grape.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/c2/Grape.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Spice Berry": {
+    "local_path": "/sprites/spice-berry.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Spice_Berry.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sweet Pea": {
+    "local_path": "/sprites/sweet-pea.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/d9/Sweet_Pea.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Common Mushroom": {
+    "local_path": "/sprites/common-mushroom.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/2/2e/Common_Mushroom.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Wild Plum": {
+    "local_path": "/sprites/wild-plum.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Wild_Plum.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Hazelnut": {
+    "local_path": "/sprites/hazelnut.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/31/Hazelnut.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Blackberry": {
+    "local_path": "/sprites/blackberry.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/2/25/Blackberry.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Winter Root": {
+    "local_path": "/sprites/winter-root.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/11/Winter_Root.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Crystal Fruit": {
+    "local_path": "/sprites/crystal-fruit.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/16/Crystal_Fruit.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Snow Yam": {
+    "local_path": "/sprites/snow-yam.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/3f/Snow_Yam.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Crocus": {
+    "local_path": "/sprites/crocus.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/2/2f/Crocus.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Hardwood": {
+    "local_path": "/sprites/hardwood.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/ed/Hardwood.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Coconut": {
+    "local_path": "/sprites/coconut.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/2/2f/Coconut.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Cactus Fruit": {
+    "local_path": "/sprites/cactus-fruit.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/32/Cactus_Fruit.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Cave Carrot": {
+    "local_path": "/sprites/cave-carrot.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/34/Cave_Carrot.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Red Mushroom": {
+    "local_path": "/sprites/red-mushroom.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/e1/Red_Mushroom.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Purple Mushroom": {
+    "local_path": "/sprites/purple-mushroom.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/4/4b/Purple_Mushroom.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Maple Syrup": {
+    "local_path": "/sprites/maple-syrup.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/6a/Maple_Syrup.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Oak Resin": {
+    "local_path": "/sprites/oak-resin.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/4/40/Oak_Resin.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Pine Tar": {
+    "local_path": "/sprites/pine-tar.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Pine_Tar.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Morel": {
+    "local_path": "/sprites/morel.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/b1/Morel.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Large Milk": {
+    "local_path": "/sprites/large-milk.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/67/Large_Milk.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Large Brown Egg": {
+    "local_path": "/sprites/large-brown-egg.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/91/Large_Brown_Egg.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Large Egg": {
+    "local_path": "/sprites/large-egg.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Large_Egg.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Large Goat Milk": {
+    "local_path": "/sprites/large-goat-milk.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Large_Goat_Milk.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Wool": {
+    "local_path": "/sprites/wool.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/34/Wool.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Duck Egg": {
+    "local_path": "/sprites/duck-egg.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/31/Duck_Egg.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Truffle Oil": {
+    "local_path": "/sprites/truffle-oil.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/3d/Truffle_Oil.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Cloth": {
+    "local_path": "/sprites/cloth.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/51/Cloth.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Goat Cheese": {
+    "local_path": "/sprites/goat-cheese.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/c8/Goat_Cheese.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Cheese": {
+    "local_path": "/sprites/cheese.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/a5/Cheese.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Honey": {
+    "local_path": "/sprites/honey.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Honey.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Jelly": {
+    "local_path": "/sprites/jelly.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/0/05/Jelly.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Apple": {
+    "local_path": "/sprites/apple.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/7d/Apple.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Apricot": {
+    "local_path": "/sprites/apricot.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/fc/Apricot.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Orange": {
+    "local_path": "/sprites/orange.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/4/43/Orange.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Peach": {
+    "local_path": "/sprites/peach.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/e2/Peach.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Pomegranate": {
+    "local_path": "/sprites/pomegranate.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Pomegranate.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Cherry": {
+    "local_path": "/sprites/cherry.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/2/20/Cherry.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Largemouth Bass": {
+    "local_path": "/sprites/largemouth-bass.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/11/Largemouth_Bass.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Carp": {
+    "local_path": "/sprites/carp.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/a8/Carp.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Bullhead": {
+    "local_path": "/sprites/bullhead.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/db/Bullhead.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sturgeon": {
+    "local_path": "/sprites/sturgeon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/4/42/Sturgeon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sardine": {
+    "local_path": "/sprites/sardine.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Tuna": {
+    "local_path": "/sprites/tuna.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/c5/Tuna.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Red Snapper": {
+    "local_path": "/sprites/red-snapper.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/d3/Red_Snapper.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Tilapia": {
+    "local_path": "/sprites/tilapia.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/73/Tilapia.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Walleye": {
+    "local_path": "/sprites/walleye.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/0/05/Walleye.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Bream": {
+    "local_path": "/sprites/bream.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/8/82/Bream.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Eel": {
+    "local_path": "/sprites/eel.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/91/Eel.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Lobster": {
+    "local_path": "/sprites/lobster.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/9f/Lobster.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Crayfish": {
+    "local_path": "/sprites/crayfish.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/53/Crayfish.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Crab": {
+    "local_path": "/sprites/crab.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/63/Crab.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Cockle": {
+    "local_path": "/sprites/cockle.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Cockle.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Mussel": {
+    "local_path": "/sprites/mussel.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Mussel.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Shrimp": {
+    "local_path": "/sprites/shrimp.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/91/Shrimp.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Snail": {
+    "local_path": "/sprites/snail.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/d2/Snail.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Periwinkle": {
+    "local_path": "/sprites/periwinkle.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/1d/Periwinkle.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Oyster": {
+    "local_path": "/sprites/oyster.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/54/Oyster.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Clam": {
+    "local_path": "/sprites/clam.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/ed/Clam.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Pufferfish": {
+    "local_path": "/sprites/pufferfish.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Ghostfish": {
+    "local_path": "/sprites/ghostfish.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/72/Ghostfish.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sandfish": {
+    "local_path": "/sprites/sandfish.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Sandfish.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Woodskip": {
+    "local_path": "/sprites/woodskip.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/9/97/Woodskip.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Copper Bar": {
+    "local_path": "/sprites/copper-bar.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Copper_Bar.png",
+    "source_page_url": "https://stardewvalleywiki.com/Tools",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Gold Bar": {
+    "local_path": "/sprites/gold-bar.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/4/4e/Gold_Bar.png",
+    "source_page_url": "https://stardewvalleywiki.com/Iron_Bar",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Quartz": {
+    "local_path": "/sprites/quartz.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/cf/Quartz.png",
+    "source_page_url": "https://stardewvalleywiki.com/Haley",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Earth Crystal": {
+    "local_path": "/sprites/earth-crystal.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/74/Earth_Crystal.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Frozen Tear": {
+    "local_path": "/sprites/frozen-tear.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Frozen_Tear.png",
+    "source_page_url": "https://stardewvalleywiki.com/Iron_Bar",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Fire Quartz": {
+    "local_path": "/sprites/fire-quartz.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/5b/Fire_Quartz.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Slime": {
+    "local_path": "/sprites/slime.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/38/Slime.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Bat Wing": {
+    "local_path": "/sprites/bat-wing.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/35/Bat_Wing.png",
+    "source_page_url": "https://stardewvalleywiki.com/Iron_Bar",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Solar Essence": {
+    "local_path": "/sprites/solar-essence.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f4/Solar_Essence.png",
+    "source_page_url": "https://stardewvalleywiki.com/Wood",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Void Essence": {
+    "local_path": "/sprites/void-essence.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/1f/Void_Essence.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Fiddlehead Fern": {
+    "local_path": "/sprites/fiddlehead-fern.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/4/48/Fiddlehead_Fern.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Truffle": {
+    "local_path": "/sprites/truffle.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Truffle.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Poppy": {
+    "local_path": "/sprites/poppy.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/37/Poppy.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Maki Roll": {
+    "local_path": "/sprites/maki-roll.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/b6/Maki_Roll.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Fried Egg": {
+    "local_path": "/sprites/fried-egg.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/18/Fried_Egg.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sea Urchin": {
+    "local_path": "/sprites/sea-urchin.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/e7/Sea_Urchin.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sunflower": {
+    "local_path": "/sprites/sunflower.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/8/81/Sunflower.png",
+    "source_page_url": "https://stardewvalleywiki.com/Haley",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Duck Feather": {
+    "local_path": "/sprites/duck-feather.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f9/Duck_Feather.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Aquamarine": {
+    "local_path": "/sprites/aquamarine.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/a2/Aquamarine.png",
+    "source_page_url": "https://stardewvalleywiki.com/Stone",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Red Cabbage": {
+    "local_path": "/sprites/red-cabbage.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/2/2d/Red_Cabbage.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Nautilus Shell": {
+    "local_path": "/sprites/nautilus-shell.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/a4/Nautilus_Shell.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Chub": {
+    "local_path": "/sprites/chub.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/bd/Chub.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Frozen Geode": {
+    "local_path": "/sprites/frozen-geode.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/bf/Frozen_Geode.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Hay": {
+    "local_path": "/sprites/hay.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Hay.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Wine": {
+    "local_path": "/sprites/wine.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/69/Wine.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Rabbit's Foot": {
+    "local_path": "/sprites/rabbit's-foot.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/ca/Rabbit%27s_Foot.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Dinosaur Mayonnaise": {
+    "local_path": "/sprites/dinosaur-mayonnaise.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/c3/Dinosaur_Mayonnaise.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Prismatic Shard": {
+    "local_path": "/sprites/prismatic-shard.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/56/Prismatic_Shard.png",
+    "source_page_url": "https://stardewvalleywiki.com/Haley",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Ancient Fruit": {
+    "local_path": "/sprites/ancient-fruit.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/0/01/Ancient_Fruit.png",
+    "source_page_url": "https://stardewvalleywiki.com/Crops",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Void Salmon": {
+    "local_path": "/sprites/void-salmon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Void_Salmon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Caviar": {
+    "local_path": "/sprites/caviar.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/8/89/Caviar.png",
+    "source_page_url": "https://stardewvalleywiki.com/Bundles",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Abigail Icon": {
+    "local_path": "/sprites/abigail-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/63/Abigail_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Willy Icon": {
+    "local_path": "/sprites/willy-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/73/Willy_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Wizard Icon": {
+    "local_path": "/sprites/wizard-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/e/e9/Wizard_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Dwarf Icon": {
+    "local_path": "/sprites/dwarf-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/0/08/Dwarf_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Penny Icon": {
+    "local_path": "/sprites/penny-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/bc/Penny_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Elliott Icon": {
+    "local_path": "/sprites/elliott-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/6f/Elliott_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Vincent Icon": {
+    "local_path": "/sprites/vincent-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/0/0b/Vincent_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Gus Icon": {
+    "local_path": "/sprites/gus-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/db/Gus_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Linus Icon": {
+    "local_path": "/sprites/linus-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/db/Linus_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Fish",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Demetrius Icon": {
+    "local_path": "/sprites/demetrius-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/0/0b/Demetrius_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sandy Icon": {
+    "local_path": "/sprites/sandy-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/7d/Sandy_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "George Icon": {
+    "local_path": "/sprites/george-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/a/ad/George_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Krobus Icon": {
+    "local_path": "/sprites/krobus-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/1/10/Krobus_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Pam Icon": {
+    "local_path": "/sprites/pam-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/b6/Pam_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sam Icon": {
+    "local_path": "/sprites/sam-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/52/Sam_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Haley Icon": {
+    "local_path": "/sprites/haley-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f7/Haley_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Foraging",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Alex Icon": {
+    "local_path": "/sprites/alex-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/73/Alex_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Caroline Icon": {
+    "local_path": "/sprites/caroline-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/d4/Caroline_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Clint Icon": {
+    "local_path": "/sprites/clint-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/74/Clint_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Emily Icon": {
+    "local_path": "/sprites/emily-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/c3/Emily_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Evelyn Icon": {
+    "local_path": "/sprites/evelyn-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/5/54/Evelyn_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Harvey Icon": {
+    "local_path": "/sprites/harvey-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/7/7a/Harvey_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Jas Icon": {
+    "local_path": "/sprites/jas-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/68/Jas_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Jodi Icon": {
+    "local_path": "/sprites/jodi-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/f/f7/Jodi_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Kent Icon": {
+    "local_path": "/sprites/kent-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/8/86/Kent_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Leah Icon": {
+    "local_path": "/sprites/leah-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/6e/Leah_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Leo Icon": {
+    "local_path": "/sprites/leo-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/3/3d/Leo_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Lewis Icon": {
+    "local_path": "/sprites/lewis-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/b6/Lewis_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Marnie Icon": {
+    "local_path": "/sprites/marnie-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/d4/Marnie_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Maru Icon": {
+    "local_path": "/sprites/maru-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/2/23/Maru_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Pierre Icon": {
+    "local_path": "/sprites/pierre-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/c/cf/Pierre_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Robin Icon": {
+    "local_path": "/sprites/robin-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/d/d1/Robin_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Sebastian Icon": {
+    "local_path": "/sprites/sebastian-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/6/6a/Sebastian_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  },
+  "Shane Icon": {
+    "local_path": "/sprites/shane-icon.png",
+    "original_image_url": "https://stardewvalleywiki.com/mediawiki/images/b/b4/Shane_Icon.png",
+    "source_page_url": "https://stardewvalleywiki.com/Quality_Sprinkler",
+    "width": 32,
+    "height": 32,
+    "attribution": "Stardew Valley \u00a9 ConcernedApe, via Stardew Valley Wiki",
+    "checked_date": "2026-10-01"
+  }
+}
