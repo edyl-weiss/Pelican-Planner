@@ -9,7 +9,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 const COOKIE = process.env.NODE_ENV === 'production' ? '__Host-stardew-farm' : 'stardew-farm';
 const storeId=process.env.BLOB_STORE_ID||process.env.BLOB_READ_WRITE_TOKEN_STORE_ID;
-const MAX_BODY_BYTES = 500_000;
+const MAX_BODY_BYTES = 4_000_000;
 const submissionSchema = z.object({ state: runSchema, revision: z.number().int().min(0).max(2_000_000_000) });
 
 function session(request: NextRequest) {
@@ -37,7 +37,7 @@ async function readRecord(secret: string) {
   const result = await get(pathname(secret), { access: 'private', useCache: false, ...(storeId?{storeId}:{}) });
   if (!result) return null;
   if (result.statusCode !== 200 || !result.stream) throw new Error('Saved farm could not be read.');
-  if ((result.blob.size ?? 0) > 1_200_000) throw new Error('Saved farm exceeds the supported size.');
+  if ((result.blob.size ?? 0) > 8_100_000) throw new Error('Saved farm exceeds the supported size.');
   const data: unknown = await new Response(result.stream).json();
   return { record: savedRecordSchema.parse(data), etag: result.blob.etag };
 }

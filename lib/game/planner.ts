@@ -37,6 +37,15 @@ export function plantingOptions(run:RunState,totalTiles:number){
   return {crop:c,quantity,result:cropEconomics(c,run.date,quantity,run.tiller)};
  }).sort((a,b)=>b.result.profit-a.result.profit);
 }
+// A small first-day shopping shortlist, respecting ordinary seed-shop access.
+export function seasonOpeningCrops(run:RunState){
+ const date=nextDate({...run.date,day:28});
+ return crops.filter(c=>c.buyable!==false&&c.seasons.includes(date.season)&&c.seed<=available(run,'Gold')&&c.name!=='Strawberry'
+  &&(!['Rhubarb','Starfruit','Beet'].includes(c.name)||run.unlocks.includes('Bus'))
+  &&(!['Garlic','Red Cabbage','Artichoke'].includes(c.name)||date.year>=2)
+  &&(c.name!=='Grape'||date.season==='Fall'))
+ .sort((a,b)=>cropEconomics(b,date,1,run.tiller).profit-cropEconomics(a,date,1,run.tiller).profit).slice(0,2);
+}
 export const eventsOn=(run:RunState,date:GameDate):CalendarEvent[]=>events.filter(e=>e.season===date.season&&e.day<=date.day&&(e.end??e.day)>=date.day&&(e.minYear??1)<=date.year&&(!e.requires||run.unlocks.includes(e.requires)||run.spoilers==='Full'));
 export function eligibleFish(run:RunState){return fish.filter(f=>f.seasons.includes(run.date.season)&&(f.weather==='Any'||(f.weather==='Rain'&&rainy(run.weather))||(f.weather==='Sun'&&['Sunny','Windy','Snow'].includes(run.weather))))}
 export const clock=(hour:number)=>hour===24?'12am':hour===26?'2am':hour===12?'12pm':hour>12?`${hour-12}pm`:`${hour}am`;

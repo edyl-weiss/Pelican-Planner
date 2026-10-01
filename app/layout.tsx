@@ -5,7 +5,7 @@ import {LocaleProvider} from "./locale-provider";
 import PixelEffects from "./pixel-effects";
 
 export const metadata: Metadata = {
-  title: "Stardew Farm Journal",
+  title: "Pelican Planner",
   description: "Your daily Stardew Valley companion. Plan the season, track Community Center bundles, and make room for the way you like to play.",
   icons: {
     icon: "/favicon.svg",

@@ -15,7 +15,7 @@ Import the full, uncompressed Stardew save. Game files are read in your browser 
 Backup downloaded. Your farm is packed and ready to travel.|备份已下载，农场已经打包好，可以出发啦。
 The download did not work. Try again before closing this tab.|下载没成功。关闭这个页面之前，请再试一次。
 That file could not be read. Choose a journal JSON backup and try again.|无法读取这个文件，请选择日记 JSON 备份后重试。
-That backup belongs to a different app. Choose a Farm Journal backup.|这份备份来自其他应用，请选择农场日记备份。
+That backup belongs to a different app. Choose a Pelican Planner backup.|这份备份来自其他应用，请选择 Pelican Planner 备份。
 This backup needs a newer version of the journal. Update the site, then try again.|这份备份需要更新版本的日记，请更新网站后重试。
 Choose a journal JSON backup. Game saves can be imported with Import save.|请选择日记 JSON 备份。游戏存档请使用“导入存档”。
 IN KROBUS WE TRUST|我们信克罗布斯。
@@ -100,7 +100,7 @@ Gather ore in the mines|在矿井采集矿石
 Choose an unlocked floor for the ore you need|选择已解锁且产出所需矿石的楼层
 Good luck can improve rock drops and ladder chances. Bring food; rewards are still random.|好运可改善岩石掉落和发现梯子的概率。带上食物，收益仍有随机性。
 Choose today’s weather before starting the day.|开始新一天前，请选择今天的天气。
-Stardew Farm Journal|星露谷农场手记
+Pelican Planner|Pelican Planner
 IN KROBUS WE TRUST|我们信克罗布斯。
 Play|今天
 Plan|计划
@@ -528,4 +528,5 @@ Close|关闭
 Language|语言
 Interaction effects|互动特效
 Little pixel sparkles when you click. Respects your device’s reduced-motion setting.|点击时出现轻盈的像素闪光，并遵循设备的减少动态效果设置。
+Ready to gather, whenever you are.|准备好了，随时可以收获。
 `.trim().split('\n').map(line=>line.split('|')));

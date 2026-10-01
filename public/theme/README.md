@@ -1,4 +1,4 @@
-Original SVG pixel artwork for Stardew Farm Journal.
+Original SVG pixel artwork for Pelican Planner.
 
 wood-frame.svg, leaf-frame.svg and lilac-frame.svg are nine-slice borders: use border-image-slice: 8 and a border width divisible by 2 for crisp corners. valley-header.svg and meadow-tile.svg are decorative backgrounds. All are authored specifically for this interface; no external requests are required.
 
