@@ -15,6 +15,32 @@ Import your game save and growing crops|导入游戏存档和在种作物
 Total outdoor crop tiles|室外种植地块总数
 New planting tiles|新种植地块
 No free tiles or seed budget|无空地或种子预算
+Daily luck|每日运气
+Luck|运气
+Luck not checked|运气未查看
+Very bad|很差
+Bad|较差
+Neutral|一般
+Good|较好
+Very good|很好
+Windy|刮风
+Green Rain|绿雨
+Rain waters the outdoor farm. Check greenhouse pots and island crops separately; island weather can differ.|雨水会浇灌室外农场。请另行检查温室盆栽和姜岛作物；姜岛天气可能不同。
+Check lightning rods|检查避雷针
+Storm today|今天有雷暴
+Available lightning rods can intercept strikes. Check your farm for damage before leaving.|空闲的避雷针可拦截雷击。出发前检查农场是否受损。
+Lightning can damage crops and trees.|雷击可能损坏作物和树木。
+Gather green-rain moss and fiber|收集绿雨中的苔藓和纤维
+Green rain today|今天有绿雨
+Extra weeds and temporary trees make this a useful gathering day. Bring a scythe and axe.|额外的杂草和临时树木适合采集，记得带上镰刀和斧头。
+Temporary weeds disappear after today.|临时杂草会在今天结束后消失。
+Good daily luck improves ladder chances from rocks. Bring food and aim for the next elevator checkpoint.|今日好运提高砸石发现梯子的概率。带上食物，争取解锁下一个电梯层。
+Poor daily luck makes ladder hunting less favorable. Consider farm chores or forage unless mining is your priority.|运气较差不利于找梯子。除非以采矿为目标，否则可优先处理农场事务或采集。
+Rain waters outdoor crops, freeing time for a mine trip. Bring food and aim for an elevator checkpoint.|雨水会浇灌室外作物，可腾出时间下矿。带上食物，争取解锁一个电梯层。
+Gather ore in the mines|在矿井采集矿石
+Choose an unlocked floor for the ore you need|选择已解锁且产出所需矿石的楼层
+Good luck can improve rock drops and ladder chances. Bring food; rewards are still random.|好运可改善岩石掉落和发现梯子的概率。带上食物，收益仍有随机性。
+Choose today’s weather before starting the day.|开始新一天前，请选择今天的天气。
 Stardew Farm Journal|星露谷农场手记
 A LITTLE PLAN. A GOOD DAY.|小小计划，好好过一天。
 Play|今天

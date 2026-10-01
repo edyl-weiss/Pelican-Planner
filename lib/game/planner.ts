@@ -3,6 +3,11 @@ import {runSchema,type RunState,type GameDate,type Plot} from './state';
 export const absoluteDay=(d:GameDate)=>(d.year-1)*112+SEASONS.indexOf(d.season)*28+d.day;
 export function fromDay(n:number):GameDate{const t=Math.max(1,n)-1;return {year:Math.floor(t/112)+1,season:SEASONS[Math.floor(t%112/28)],day:t%28+1}}
 export const nextDate=(date:GameDate,delta=1)=>fromDay(absoluteDay(date)+delta);
+export const rainy=(weather:RunState['weather'])=>['Rain','Storm','Green Rain'].includes(weather);
+export function startNextDay(run:RunState,weather:RunState['weather'],luck:RunState['luck']):RunState{
+ if(weather==='Unknown')throw new Error('Choose today’s weather before starting the day.');
+ return runSchema.parse({...run,date:nextDate(run.date),weather,luck,tomorrow:'Unknown'});
+}
 export const dateLabel=(d:GameDate)=>`${d.season} ${d.day}, Year ${d.year}`;
 export const gold=(n:number)=>`${Math.round(n).toLocaleString('en-US')}g`;
 export const slotKey=(b:Bundle,i:number)=>`${b.id}:${i}`;
@@ -33,21 +38,22 @@ export function plantingOptions(run:RunState,totalTiles:number){
  }).sort((a,b)=>b.result.profit-a.result.profit);
 }
 export const eventsOn=(run:RunState,date:GameDate):CalendarEvent[]=>events.filter(e=>e.season===date.season&&e.day<=date.day&&(e.end??e.day)>=date.day&&(e.minYear??1)<=date.year&&(!e.requires||run.unlocks.includes(e.requires)||run.spoilers==='Full'));
-export function eligibleFish(run:RunState){return fish.filter(f=>f.seasons.includes(run.date.season)&&(f.weather==='Any'||(f.weather==='Rain'&&['Rain','Storm'].includes(run.weather))||(f.weather==='Sun'&&run.weather==='Sunny')))}
+export function eligibleFish(run:RunState){return fish.filter(f=>f.seasons.includes(run.date.season)&&(f.weather==='Any'||(f.weather==='Rain'&&rainy(run.weather))||(f.weather==='Sun'&&['Sunny','Windy','Snow'].includes(run.weather))))}
 export const clock=(hour:number)=>hour===24?'12am':hour===26?'2am':hour===12?'12pm':hour>12?`${hour-12}pm`:`${hour}am`;
 export function lastPlantDay(c:Crop,season:GameDate['season']){return c.seasons.includes(season)?28-c.days:0}
 export function plotCrop(p:Plot):Crop|undefined{return p.customCrop?{name:p.crop,days:0,seed:0,...p.customCrop}:crops.find(c=>c.name===p.crop)}
 export function plotAlive(p:Plot,date:GameDate):boolean{const c=plotCrop(p);if(!c||absoluteDay(date)<absoluteDay(p.planted))return false;if(p.location&&p.location!=='Farm')return true;for(let day=absoluteDay(p.planted);day<=absoluteDay(date);){const d=fromDay(day);if(!c.seasons.includes(d.season))return false;day+=29-d.day;}return c.seasons.includes(date.season)}
 export interface Task{id:string;name:string;entity:string;detail:string;why:string;skip:string;group:0|1|2;category:string;confidence:string}
 export function makePlan(run:RunState):Task[]{
+ const lucky=['Good','Very good'].includes(run.luck);const unlucky=['Bad','Very bad'].includes(run.luck);
  const list:Task[]=[];let plantingBudget=available(run,'Gold');const day=absoluteDay(run.date);const d=run.date;
  const add=(id:string,name:string,entity:string,detail:string,why:string,skip:string,group:0|1|2,category:string,confidence='Conditional')=>list.push({id:`${day}:${id}`,name,entity,detail,why,skip,group,category,confidence});
  for(const e of eventsOn(run,d)){
   if(e.type==='festival'&&run.festivals&&(!e.requires||run.unlocks.includes(e.requires)))add('event-'+e.name,e.name,'Calendar','Today · check entry times','This event has a fixed date. Plan farm chores around it.','It returns next year (multi-day events may continue tomorrow).',0,'Event','Scheduled');
-  if(e.type==='birthday'&&run.goal==='Friendship')add('birthday-'+e.name,`Give ${e.name} a birthday gift`,e.name,'Birthday today','Birthday gifts give a larger friendship boost. Check the villager’s preferred gifts.','You can build friendship on other days.',1,'Friendship','Scheduled');
+  if(e.type==='birthday'&&run.goal==='Friendship'&&!(run.weather==='Green Rain'&&d.year===1))add('birthday-'+e.name,`Give ${e.name} a birthday gift`,e.name,'Birthday today','Birthday gifts give a larger friendship boost. Check the villager’s preferred gifts.','You can build friendship on other days.',1,'Friendship','Scheduled');
  }
  for(const p of run.plots){const c=plotCrop(p);if(!c)continue;const alive=plotAlive(p,d);if(alive&&day>=p.nextHarvest)add('harvest-'+p.id,`Harvest ${p.quantity} ${p.crop}`,p.crop,'Your recorded crop is ready',`The harvest date assumes daily watering. Record the harvest in Plan to update the next date.`,'Mature crops can wait, but crops that cannot survive next season will die.',0,'Farming');}
- if(!run.noFishing){const catches=eligibleFish(run).filter(f=>needed(run,f.name));for(const f of catches.slice(0,run.level>=4?3:1))add('fish-'+f.name,`Catch ${f.name}`,f.name,`${f.weather==='Rain'?'Rain · ':''}${f.location} · ${clock(f.start)}–${clock(f.end)}`,'Still needed for a standard Community Center bundle. Catch success depends on skill and chance.','Wait for another eligible day. Seasonal and rain requirements can delay completion.',f.weather==='Rain'?0:1,'Fishing','RNG');}
+ if(!run.noFishing){const catches=eligibleFish(run).filter(f=>needed(run,f.name)).sort((a,b)=>Number(b.weather==='Rain')-Number(a.weather==='Rain'));for(const f of catches.slice(0,run.level>=4?3:1))add('fish-'+f.name,`Catch ${f.name}`,f.name,`${f.weather==='Rain'?'Rain · ':''}${f.location} · ${clock(f.start)}–${clock(f.end)}`,'Still needed for a standard Community Center bundle. Catch success depends on skill and chance.','Wait for another eligible day. Seasonal and rain requirements can delay completion.',f.weather==='Rain'?0:1,'Fishing','RNG');}
  const cropBundle=bundles.find(b=>b.name===`${d.season} Crops`);
  if(cropBundle&&run.goal!=='Maximum Profit'&&run.goal!=='Mining'){
   for(const item of cropBundle.items){const c=crops.find(c=>c.name===item.name);if(!c||!needed(run,c.name))continue;
@@ -61,11 +67,16 @@ export function makePlan(run:RunState):Task[]{
  const best=crops.filter(c=>c.seasons.includes(d.season)&&!(c.name==='Strawberry'&&d.day!==13)).map(c=>({c,e:cropEconomics(c,d,1,run.tiller)})).filter(x=>x.e.harvests&&available(run,'Gold')>=x.c.seed).sort((a,b)=>b.e.profit-a.e.profit)[0];
  if(best)add('profit',`Plant ${best.c.name}`,best.c.name,`Up to ${gold(best.e.profit)} net / tile this season`,'Highest conservative seasonal profit per tile among tracked crops. Assumes daily watering and timely replanting; buying seeds depends on shop access.','Gold stays available for upgrades and other priorities.',0,'Farming');
  }
- if(run.plots.some(p=>plotAlive(p,d))&& !['Rain','Storm'].includes(run.weather))add('water','Water your crops','Watering Can','Check unwatered tiles','Outdoor crops need water to grow. Sprinklers can cover this work.','Unwatered crops pause growth for a day.',0,'Farming');
+ const living=run.plots.filter(p=>plotAlive(p,d));
+ const dryPlots=living.some(p=>p.location==='Greenhouse'||p.location==='IslandWest'||!rainy(run.weather));
+ if(dryPlots)add('water','Water your crops','Watering Can','Check unwatered tiles',rainy(run.weather)?'Rain waters the outdoor farm. Check greenhouse pots and island crops separately; island weather can differ.':'Outdoor crops need water to grow. Sprinklers can cover this work.','Unwatered crops pause growth for a day.',0,'Farming');
+ if(run.weather==='Storm')add('storm','Check lightning rods','Battery Pack','Storm today','Available lightning rods can intercept strikes. Check your farm for damage before leaving.','Lightning can damage crops and trees.',1,'Farming');
+ if(run.weather==='Green Rain')add('green-rain','Gather green-rain moss and fiber','Fiber','Green rain today','Extra weeds and temporary trees make this a useful gathering day. Bring a scythe and axe.','Temporary weeds disappear after today.',0,'Foraging');
  if((d.day-1)%7===4||(d.day-1)%7===6)add('cart','Check the Traveling Cart','Traveling Cart','Cindersap Forest · 6am–8pm','The stock may include a missing bundle item. Buy only if it fits your budget.','Stock changes next visit. No item is guaranteed.',1,'Shopping','RNG');
- if(day>=5&&run.mineFloor<120)add('mine',`Reach mine floor ${Math.min(120,(Math.floor(run.mineFloor/5)+1)*5)}`,'Pickaxe',`Currently floor ${run.mineFloor} · save an elevator checkpoint`,'Every five floors is a useful stopping point. Bring food and leave enough time to return.','Mine progression can move to another day.',run.goal==='Mining'?0:2,'Mining');
+ if(day>=5&&run.mineFloor<120)add('mine',`Reach mine floor ${Math.min(120,(Math.floor(run.mineFloor/5)+1)*5)}`,'Pickaxe',`Currently floor ${run.mineFloor} · save an elevator checkpoint`,lucky?'Good daily luck improves ladder chances from rocks. Bring food and aim for the next elevator checkpoint.':unlucky?'Poor daily luck makes ladder hunting less favorable. Consider farm chores or forage unless mining is your priority.':rainy(run.weather)?'Rain waters outdoor crops, freeing time for a mine trip. Bring food and aim for an elevator checkpoint.':'Every five floors is a useful stopping point. Bring food and leave enough time to return.','Mine progression can move to another day.',lucky?0:unlucky?(run.goal==='Mining'?1:2):run.goal==='Mining'?0:rainy(run.weather)?1:2,'Mining');
+ if(day>=5&&run.mineFloor>=120&&(lucky||run.goal==='Mining'||(rainy(run.weather)&&!unlucky)))add('mine-resources','Gather ore in the mines','Pickaxe','Choose an unlocked floor for the ore you need','Good luck can improve rock drops and ladder chances. Bring food; rewards are still random.','Mine progression can move to another day.',lucky?0:1,'Mining');
  const forageBundle=bundles.find(b=>b.name===`${d.season} Foraging`);
- if(forageBundle&&!bundleDone(run,forageBundle))add('forage','Gather seasonal forage',forageBundle.items.find((_,i)=>!run.donated.includes(slotKey(forageBundle,i)))?.name??'Daffodil',`${d.season} Foraging · ${bundleCount(run,forageBundle)}/${forageBundle.required} donated`,'Keep one of each missing item for the Crafts Room. Forage spawns are random.','Another walk this season may find the missing items.',2,'Foraging','RNG');
+ if(forageBundle&&!bundleDone(run,forageBundle))add('forage','Gather seasonal forage',forageBundle.items.find((_,i)=>!run.donated.includes(slotKey(forageBundle,i)))?.name??'Daffodil',`${d.season} Foraging · ${bundleCount(run,forageBundle)}/${forageBundle.required} donated`,'Keep one of each missing item for the Crafts Room. Forage spawns are random.','Another walk this season may find the missing items.',unlucky?1:2,'Foraging','RNG');
  for(const n of run.notes.filter(n=>absoluteDay(n.date)===day&&!n.done))add('note-'+n.id,n.label,'Calendar','Your pinned task','Added by you.','Reschedule it in Plan when needed.',1,'Personal');
  list.sort((a,b)=>a.group-b.group);if(list.length&&!list.some(t=>t.group===0))list[0].group=0;return run.goal==='Low Effort'?list.slice(0,3):list;
 }
@@ -73,7 +84,7 @@ export interface Deadline{name:string;entity:string;detail:string;day:number;urg
 export function deadlines(run:RunState):Deadline[]{const results:Deadline[]=[];const d=run.date;
  for(const c of crops.filter(c=>needed(run,c.name)&&c.seasons.includes(d.season)&&!owned(run,c.name)&&!run.plots.some(p=>p.crop===c.name&&plotAlive(p,d))&&!c.seasons.includes(nextDate({...d,day:28}).season))){const last=lastPlantDay(c,d.season);if(last>=d.day)results.push({name:`Plant ${c.name}`,entity:c.name,detail:`By ${d.season} ${last} · ${last-d.day===0?'today':`${last-d.day} days left`}`,day:last,urgent:last-d.day<=3});}
  for(const e of events.filter(e=>e.season===d.season&&e.type==='festival'&&(e.end??e.day)>=d.day&&(!e.requires||run.unlocks.includes(e.requires))))results.push({name:e.name,entity:'Calendar',detail:`${e.season} ${e.day}${e.end?'–'+e.end:''}`,day:Math.max(d.day,e.day),urgent:e.day-d.day<=2});
- if(run.tomorrow==='Rain'&&!run.noFishing&&['Spring','Fall'].includes(d.season)&&needed(run,'Catfish'))results.push({name:'Catfish opportunity',entity:'Catfish',detail:'Rain forecast tomorrow · River',day:d.day+1,urgent:true});
+ if(rainy(run.tomorrow)&&!run.noFishing&&['Spring','Fall'].includes(d.season)&&needed(run,'Catfish'))results.push({name:'Catfish opportunity',entity:'Catfish',detail:'Rain forecast tomorrow · River',day:d.day+1,urgent:true});
  return results.sort((a,b)=>a.day-b.day).slice(0,5);
 }
 export function recordHarvest(run:RunState,id:string):RunState{const p=run.plots.find(p=>p.id===id);const c=p?plotCrop(p):undefined;if(!p||!c||absoluteDay(run.date)<p.nextHarvest||!plotAlive(p,run.date))return run;

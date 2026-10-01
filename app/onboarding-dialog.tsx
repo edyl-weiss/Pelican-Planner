@@ -4,7 +4,7 @@ import {Dialog,DialogContent,DialogDescription,DialogTitle} from '@/components/u
 import {Slider} from '@/components/ui/slider';
 import {Check,Choice,NumberField,Sprite} from './farm-ui';
 import {useLocale} from './locale-provider';
-import {newRun,type RunState} from '@/lib/game/state';
+import {WEATHER,newRun,type RunState} from '@/lib/game/state';
 import {FARM_TYPES,GOALS,LEVELS,SEASONS} from '@/lib/game/data';
 
 type SaveMode='new'|'existing';
@@ -62,7 +62,7 @@ export default function OnboardingDialog({open,firstRun,base,onComplete,onSkip,o
    </>}
    {step===3&&<>
     <DialogDescription>{mode==='new'?'These can stay at their defaults for a fresh save. Fill them in only if your run starts with custom progress.':'Optional, but adding these now makes recommendations more accurate immediately.'}</DialogDescription>
-    <div className="form-grid setup-fields"><NumberField label="Farming level" value={draft.farming} max={10} onChange={farming=>setDraft({...draft,farming})}/><NumberField label="Mine floor" value={draft.mineFloor} max={120} onChange={mineFloor=>setDraft({...draft,mineFloor})}/><NumberField label="Always keep this much gold unspent" value={draft.reserve} onChange={reserve=>setDraft({...draft,reserve})}/><Choice label="Weather today" value={draft.weather} options={['Unknown','Sunny','Rain','Storm','Snow']} onChange={weather=>setDraft({...draft,weather:weather as RunState['weather']})}/><Choice label="TV forecast: tomorrow" value={draft.tomorrow} options={['Unknown','Sunny','Rain','Storm','Snow']} onChange={tomorrow=>setDraft({...draft,tomorrow:tomorrow as RunState['tomorrow']})}/></div>
+    <div className="form-grid setup-fields"><NumberField label="Farming level" value={draft.farming} max={10} onChange={farming=>setDraft({...draft,farming})}/><NumberField label="Mine floor" value={draft.mineFloor} max={120} onChange={mineFloor=>setDraft({...draft,mineFloor})}/><NumberField label="Always keep this much gold unspent" value={draft.reserve} onChange={reserve=>setDraft({...draft,reserve})}/><Choice label="Weather today" value={draft.weather} options={WEATHER} onChange={weather=>setDraft({...draft,weather:weather as RunState['weather']})}/><Choice label="TV forecast: tomorrow" value={draft.tomorrow} options={WEATHER} onChange={tomorrow=>setDraft({...draft,tomorrow:tomorrow as RunState['tomorrow']})}/></div>
     <div className="setup-progress-block"><h3>Unlocked in my game</h3><div className="setup-unlocks">{UNLOCKS.map(name=><Check key={name} label={name} checked={draft.unlocks.includes(name)} onChange={checked=>setUnlock(name,checked)}/>)}</div></div>
     <div className="setup-progress-block"><h3>Professions</h3><div className="setup-unlocks"><Check label="Tiller: +10% crop sale prices" checked={draft.tiller} onChange={tiller=>setDraft({...draft,tiller})}/><Check label="Artisan: +40% artisan sale prices" checked={draft.artisan} onChange={artisan=>setDraft({...draft,artisan})}/></div></div>
    </>}
