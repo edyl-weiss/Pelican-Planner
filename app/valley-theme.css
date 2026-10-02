@@ -165,3 +165,9 @@ html[data-effects="on"] .season-details i{animation:season-drift 4.5s ease-in-ou
 .room-complete-check{position:absolute;z-index:2;inset:0;display:flex;align-items:center;justify-content:center;color:#39d353;font-family:Arial,sans-serif;font-size:42px;font-weight:900;line-height:1;pointer-events:none;text-shadow:-2px -2px 0 #174b26,2px -2px 0 #174b26,-2px 2px 0 #174b26,2px 2px 0 #174b26,0 3px 2px #102c2580}
 .room-tab .room-complete-check{bottom:12px;font-size:40px}
 .community-room-image .room-complete-check{font-size:34px}
+
+.bundle-click-hint{display:flex;align-items:center;gap:8px;max-width:290px}
+.bundle-click-hint p{font-size:.9rem;line-height:1.3;color:#5e6445}
+.bundle-click-hint p span{font-size:.84rem;color:#78664c}
+.bundle-click-hint>.sprite{width:36px;height:36px}
+@media(max-width:700px){.bundle-click-hint{max-width:100%}}

@@ -298,7 +298,10 @@ Release|解除预留
 No purchase reservations. Your minimum gold reserve is managed in More.|尚无购买预留，可在更多页面设置最低金币留存额。
 Collection|收藏
 Your collection|我的收藏
-Standard bundles · tap an item to record a donation.|标准收集包 · 点击物品记录献祭情况。
+Standard bundles · click for details, double-click to donate or undo.|标准收集包 · 单击查看详情，双击标记已献祭或撤销。
+Standard bundles|标准收集包
+Single click to open details, double click to donate.|单击查看详情，双击标记已献祭。
+Double click again to undo.|再次双击即可撤销。
 Search bundles and items|搜索收集包与物品
 Find an item or bundle…|查找物品或收集包…
 Community Center rooms|社区中心房间
