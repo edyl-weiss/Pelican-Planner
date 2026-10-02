@@ -568,9 +568,24 @@ Planner data & limitations|计划数据与限制
 Built for standard Stardew Valley 1.6 runs. Core crop, bundle, fishing, shop and calendar rules were cross-checked again on October 1, 2026.|适用于标准的星露谷物语 1.6 存档。作物、收集包、钓鱼、商店与日历等核心规则已于 2026 年 10 月 1 日再次交叉核对。
 The planner uses the classic Community Center bundle set. Remixed bundles, exact travel routing, full artisan-processing optimization, fertilizer growth-speed bonuses and some modded or late-game systems are not fully modeled yet.|计划器使用经典社区中心收集包。混合收集包、精确路线规划、完整工匠加工优化、肥料生长速度加成，以及部分模组或后期系统尚未完整建模。
 Reset planner|重置计划器
+Reset planner?|重置计划器？
+Start a fresh planner draft? Download a backup first if you want to keep this one.|开始新的计划草稿吗？如果想保留当前农场，请先下载备份。
 Reset this planner?|重置此计划器？
 Cancel|取消
 Discard draft & reload saved farm|放弃草稿并重新载入已保存农场
+Weather|天气
+Not checked|未查看
+Community Center|社区中心
+Open bundles|打开收集包
+All standard bundles complete|全部标准收集包已完成
+In progress|进行中
+Today’s weather and luck|今日天气与运势
+Update weather and luck|更新天气和运势
+Update|更新
+Move to the next day|进入下一天
+Nothing came up. Try a shorter name or another item.|没有找到匹配内容，试试更短的名称或其他物品。
+Click for details; double-click to donate or undo.|单击查看详情；双击可献祭或撤销。
+quality or better|或更高品质
 Strategy|策略
 Tracked|已记录
 `.trim().split('\n').map(line=>line.split('|')));

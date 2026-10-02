@@ -3,6 +3,16 @@ import {messages} from './messages';
 export type Locale='en'|'zh-CN';
 export const dictionary:Record<string,string>={...terms,...messages,'Gold quality':'金星','Donate':'献祭','today':'今天','birthday':'生日','harvest':'收获','Festivals':'节日','Read today’s farm plan':'读取今日农场计划','Read the current farm date, priorities and deadlines without changing the farm.':'读取当前农场日期、优先任务和截止日期，不修改农场记录。','The imported farm data is invalid. Check the file and try again.':'导入的农场数据无效，请检查文件后重试。'};
 const templates: [RegExp,string][]=[
+ [/^About (.+)$/,'关于{0}'],
+ [/^(\d+) bundles? left$/,'还剩{0}个收集包'],
+ [/^(\d+) \/ 30 bundles$/,'已完成{0} / 30 个收集包'],
+ [/^(.+): (\d+) of (\d+) bundles complete$/,'{0}：已完成{1}/{2}个收集包'],
+ [/^(.+): (Complete|In progress)$/,'{0}：{1}'],
+ [/^Weather: (.+)\. Update weather and luck\.$/,'天气：{0}。更新天气和运势。'],
+ [/^Luck: (.+)\. Update weather and luck\.$/,'运势：{0}。更新天气和运势。'],
+ [/^Luck not checked\. Update weather and luck\.$/,'尚未查看运势。更新天气和运势。'],
+ [/^([\d,]+) required for (.+)\. Click for details; double-click to donate or undo\.$/,'需要{0}个，用于{1}。单击查看详情；双击可献祭或撤销。'],
+ [/^([\d,]+) required at gold quality or better for (.+)\. Click for details; double-click to donate or undo\.$/,'需要{0}个金星或更高品质，用于{1}。单击查看详情；双击可献祭或撤销。'],
  [/^The crop catalog covers (\\d+) crops, plus all 30 standard bundles, seasonal events and common bundle fish\\. Each suggestion includes a reason\\.$/,'作物目录收录了{0}种作物，还有全部30个标准收集包、季节活动和常见收集包鱼类。每条建议都会说明推荐理由。'],
  [/^Moved to (.+)\. Plan recalculated\.$/,'已进入{0}，计划已重新计算。'],
  [/^Weather updated to (.+)\. Plan recalculated\.$/,'天气已更新为{0}，计划已重新计算。'],

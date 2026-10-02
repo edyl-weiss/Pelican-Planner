@@ -179,3 +179,13 @@ html[data-effects="on"] .season-details i{animation:season-drift 4.5s ease-in-ou
 .material-symbol-tip{max-width:280px}.material-symbol-tip p{margin-top:5px;font-size:1rem;line-height:1.35}
 .gold-amount .material-symbol{width:18px;height:18px}.gold-amount .material-symbol img{width:16px;height:16px}
 .quality-symbol{width:20px;height:20px}.slot-check .quality-symbol{vertical-align:top}
+
+/* Small pixel-motion rewards. Kept brief so the planner still feels calm. */
+@keyframes day-card-pop{0%{transform:translateY(3px) scale(.94)}45%{transform:translateY(-3px) scale(1.04)}100%{transform:translateY(0) scale(1)}}
+@keyframes sprite-nod{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}70%{transform:translateY(1px)}}
+@keyframes sprite-wiggle{0%,100%{transform:rotate(0)}35%{transform:rotate(-7deg)}70%{transform:rotate(7deg)}}
+html[data-effects="on"] .date-number{animation:day-card-pop 300ms steps(6,end)}
+html[data-effects="on"] .next-day-button:hover .sprite{animation:sprite-wiggle 360ms steps(5,end)}
+html[data-effects="on"] .weather-status-button:hover :is(svg,.sprite),html[data-effects="on"] .weather-update-button:hover svg{animation:sprite-nod 360ms steps(5,end)}
+html[data-effects="on"] .community-room-image:hover img{animation:sprite-nod 420ms steps(6,end)}
+html[data-effects="on"] .community-center-open:hover .sprite{animation:sprite-wiggle 360ms steps(5,end)}
