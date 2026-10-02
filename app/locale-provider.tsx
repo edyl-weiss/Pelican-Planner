@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/set-state-in-effect -- Restore device-only preferences after hydration without changing the server-rendered HTML. */
 import {Children,createContext,useContext,useCallback,useEffect,useState,useMemo,cloneElement,isValidElement,type ReactNode,type ReactElement} from 'react';
 import {translate,localizedWiki,type Locale} from '@/lib/i18n/translate';
+import {symbolizeText} from './item-symbols';
 type LocaleContextValue={locale:Locale;setLocale:(locale:Locale)=>void;effects:boolean;setEffects:(enabled:boolean)=>void;taskLimit:3|5|99;setTaskLimit:(limit:number)=>void};
 const LocaleContext=createContext<LocaleContextValue>({locale:'en',setLocale:()=>{},effects:true,setEffects:()=>{},taskLimit:5,setTaskLimit:()=>{}});
 export function LocaleProvider({children}:{children:ReactNode}){
@@ -14,11 +15,12 @@ export function LocaleProvider({children}:{children:ReactNode}){
 // Translate only display text and accessible labels. IDs, form values, event handlers,
 // and saved game identifiers are untouched. No DOM mutation or HTML injection.
 export function renderLocalized(node:ReactNode,locale:Locale):ReactNode{
- if(typeof node==='string')return translate(node,locale);
+ if(typeof node==='string')return symbolizeText(translate(node,locale),locale);
  if(Array.isArray(node))return Children.map(node,child=>renderLocalized(child,locale));
  if(!isValidElement(node))return node;
  const element=node as ReactElement<Record<string,unknown>>;const props=element.props;
  if(props.translate==='no')return node;
+ if(element.type==='option'||element.type==='textarea'||element.type==='script'||element.type==='style')return node;
  const changes:Record<string,unknown>={};
  for(const key of ['aria-label','title','placeholder','alt'])if(typeof props[key]==='string')changes[key]=translate(props[key],locale);
  if(typeof props.href==='string')changes.href=localizedWiki(props.href,locale);
