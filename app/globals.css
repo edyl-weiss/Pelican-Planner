@@ -118,3 +118,16 @@ html[data-effects="off"] *,html[data-effects="off"] *:before,html[data-effects="
 .harvest-inbox{margin:0 0 18px;background:#fff8df;border-color:#d1b46f}.harvest-inbox-list{display:grid;gap:8px}.harvest-inbox-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed #d9c596}.harvest-inbox-row:last-child{border-bottom:0}.harvest-inbox-row>div{flex:1}.outlook-activity{font-weight:700}.outlook-note{font-size:.95rem;padding:4px 7px;border-radius:6px;background:#fff8df;color:#5d512e}.chest-inventory{padding:12px;border:1px dashed #bbaa7f;border-radius:10px;background:#faf1d9}.chest-inventory .inventory-row{padding:6px 0}
 
 @media(max-width:760px){.room-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}.room-tab{height:54px}}
+
+/* Sprite-forward guidance: use familiar game art where it communicates faster than labels. */
+.sprite-heading{display:inline-flex;align-items:center;gap:7px;min-width:0}
+.sprite-heading>.sprite{flex:0 0 auto;image-rendering:pixelated}
+.task-group-title.sprite-heading{display:flex;align-items:center;gap:6px}
+.outlook-main{display:flex;align-items:center;gap:8px;min-width:0;margin-top:2px}
+.outlook-main>.sprite{flex:0 0 auto}
+.outlook-main .outlook-activity{margin:0;min-width:0}
+.sprite-note{display:flex!important;align-items:center;gap:6px}
+.sprite-note>.sprite{flex:0 0 auto;width:22px;height:22px}
+.mobile-deadline{align-items:center;gap:6px}
+.mobile-deadline>.sprite{flex:0 0 auto}
+@media(max-width:700px){.sprite-heading{gap:5px}.task-group-title.sprite-heading>.sprite{width:21px;height:21px}.outlook-main>.sprite{width:28px;height:28px}}

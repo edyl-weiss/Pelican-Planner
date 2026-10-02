@@ -121,6 +121,20 @@ export const events:CalendarEvent[]=[
  {name:'Night Market',season:'Winter',day:15,end:17,type:'festival'},
  {name:'Feast of the Winter Star',season:'Winter',day:25,type:'festival'},
 ];
+export const festivalGuidance:Record<string,{window:string;location:string}>={
+ 'Egg Festival':{window:'9am–2pm',location:'Pelican Town'},
+ 'Desert Festival':{window:'Starts 10am',location:'Calico Desert'},
+ 'Flower Dance':{window:'9am–2pm',location:'Cindersap Forest'},
+ 'Luau':{window:'9am–2pm',location:'Beach'},
+ 'Trout Derby':{window:'6:10am–2am',location:'Cindersap Forest'},
+ 'Dance of the Moonlight Jellies':{window:'10pm–12am',location:'Beach'},
+ 'Stardew Valley Fair':{window:'9am–3pm',location:'Pelican Town'},
+ 'Spirit’s Eve':{window:'10pm–11:50pm',location:'Pelican Town'},
+ 'Festival of Ice':{window:'9am–2pm',location:'Cindersap Forest'},
+ 'SquidFest':{window:'6:10am–2am',location:'Beach'},
+ 'Night Market':{window:'5pm–2am',location:'Beach'},
+ 'Feast of the Winter Star':{window:'9am–2pm',location:'Pelican Town'},
+};
 export const FARM_TYPES=['Standard','Riverland','Forest','Hill-top','Wilderness','Four Corners','Beach','Meadowlands'] as const;
 export const LEVELS=['Relaxed','Guided','Efficient','Highly Optimized','Min-Max'] as const;
 export const GOALS=['Balanced','Community Center','Maximum Profit','Fast Greenhouse','Mining','Friendship','Low Effort'] as const;
