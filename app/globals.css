@@ -100,7 +100,7 @@ html[data-effects="off"] *,html[data-effects="off"] *:before,html[data-effects="
 .brand p,.save-status{color:#4f6355}.brand-name{color:#344e3b}.journal{padding-top:28px}.header-inner{min-height:96px}.nav-strip{padding:8px 0 14px;margin-bottom:14px}
 .farm-tabs [data-slot=tabs-trigger]{border:2px solid #af9980;border-radius:12px 12px 6px 6px;background:#f7dfb2;box-shadow:inset 0 3px #fff8e9,0 3px 0 #b99d7a;color:#504333}
 .farm-tabs [data-slot=tabs-trigger]:nth-child(2){background:#dce9cd}.farm-tabs [data-slot=tabs-trigger]:nth-child(3){background:#e9def3}.farm-tabs [data-slot=tabs-trigger]:nth-child(4){background:#d4e9f0}
-.farm-tabs [data-slot=tabs-trigger][data-state=active]{background:#fff1b8;border-color:#927149;box-shadow:inset 0 3px #fffdf1,0 3px 0 #927149;color:#514029;transform:translateY(-3px)}
+.farm-tabs [data-slot=tabs-trigger][data-state=active]{background:#fff1b8;border-color:#927149;box-shadow:inset 0 3px #fffdf1,0 3px 0 #927149;color:#514029;transform:none}
 .paper,.day-detail{border:2px solid #bba583;border-radius:16px;background:var(--paper);box-shadow:inset 0 0 0 4px #fff9e7,0 5px 0 #bba58329;padding:22px}
 .section-heading{gap:14px}.page-title{margin-bottom:20px}.topline{background:#fffaf0b3;padding:16px 20px;border:1px solid #e0d3b4;border-radius:14px}.date-number{background:#ffe6ad;border:2px solid #c79f66;border-radius:10px;color:#6b5132}.eyebrow,.muted,.small.muted{color:#675b62}
 .btn{border:2px solid #b39a70;border-radius:9px;background:#f9dda3;box-shadow:inset 0 2px #fff8df,0 2px 0 #ae926638;color:#54432e}.btn:hover{background:#ffeabe}.btn.primary{border-radius:9px}.btn.quiet{border-color:transparent}.language-switch .btn{border-radius:7px}.field input,.field select,.field textarea,[data-slot=select-trigger]{border-radius:8px!important;background:#fffdf7!important;border-color:#c4b59c!important;color:#443b40}
@@ -149,6 +149,14 @@ html[data-effects="off"] *,html[data-effects="off"] *:before,html[data-effects="
 /* Keep the weather/luck updater clear of the Next day action. */
 @media(min-width:701px){
   .day-controls{justify-content:flex-end;gap:22px;margin-left:auto}
-  .day-controls .weather-strip{max-width:none;width:max-content;justify-self:end;margin-right:12px}
-  .next-day-button{position:relative;z-index:1}
+  .day-controls .weather-strip{max-width:none;width:max-content;justify-self:end}
+}
+
+/* Header spacing refinement */
+@media(min-width:701px){
+  .day-controls .weather-strip{margin-right:24px}
+  .brand{gap:4px}
+  .brand .krobus-buddy{flex:0 0 auto}
+  .brand .krobus-button{width:48px;min-width:48px}
+  .brand-copy{min-width:0}
 }

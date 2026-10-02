@@ -9,12 +9,12 @@ body{background:var(--meadow);color:var(--ink)}
 .site-header{background:#93d5ea url('/theme/valley-header.svg') center bottom/auto 224px repeat-x;border-bottom:6px solid #749956;box-shadow:0 4px #bed894;image-rendering:pixelated;color:var(--ink)}
 .header-inner{min-height:176px;padding-top:24px;padding-bottom:28px;gap:24px}
 .brand{padding:9px 18px 11px 10px;background:#fff1c8;border:14px solid transparent;border-image:url('/theme/wood-frame.svg') 8 / 14px stretch;box-shadow:0 6px 0 #42664c30;gap:5px}
-.brand-name{color:#6b3e27;font-size:2.35rem;text-shadow:1px 2px #ffdc83}.brand p{color:#775039;letter-spacing:.12em;font-size:.9rem;margin-top:5px}.brand>.sprite{width:48px;height:48px;filter:drop-shadow(2px 3px 0 #9d773544)}
+.brand-name{color:#6b3e27;font-size:2.35rem;text-shadow:1px 2px #ffdc83}.brand p{color:#775039;letter-spacing:.12em;font-size:.9rem;margin-top:5px}.brand .krobus-buddy .sprite{width:48px;height:48px;filter:drop-shadow(2px 3px 0 #9d773544)}
 .header-right{flex-wrap:wrap;justify-content:flex-end;gap:8px 12px;max-width:420px;padding:10px 14px;background:#fff6dceF;border:2px solid #729e82;box-shadow:3px 3px 0 #50735430}.save-status{color:#4f623e}.language-switch{border-radius:0}.language-switch .btn{border-radius:0}
 .journal{padding-top:22px}.nav-strip{margin-bottom:18px}.nav-caption{color:#53452f;background:#fff4ce;padding:5px 12px;border:2px solid #ab8d54;font-size:1rem;box-shadow:2px 2px #90ac6940}
-.farm-tabs[data-slot=tabs-list]{gap:10px}.farm-tabs [data-slot=tabs-trigger]{border:3px solid #845537;border-radius:0;background:#ffd78a;box-shadow:inset 0 3px #fff3b3,inset 0 -4px #d4a453,3px 3px 0 #7b59362b;font-family:FarmPixel,monospace;font-size:1.55rem;padding:8px 24px;height:49px;gap:8px}
+.farm-tabs[data-slot=tabs-list]{gap:10px;align-items:stretch}.farm-tabs [data-slot=tabs-trigger]{border:3px solid #845537;border-radius:0;background:#ffd78a;box-shadow:inset 0 3px #fff3b3,inset 0 -4px #d4a453,3px 3px 0 #7b59362b;font-family:FarmPixel,monospace;font-size:1.55rem;padding:8px 24px;height:49px;gap:8px}
 .farm-tabs [data-slot=tabs-trigger]:nth-child(2){background:#bddb98;box-shadow:inset 0 3px #e2f2bf,inset 0 -4px #87b568,3px 3px #7b59362b}.farm-tabs [data-slot=tabs-trigger]:nth-child(3){background:#d3b9e7;box-shadow:inset 0 3px #f0ddff,inset 0 -4px #ac8fc5,3px 3px #7b59362b}.farm-tabs [data-slot=tabs-trigger]:nth-child(4){background:#afd8e8;box-shadow:inset 0 3px #daf2f8,inset 0 -4px #79afc6,3px 3px #7b59362b}
-.farm-tabs [data-slot=tabs-trigger][data-state=active]{background:#ffe8a0;border-color:#6c452c;box-shadow:inset 0 3px #fff9d6,inset 0 -4px #e4af53,0 4px #6c452c;color:#593b25;transform:translateY(-3px)}
+.farm-tabs [data-slot=tabs-trigger][data-state=active]{background:#ffe8a0;border-color:#6c452c;box-shadow:inset 0 3px #fff9d6,inset 0 -4px #e4af53,0 4px #6c452c;color:#593b25;transform:none}
 .paper,.day-detail,.calendar-frame,.farm-dialog:is([data-slot=dialog-content],[data-slot=alert-dialog-content]),.farm-tooltip,.notice,.topline{border:16px solid transparent;border-image:url('/theme/wood-frame.svg') 8 / 16px stretch;border-radius:0!important;box-shadow:4px 6px 0 #78553224;background:var(--paper);background-clip:padding-box;padding:18px}
 .topline{padding:12px 16px;gap:18px;margin-bottom:22px}.date-number{border-radius:0;border:3px solid #8a5a34;background:#ffd878;box-shadow:inset 2px 2px #fff0aa,inset -2px -2px #dca14a,3px 3px #9d783a30;color:#634125;padding:7px 14px}
 .season-title{color:var(--season-dark)}.weather-strip{max-width:49%;flex-wrap:wrap;gap:6px 10px;font-weight:400}.weather-strip .muted:last-child{flex-basis:100%;text-align:right;font-size:.9rem}
@@ -38,7 +38,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @media(prefers-reduced-motion:reduce){.btn,.farm-tabs [data-slot=tabs-trigger],.setup-choice{transition:none}}
 
 /* Game sprites are bundled locally, with their original source registry. */
-.brand>.sprite{width:48px;height:48px;image-rendering:pixelated}
+.brand .krobus-buddy .sprite{width:48px;height:48px;image-rendering:pixelated}
 .farm-tabs .sprite{width:26px;height:26px;filter:drop-shadow(1px 2px #704d382b)}
 @media(max-width:420px){.farm-tabs [data-slot=tabs-trigger]{padding:8px 6px;font-size:1.2rem;gap:4px}.farm-tabs .sprite{width:22px;height:22px}}
 
@@ -46,7 +46,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 
 .day-start-dialog .setup-actions{position:static}
 @media(max-width:700px){.topline{flex-direction:column}.date-display{width:100%}.weather-strip{flex-direction:row;align-items:center;width:100%;gap:7px;border-top:2px dotted #d6bb7d;padding-top:12px}.weather-strip .muted:last-child{display:block;flex-basis:100%;text-align:left}.nav-strip{margin:0}.header-inner{min-height:0}.day-start-dialog{scroll-padding-bottom:20px}}
-@media(max-width:380px){.brand-name{font-size:1.6rem}.brand>.sprite{width:40px;height:40px}.header-right{padding:6px}.language-switch .btn{padding:6px}.header-right .save-status{max-width:60px}.crop-compare{grid-template-columns:1fr}}
+@media(max-width:380px){.brand-name{font-size:1.6rem}.brand .krobus-buddy .sprite{width:40px;height:40px}.header-right{padding:6px}.language-switch .btn{padding:6px}.header-right .save-status{max-width:60px}.crop-compare{grid-template-columns:1fr}}
 
 /* Small celebrations, never continuous motion. */
 .krobus-buddy{position:relative;flex:none;z-index:40}.krobus-button{display:grid;place-items:center;border:0;background:transparent;padding:0;min-width:48px;min-height:48px;cursor:pointer}.krobus-button>span{display:block}.krobus-button .sprite{width:48px;height:48px;filter:drop-shadow(2px 3px #68472c30)}
@@ -96,9 +96,8 @@ html[data-effects="on"] .season-details i{animation:season-drift 4.5s ease-in-ou
 /* Compact polish pass */
 @media(min-width:701px){
   .header-inner{min-height:154px;padding-top:18px;padding-bottom:20px;gap:18px}
-  .brand{position:relative;min-width:330px;justify-content:center;padding:8px 16px;}
-  .brand>.sprite{position:absolute;left:12px;top:50%;transform:translateY(-50%)}
-  .brand>div{text-align:center;min-width:220px}
+  .brand{position:static;min-width:0;justify-content:flex-start;padding:8px 12px;gap:4px}
+  .brand-copy{text-align:center;min-width:0}
   .header-right{display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-end;gap:6px;max-width:none;padding:7px 9px;white-space:nowrap}
   .header-right .language-switch{display:flex;flex-wrap:nowrap;gap:3px}
   .header-right .language-switch .btn,.header-right>.btn{min-height:34px;padding:5px 9px;font-size:.92rem;white-space:nowrap}
@@ -137,7 +136,7 @@ html[data-effects="on"] .season-details i{animation:season-drift 4.5s ease-in-ou
 .mode-choice-dialog>.label-note{text-align:center;font-size:.88rem;white-space:nowrap}
 
 @media(max-width:700px){
-  .header-inner{min-height:auto}.header-right{display:flex;flex-wrap:nowrap;align-items:center;gap:4px;padding:5px 6px}.header-right .save-status{display:none}.header-right .language-switch{display:flex;flex-wrap:nowrap;gap:2px}.header-right .language-switch .btn,.header-right>.btn{min-height:34px;padding:5px 7px;font-size:.88rem}.brand>div{text-align:center}
+  .header-inner{min-height:auto}.header-right{display:flex;flex-wrap:nowrap;align-items:center;gap:4px;padding:5px 6px}.header-right .save-status{display:none}.header-right .language-switch{display:flex;flex-wrap:nowrap;gap:2px}.header-right .language-switch .btn,.header-right>.btn{min-height:34px;padding:5px 7px;font-size:.88rem}.brand-copy{text-align:center}
   .mode-choice-dialog [data-slot=dialog-title],.mode-choice-dialog [data-slot=dialog-description],.mode-choice-dialog>.label-note{white-space:normal}.mode-choice-dialog .eyebrow{white-space:normal}
   .play-plan-heading{align-items:flex-start}.play-plan-heading>span{font-size:.9rem}
 }
