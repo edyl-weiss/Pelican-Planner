@@ -191,7 +191,7 @@ export default function ActivityForm({
         />
       </label>
       <label className="field gap-top">
-        {say("A little memory from today", "今天的小记忆")}
+        {say("Today's note", "今天的小记忆")}
         <input
           maxLength={160}
           value={value.note}

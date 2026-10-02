@@ -284,12 +284,12 @@ export function SeasonTransition({ run }: { run: RunState }) {
           </p>
         </div>
         <div>
-          <h3>{say("Dates to look forward to", "值得期待的日子")}</h3>
+          <h3>{say("Upcoming dates", "值得期待的日子")}</h3>
           <p>
             {festivals.length
               ? festivals.map((e) => `${t(e.name)} · ${e.day}`).join(" / ")
               : say(
-                  "A little breathing room on the calendar.",
+                  "No upcoming events.",
                   "日历上有些自由安排的时间。",
                 )}
           </p>
@@ -325,7 +325,7 @@ export function IncomeTrend({ run }: { run: RunState }) {
   return (
     <section className="income-trend" translate="no">
       <div className="section-heading">
-        <h3>{say("A little income trail", "收入的小足迹")}</h3>
+        <h3>{say("Income history", "收入的小足迹")}</h3>
         <span className="small muted">
           {say("Last 28 days · recorded income", "最近28天 · 已记录收入")}
         </span>
@@ -779,7 +779,7 @@ export function Scrapbook({
                 : say("No new buildings recorded yet.", "尚未记录新增建筑。")}
             </p>
             <h3 className="gap-top">
-              {say("Four little chapters", "四个小篇章")}
+              {say("Seasons", "四个小篇章")}
             </h3>
             <div className="season-chapters">
               {SEASONS.map((season) => {
@@ -836,7 +836,7 @@ export function Scrapbook({
           ))}
         </details>
         <details className="scrapbook-memory">
-          <summary>{say("The little memories", "那些小小的回忆")}</summary>
+          <summary>{say("Notes", "那些小小的回忆")}</summary>
           {days.filter((d) => d.note).length ? (
             days
               .filter((d) => d.note)

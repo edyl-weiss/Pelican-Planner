@@ -1,7 +1,7 @@
 export const messages: Record<string,string> = Object.fromEntries(`
 Next day|下一天
 Set tomorrow’s weather and luck|设置明天的天气和运势
-Tiny sparkles, happy harvests and a little Krobus wiggle. Respects your device’s reduced-motion setting.|轻盈的像素闪光、收获时的小庆祝，还有科罗布斯的扭扭舞。遵循设备的减少动态效果设置。
+Click effects, harvest effects and Krobus animation. Respects your device’s reduced-motion setting.|点击特效、收获特效和科罗布斯动画。遵循设备的减少动态效果设置。
 Moving computers? Pack up your journal, including changes you haven’t saved yet.|要换电脑？把日记一起带上吧，还没保存的改动也会打包。
 Download journal backup|下载日记备份
 Restore journal backup|恢复日记备份
@@ -19,17 +19,17 @@ That backup belongs to a different app. Choose a Pelican Planner backup.|这份�
 This backup needs a newer version of the journal. Update the site, then try again.|这份备份需要更新版本的日记，请更新网站后重试。
 Choose a journal JSON backup. Game saves can be imported with Import save.|请选择日记 JSON 备份。游戏存档请使用“导入存档”。
 IN KROBUS WE TRUST|我们信克罗布斯。
-A good day, one step at a time|把今天过好，一步一步来
-A gentle day|轻松的一天
-Lots to look forward to|今天有不少期待
-If you do one thing|今天先做这一件
-Then, if you like|接下来，有空再做
-Only if it sounds fun|想做的时候再做
+Today|今天
+Priority|优先
+Next|接下来
+Priority|优先
+Next|接下来
+Optional|可选
 Today at a glance|今天一览
 Update weather & luck|更新天气和运势
 Welcome tomorrow|迎接新一天
-Ready in your fields|田里有东西快成熟啦
-A little harvest check, for today and the next few days.|看看今天和接下来几天有哪些作物可以收获。
+Ready to harvest|可以收获
+Harvest schedule|收获安排
 Open crop planner|打开作物计划
 Ready today|今天可以收获
 Coming up|就快成熟
@@ -43,7 +43,7 @@ A few things to double-check|还有几样可以顺手核对
 Your farm basics|农场小档案
 Let’s make this feel like your farm|让这里更像你的农场
 Walk me through setup|带我一步步设置
-A few little preferences|挑几项小偏好
+Preferences|偏好设置
 Planning style|规划风格
 How much detail|计划细致程度
 Suggestions I tucked away|我暂时收起的建议
@@ -57,7 +57,7 @@ If today gets busy|如果今天有点忙
 Checking this off saves your progress. Update gold, supplies and harvests whenever you like.|勾选后会记下进度。金币、物资和收获可以在方便的时候更新。
 Hide this kind of suggestion|不再显示这类建议
 The crop catalog covers|作物目录收录了
-crops, plus all 30 standard bundles, seasonal events and common bundle fish. Each suggestion gives you a little reason to consider it.|种作物，还有全部30个标准收集包、季节活动和常见收集包鱼类。每条建议都会告诉你它为什么可能有帮助。
+crops, plus all 30 standard bundles, seasonal events and common bundle fish. Each suggestion includes a reason.|种作物，还有全部30个标准收集包、季节活动和常见收集包鱼类。每条建议都会说明推荐理由。
 Game import reads farm details and supported growing crops. Review the preview and import limits before applying.|导入会读取农场信息和支持的在种作物。应用前请核对预览及导入范围。
 Imported farm details, backpack items, professions, recognized unlocks and supported growing crops. Your game file was not modified.|已导入农场信息、背包物品、职业、已识别的解锁内容和支持的在种作物。游戏文件未被修改。
 Existing crop added. Your calendar and forecasts are updated.|已补录作物，日历与收获预测已更新。
@@ -183,8 +183,8 @@ Don’t miss:|别错过：
 Do first|先做这些
 Next|接下来
 If you have time|有空再做
-A quiet day. Check your fields, or pin a task in Plan.|悠闲的一天。去看看田地，或在计划里记下一件待办。
-Keep it manageable|按自己的节奏来
+No planned tasks.|暂无计划任务。
+Tasks shown|显示任务数
 3 tasks|3项任务
 5 tasks|5项任务
 Full plan|完整计划
@@ -202,7 +202,7 @@ Floor|层数
 Start next day|开始新的一天
 Don’t miss|别错过
 This season|本季提醒
-No tracked deadlines coming up. Enjoy the breathing room.|近期没有需要赶上的事项，慢慢享受农场生活吧。
+No tracked deadlines this season.|本季暂无追踪中的截止事项。
 / 30 bundles|/ 30个收集包
 Open collection|查看收藏
 recent plan changes|条最近的计划变更
@@ -296,7 +296,7 @@ Reserving does not buy an upgrade. Confirm your current tool tier, building spac
 Resource reservations|资源预留
 Release|解除预留
 No purchase reservations. Your minimum gold reserve is managed in More.|尚无购买预留，可在更多页面设置最低金币留存额。
-A place for every little thing|每件小东西，都有它的位置
+Collection|收藏
 Your collection|我的收藏
 Standard bundles · tap an item to record a donation.|标准收集包 · 点击物品记录献祭情况。
 Search bundles and items|搜索收集包与物品
@@ -363,7 +363,7 @@ Farm type|农场类型
 Season|季节
 Day|日期
 Experience|游玩经验
-A little direction|找一个小目标
+Guidance|建议
 Primary goal|主要目标
 Planning intensity:|规划强度：
 A few essentials and room to wander.|只安排几件要事，留些时间随处逛逛。
@@ -527,8 +527,8 @@ Setup complete. Your calendar is ready.|设置完成，日历已经准备好了�
 Close|关闭
 Language|语言
 Interaction effects|互动特效
-Little pixel sparkles when you click. Respects your device’s reduced-motion setting.|点击时出现轻盈的像素闪光，并遵循设备的减少动态效果设置。
-Ready to gather, whenever you are.|准备好了，随时可以收获。
+Click effects. Respects your device’s reduced-motion setting.|点击特效。遵循设备的减少动态效果设置。
+Ready to harvest.|可以收获。
 Planner settings|计划设置
 Farm settings|农场设置
 Farm details|农场信息
