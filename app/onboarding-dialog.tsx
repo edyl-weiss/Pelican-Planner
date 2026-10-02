@@ -4,7 +4,7 @@ import {Dialog,DialogContent,DialogDescription,DialogTitle} from '@/components/u
 import {Slider} from '@/components/ui/slider';
 import {Check,Choice,NumberField,Sprite} from './farm-ui';
 import {useLocale} from './locale-provider';
-import {SIMPLE_FARM_SIZES,WEATHER,newRun,type RunState} from '@/lib/game/state';
+import {WEATHER,newRun,type RunState} from '@/lib/game/state';
 import {FARM_TYPES,GOALS,LEVELS,SEASONS} from '@/lib/game/data';
 
 type SaveMode='new'|'existing';
@@ -15,20 +15,16 @@ const SIMPLE_GOALS=[
  {value:'Community Center',title:'Community Center',copy:'Prioritize seasonal crops, fish and items that can be missed.',sprite:'Bundle Green'},
  {value:'Maximum Profit',title:'Make money',copy:'Favor strong crop choices while still surfacing important seasonal moments.',sprite:'Gold'},
 ] as const;
-const SIMPLE_PACES=[
- {level:1,title:'Relaxed',copy:'Only the most important nudges.'},
- {level:2,title:'Balanced',copy:'A few priorities plus one optional idea.'},
- {level:3,title:'Optimize',copy:'Still simple, but a little more proactive.'},
-] as const;
+
 
 export default function OnboardingDialog(props:Props){return props.base.plannerMode==='simple'?<SimpleSetup {...props}/>:<FullSetup {...props}/>}
 
 function SimpleSetup({open,firstRun,base,onComplete,onSkip,onImport}:Props){
  const {render}=useLocale();
  const[step,setStep]=useState(0);const[saveMode,setSaveMode]=useState<SaveMode>(firstRun?'new':'existing');
- const[draft,setDraft]=useState<RunState>(()=>({...base,plannerMode:'simple',weather:'Unknown',tomorrow:'Unknown',luck:'Unknown',level:Math.min(base.level,3)}));
- const choose=(mode:SaveMode)=>{setSaveMode(mode);const seed=mode==='new'?newRun():base;setDraft({...seed,plannerMode:'simple',simpleFarmSize:base.simpleFarmSize??'Medium',weather:'Unknown',tomorrow:'Unknown',luck:'Unknown',level:Math.min(seed.level,3)});setStep(1)};
- const finish=()=>onComplete({...draft,name:draft.name.trim()||'My Farm',plannerMode:'simple',weather:'Unknown',tomorrow:'Unknown',luck:'Unknown'});
+ const[draft,setDraft]=useState<RunState>(()=>({...base,plannerMode:'simple',simpleFarmSize:base.simpleFarmSize??'Medium',weather:'Unknown',tomorrow:'Unknown',luck:'Unknown',level:2}));
+ const choose=(mode:SaveMode)=>{setSaveMode(mode);const seed=mode==='new'?newRun():base;setDraft({...seed,plannerMode:'simple',simpleFarmSize:base.simpleFarmSize??'Medium',weather:'Unknown',tomorrow:'Unknown',luck:'Unknown',level:2});setStep(1)};
+ const finish=()=>onComplete({...draft,name:draft.name.trim()||'My Farm',plannerMode:'simple',level:2,weather:'Unknown',tomorrow:'Unknown',luck:'Unknown'});
  return render(<Dialog open={open}><DialogContent className="farm-dialog setup-dialog simple-setup-dialog" showCloseButton={false} onEscapeKeyDown={e=>e.preventDefault()} onPointerDownOutside={e=>e.preventDefault()}>
   {step===0?<>
    <div className="setup-hero"><Sprite name="Parsnip" size={58}/><div><p className="eyebrow">Simple Mode</p><DialogTitle>Just enough to get started</DialogTitle></div></div>
@@ -46,9 +42,8 @@ function SimpleSetup({open,firstRun,base,onComplete,onSkip,onImport}:Props){
    </>}
    {step===2&&<>
     <DialogDescription>Pick what fits your farm. Change it anytime.</DialogDescription>
-    <div className="simple-choice-section"><h3>What matters most?</h3><div className="simple-option-grid">{SIMPLE_GOALS.map(option=><button key={option.value} className={'simple-option '+(draft.goal===option.value?'chosen':'')} onClick={()=>setDraft({...draft,goal:option.value})}><Sprite name={option.sprite} size={38}/><span><strong>{option.title}</strong><small>{option.copy}</small></span></button>)}</div></div>
-    <div className="simple-choice-section"><h3>How much guidance?</h3><div className="simple-option-grid three">{SIMPLE_PACES.map(option=><button key={option.level} className={'simple-option '+(draft.level===option.level?'chosen':'')} onClick={()=>setDraft({...draft,level:option.level})}><span><strong>{option.title}</strong><small>{option.copy}</small></span></button>)}</div></div>
-    <div className="simple-choice-section"><h3>How much do you usually plant?</h3><div className="simple-option-grid three">{SIMPLE_FARM_SIZES.map(size=><button key={size} className={'simple-option centered '+(draft.simpleFarmSize===size?'chosen':'')} onClick={()=>setDraft({...draft,simpleFarmSize:size})}><strong>{size}</strong><small>{size==='Small'?'About 12 crop tiles':size==='Medium'?'About 24 crop tiles':'About 48+ crop tiles'}</small></button>)}</div><p className="label-note">Just a guide, not a limit.</p></div>
+    <div className="simple-choice-section"><h3>What should I keep an eye on?</h3><div className="simple-option-grid">{SIMPLE_GOALS.map(option=><button key={option.value} className={'simple-option '+(draft.goal===option.value?'chosen':'')} onClick={()=>setDraft({...draft,goal:option.value})}><Sprite name={option.sprite} size={38}/><span><strong>{option.title}</strong><small>{option.copy}</small></span></button>)}</div></div>
+    <p className="simple-setup-note">That’s it. I’ll keep the daily list short and adjust it as the season moves along.</p>
    </>}
    <div className="setup-actions"><button className="btn" onClick={()=>step===1?setStep(0):setStep(1)}>{step===1?'Back':'Back'}</button><span className="small muted">No daily luck or weather needed.</span>{step===1?<button className="btn primary" disabled={!draft.name.trim()} onClick={()=>setStep(2)}>Continue</button>:<button className="btn primary" disabled={!draft.name.trim()} onClick={finish}>Start planning</button>}</div>
   </>}

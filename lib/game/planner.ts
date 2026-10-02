@@ -117,7 +117,7 @@ export function makeSimplePlan(run:RunState):Task[]{
  const source=makePlan({...run,luck:'Unknown',level:Math.min(run.level,3)}).filter(task=>!run.done.includes(task.id));
  const chosen:Task[]=[];
  const seen=new Set<string>();
- const push=(task:Task|undefined,group:0|1|2)=>{if(!task||seen.has(task.id)||chosen.length>=4)return;seen.add(task.id);chosen.push({...task,group});};
+ const push=(task:Task|undefined,group:0|1|2)=>{if(!task||seen.has(task.id)||chosen.length>=3)return;seen.add(task.id);chosen.push({...task,group});};
  const isPlant=(task:Task)=>/^Plant |^Grow extra /.test(task.name);
  const isField=(task:Task)=>task.category==='Farming'&&(/^Harvest |^Water /.test(task.name));
  const plants=source.filter(task=>isPlant(task));
@@ -138,7 +138,7 @@ export function makeSimplePlan(run:RunState):Task[]{
  const personal=source.find(task=>task.category==='Personal');
  push(personal,2);
  for(const task of source)push(task,2);
- return chosen.slice(0,4);
+ return chosen.slice(0,3);
 }
 
 export interface Deadline{name:string;entity:string;detail:string;day:number;urgent:boolean}
