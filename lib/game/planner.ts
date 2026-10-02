@@ -8,6 +8,9 @@ export function startNextDay(run:RunState,weather:RunState['weather'],luck:RunSt
  if(weather==='Unknown')throw new Error('Choose today’s weather before starting the day.');
  return runSchema.parse({...run,date:nextDate(run.date),weather,luck,tomorrow:'Unknown'});
 }
+export function startNextDaySimple(run:RunState):RunState{
+ return runSchema.parse({...run,date:nextDate(run.date),weather:'Unknown',luck:'Unknown',tomorrow:'Unknown'});
+}
 export const dateLabel=(d:GameDate)=>`${d.season} ${d.day}, Year ${d.year}`;
 export const gold=(n:number)=>`${Math.round(n).toLocaleString('en-US')}g`;
 export const slotKey=(b:Bundle,i:number)=>`${b.id}:${i}`;
@@ -109,6 +112,35 @@ export function makePlan(run:RunState):Task[]{
  for(const n of run.notes.filter(n=>absoluteDay(n.date)===day&&!n.done))add('note-'+n.id,n.label,'Calendar','Your pinned task','Added by you.','Reschedule it in Plan when needed.',1,'Personal');
  list.sort((a,b)=>a.group-b.group);if(list.length&&!list.some(t=>t.group===0))list[0].group=0;return run.goal==='Low Effort'?list.slice(0,3):list;
 }
+
+export function makeSimplePlan(run:RunState):Task[]{
+ const source=makePlan({...run,luck:'Unknown',level:Math.min(run.level,3)}).filter(task=>!run.done.includes(task.id));
+ const chosen:Task[]=[];
+ const seen=new Set<string>();
+ const push=(task:Task|undefined,group:0|1|2)=>{if(!task||seen.has(task.id)||chosen.length>=4)return;seen.add(task.id);chosen.push({...task,group});};
+ const isPlant=(task:Task)=>/^Plant |^Grow extra /.test(task.name);
+ const isField=(task:Task)=>task.category==='Farming'&&(/^Harvest |^Water /.test(task.name));
+ const plants=source.filter(task=>isPlant(task));
+ const sizeTiles:Record<RunState['simpleFarmSize'],number>={Small:12,Medium:24,Large:48};
+ const targetTiles=sizeTiles[run.simpleFarmSize];
+ const bestCrop=crops.filter(c=>cropAvailableToBuy(run,c,run.date)&&c.seed>0).map(c=>({c,e:cropEconomics(c,run.date,1,run.tiller)})).filter(x=>x.e.harvests>0&&available(run,'Gold')>=x.c.seed).sort((a,b)=>b.e.profit-a.e.profit)[0];
+ const profit=source.find(task=>task.id.endsWith(':profit'))??(bestCrop?{id:`${absoluteDay(run.date)}:simple-profit`,name:`Plant ${bestCrop.c.name}`,entity:bestCrop.c.name,detail:`Strong seasonal value · ${gold(bestCrop.c.seed)} per seed`,why:'A straightforward crop choice with strong conservative raw-crop value for the days left in this season. Processing value is not assumed.',skip:'Plant less, choose a bundle crop instead, or keep the gold for another goal.',group:1 as const,category:'Farming',confidence:'Strategy'}:undefined);
+ const simpleGoal=run.goal==='Maximum Profit'?'Maximum Profit':run.goal==='Community Center'||run.goal==='Fast Greenhouse'?'Community Center':'Balanced';
+ const bundlePlant=plants.find(task=>task.category==='Bundle');
+ const decorate=(task:Task|undefined)=>{if(!task)return task;const crop=crops.find(c=>c.name===task.entity);if(!crop||!isPlant(task))return task;const free=plantingCapacity(run,targetTiles).free;const affordable=crop.seed>0?Math.floor(available(run,'Gold')/crop.seed):free;const quantity=Math.max(0,Math.min(free,affordable));const hint=task.category==='Bundle'?`Plant at least 1. ${run.simpleFarmSize} plan: keep the rest of your space flexible.`:quantity>0?`${run.simpleFarmSize} plan: up to about ${quantity} tiles fits your current tracked space and gold.`:`${run.simpleFarmSize} plan: save space or gold for this crop when you can.`;return {...task,detail:`${task.detail} · ${hint}`};};
+ if(simpleGoal==='Maximum Profit'){push(decorate(profit),0);}else{push(decorate(bundlePlant),0);if(simpleGoal==='Balanced'&&profit?.entity!==bundlePlant?.entity)push(decorate(profit),1);}
+ push(source.find(isField),0);
+ const timely=source.find(task=>['Event','Fishing','Shopping'].includes(task.category));
+ push(timely,1);
+ if(!chosen.some(task=>task.category==='Fishing')&&!run.noFishing){const seasonalFish=fish.filter(f=>f.seasons.includes(run.date.season)&&needed(run,f.name))[0];if(seasonalFish){const condition=seasonalFish.weather==='Any'?'Any weather':seasonalFish.weather==='Rain'?'Rainy day':'Sunny or clear day';push({id:`${absoluteDay(run.date)}:simple-fish-${seasonalFish.name}`,name:seasonalFish.weather==='Any'?`Catch ${seasonalFish.name}`:`Watch for ${seasonalFish.name}`,entity:seasonalFish.name,detail:`${condition} · ${seasonalFish.location} · ${clock(seasonalFish.start)}–${clock(seasonalFish.end)}`,why:'This fish is still needed for a standard Community Center bundle and is available this season. Simple Mode shows the condition without asking you to track weather every day.',skip:'If the conditions do not line up today, keep it in mind for another eligible day this season.',group:1,category:'Fishing',confidence:'Seasonal'},1);}}
+ const seasonal=source.find(task=>['Foraging','Mining','Farming','Bundle'].includes(task.category)&&!isPlant(task)&&!isField(task));
+ push(seasonal,2);
+ const personal=source.find(task=>task.category==='Personal');
+ push(personal,2);
+ for(const task of source)push(task,2);
+ return chosen.slice(0,4);
+}
+
 export interface Deadline{name:string;entity:string;detail:string;day:number;urgent:boolean}
 export function deadlines(run:RunState):Deadline[]{const results:Deadline[]=[];const d=run.date;
  for(const c of crops.filter(c=>needed(run,c.name)&&cropAvailableToBuy(run,c,d)&&c.seasons.includes(d.season)&&!owned(run,c.name)&&!run.plots.some(p=>p.crop===c.name&&plotAlive(p,d))&&!c.seasons.includes(nextDate({...d,day:28}).season))){const last=lastPlantDay(c,d.season);if(last>=d.day)results.push({name:`Plant ${c.name}`,entity:c.name,detail:`By ${d.season} ${last} · ${last-d.day===0?'today':`${last-d.day} days left`}`,day:last,urgent:last-d.day<=3});}
