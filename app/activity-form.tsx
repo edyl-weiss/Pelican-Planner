@@ -2,6 +2,7 @@
 import type { ActivityDay } from "@/lib/game/state";
 import { costs, harvestCount } from "@/lib/game/activity";
 import { gold } from "@/lib/game/planner";
+import {GoldAmount} from './farm-ui';
 import { useLocale } from "./locale-provider";
 
 export default function ActivityForm({
@@ -52,7 +53,7 @@ export default function ActivityForm({
       </p>
       <p className="small">
         {say("Already recorded", "已记录")}：{harvestCount(value)}{" "}
-        {say("crops harvested", "个作物收获")} · {gold(value.seedCosts)}{" "}
+        {say("crops harvested", "个作物收获")} · <GoldAmount value={value.seedCosts}/>{" "}
         {say("seed costs", "种子支出")}
       </p>
       <label className="check-label gap-top">
@@ -161,7 +162,7 @@ export default function ActivityForm({
           </div>
           <p className="small muted">
             {say("Total recorded costs", "已记录支出总额")}：
-            {gold(costs(value))}
+            <GoldAmount value={costs(value)}/>
           </p>
         </div>
       )}

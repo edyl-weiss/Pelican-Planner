@@ -2,6 +2,7 @@
 import {useState,type ReactNode} from 'react';
 import {Tooltip} from 'radix-ui';
 import {useLocale} from './locale-provider';
+import {GoldAmount,RichText} from './farm-ui';
 import type {Crop} from '@/lib/game/data';
 import type {Plot,GameDate} from '@/lib/game/state';
 import {absoluteDay,dateLabel,fromDay,gold} from '@/lib/game/planner';
@@ -14,15 +15,15 @@ const numericTooltipText=(text:string)=>text
  .replace(/\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)\b/gi,word=>String(units[word.toLowerCase()]??tens[word.toLowerCase()]));
 export function ObtainBlock({name,year}:{name:string;year?:number}){
  const {locale}=useLocale();const methods=obtainMethods(name,{year});if(!methods.length)return null;
- return <div className="obtain-block"><strong>{locale==='zh-CN'?'如何获得：':'How to obtain:'}</strong><ul>{methods.map((method,i)=><li key={i}>{method}</li>)}</ul></div>;
+ return <div className="obtain-block"><strong>{locale==='zh-CN'?'如何获得：':'How to obtain:'}</strong><ul>{methods.map((method,i)=><li key={i}><RichText text={method}/></li>)}</ul></div>;
 }
 export function InfoTip({label,text,chinese,children,trigger,obtainFor,year,asChildTrigger=false}:{label:string;text?:string;chinese?:string;children?:ReactNode;trigger?:ReactNode;obtainFor?:string;year?:number;asChildTrigger?:boolean}){
  const {locale,t}=useLocale();const[open,setOpen]=useState(false);
- const body=children??(locale==='zh-CN'&&chinese?chinese:numericTooltipText(t(text??label)));
+ const rawBody=locale==='zh-CN'&&chinese?chinese:numericTooltipText(t(text??label));const body=children??<RichText text={rawBody}/>;
  const triggerNode=asChildTrigger&&trigger?trigger:<button type="button" className={trigger?"item-tip-trigger":"info-tip"} aria-label={locale==='zh-CN'?'查看详细说明':label} onClick={e=>{e.preventDefault();setOpen(!open)}}>{trigger??'?'}</button>;
  return <Tooltip.Provider delayDuration={180}><Tooltip.Root open={open} onOpenChange={setOpen}><Tooltip.Trigger asChild>{triggerNode}</Tooltip.Trigger><Tooltip.Portal><Tooltip.Content className="farm-tooltip" sideOffset={8} collisionPadding={16} translate="no"><div>{body}</div>{obtainFor&&<ObtainBlock name={obtainFor} year={year}/>}<Tooltip.Arrow className="tooltip-arrow"/></Tooltip.Content></Tooltip.Portal></Tooltip.Root></Tooltip.Provider>;
 }
 export function CropTip({crop,plot,date,trigger}:{crop?:Crop;plot?:Plot;date?:GameDate;trigger?:ReactNode}){
  const {locale,t}=useLocale();if(!crop)return null;const zh=locale==='zh-CN';
- return <InfoTip label={`About ${crop.name}`} trigger={trigger} obtainFor={crop.name} year={date?.year}><div className="crop-tooltip"><strong>{plot?.customCrop?crop.name:t(crop.name)}</strong>{plot&&date?<><p>{zh?'下次收获':'Next harvest'}: {t(dateLabel(fromDay(Math.max(plot.nextHarvest,absoluteDay(date)))))}</p><p>{Math.max(0,plot.nextHarvest-absoluteDay(date))} {zh?'天后收获':'days remaining'} · {plot.quantity} {zh?'块地':'tiles'}</p><p>{zh?'地点':'Location'}: {t(plot.location??'Farm')}</p></>:<p>{crop.days} {zh?'天成熟':'days to mature'} · {zh?'种子':'Seeds'} {gold(crop.seed)}</p>}<p>{zh?'生长季节':'Seasons'}: {crop.seasons.map(t).join(' · ')}</p><p>{zh?'基础售价':'Base sale'}: {gold(crop.sell)} · {zh?'每块地最低产量':'Min. yield / tile'}: {crop.yield}</p><p>{crop.regrow?(zh?`每 ${crop.regrow} 天再生`:`Regrows every ${crop.regrow} days`):(zh?'收获一次后需重新种植':'Replant after 1 harvest')}</p>{crop.note&&<p>{t(crop.note)}</p>}<small>{zh?'预测假设每天浇水。售价按普通品质计算，蒂勒职业加成在收入预测中另计。':'Forecasts assume daily watering. Base prices use normal quality; Tiller is applied separately in income estimates.'}</small></div></InfoTip>;
+ return <InfoTip label={`About ${crop.name}`} trigger={trigger} obtainFor={crop.name} year={date?.year}><div className="crop-tooltip"><strong>{plot?.customCrop?crop.name:t(crop.name)}</strong>{plot&&date?<><p>{zh?'下次收获':'Next harvest'}: {t(dateLabel(fromDay(Math.max(plot.nextHarvest,absoluteDay(date)))))}</p><p>{Math.max(0,plot.nextHarvest-absoluteDay(date))} {zh?'天后收获':'days remaining'} · {plot.quantity} {zh?'块地':'tiles'}</p><p>{zh?'地点':'Location'}: {t(plot.location??'Farm')}</p></>:<p>{crop.days} {zh?'天成熟':'days to mature'} · {zh?'种子':'Seeds'} <GoldAmount value={crop.seed}/></p>}<p>{zh?'生长季节':'Seasons'}: {crop.seasons.map(t).join(' · ')}</p><p>{zh?'基础售价':'Base sale'}: <GoldAmount value={crop.sell}/> · {zh?'每块地最低产量':'Min. yield / tile'}: {crop.yield}</p><p>{crop.regrow?(zh?`每 ${crop.regrow} 天再生`:`Regrows every ${crop.regrow} days`):(zh?'收获一次后需重新种植':'Replant after 1 harvest')}</p>{crop.note&&<p>{t(crop.note)}</p>}<small>{zh?'预测假设每天浇水。售价按普通品质计算，蒂勒职业加成在收入预测中另计。':'Forecasts assume daily watering. Base prices use normal quality; Tiller is applied separately in income estimates.'}</small></div></InfoTip>;
 }
