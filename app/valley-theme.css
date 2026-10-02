@@ -8,7 +8,7 @@ body{background:var(--meadow);color:var(--ink)}
 .farm-app{background: url('/theme/meadow-tile.svg') repeat,var(--meadow);background-size:192px 192px;isolation:isolate}
 .site-header{background:#93d5ea url('/theme/valley-header.svg') center bottom/auto 224px repeat-x;border-bottom:6px solid #749956;box-shadow:0 4px #bed894;image-rendering:pixelated;color:var(--ink)}
 .header-inner{min-height:176px;padding-top:24px;padding-bottom:28px;gap:24px}
-.brand{padding:9px 18px 11px 12px;background:#fff1c8;border:14px solid transparent;border-image:url('/theme/wood-frame.svg') 8 / 14px stretch;box-shadow:0 6px 0 #42664c30;gap:12px}
+.brand{padding:9px 18px 11px 10px;background:#fff1c8;border:14px solid transparent;border-image:url('/theme/wood-frame.svg') 8 / 14px stretch;box-shadow:0 6px 0 #42664c30;gap:5px}
 .brand-name{color:#6b3e27;font-size:2.35rem;text-shadow:1px 2px #ffdc83}.brand p{color:#775039;letter-spacing:.12em;font-size:.9rem;margin-top:5px}.brand>.sprite{width:48px;height:48px;filter:drop-shadow(2px 3px 0 #9d773544)}
 .header-right{flex-wrap:wrap;justify-content:flex-end;gap:8px 12px;max-width:420px;padding:10px 14px;background:#fff6dceF;border:2px solid #729e82;box-shadow:3px 3px 0 #50735430}.save-status{color:#4f623e}.language-switch{border-radius:0}.language-switch .btn{border-radius:0}
 .journal{padding-top:22px}.nav-strip{margin-bottom:18px}.nav-caption{color:#53452f;background:#fff4ce;padding:5px 12px;border:2px solid #ab8d54;font-size:1rem;box-shadow:2px 2px #90ac6940}
@@ -49,7 +49,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:380px){.brand-name{font-size:1.6rem}.brand>.sprite{width:40px;height:40px}.header-right{padding:6px}.language-switch .btn{padding:6px}.header-right .save-status{max-width:60px}.crop-compare{grid-template-columns:1fr}}
 
 /* Small celebrations, never continuous motion. */
-.krobus-buddy{position:relative;flex:none;z-index:40}.krobus-button{display:grid;place-items:center;border:0;background:transparent;padding:2px;min-width:48px;min-height:48px;cursor:pointer}.krobus-button>span{display:block}.krobus-button .sprite{width:48px;height:48px;filter:drop-shadow(2px 3px #68472c30)}
+.krobus-buddy{position:relative;flex:none;z-index:40}.krobus-button{display:grid;place-items:center;border:0;background:transparent;padding:0;min-width:48px;min-height:48px;cursor:pointer}.krobus-button>span{display:block}.krobus-button .sprite{width:48px;height:48px;filter:drop-shadow(2px 3px #68472c30)}
 .krobus-comment{position:absolute;top:calc(100% + 12px);left:0;width:235px;max-width:calc(100vw - 44px);padding:12px 14px;background:#fff4d5;border:10px solid transparent;border-image:url('/theme/lilac-frame.svg') 8 / 10px stretch;box-shadow:3px 4px #58416a22;color:#584265;font:18px/1.4 FarmHand,cursive;letter-spacing:0;z-index:45;pointer-events:none}
 html[data-effects="on"] .krobus-hello{animation:krobus-hop 650ms steps(7,end) 1}
 html[data-effects="on"] .krobus-button:hover>span:not(.krobus-hello){animation:krobus-peek 650ms steps(7,end) 1}
