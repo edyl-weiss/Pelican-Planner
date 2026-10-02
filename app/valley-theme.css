@@ -155,3 +155,13 @@ html[data-effects="on"] .season-details i{animation:season-drift 4.5s ease-in-ou
 .community-center-card:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0 49%,#ffffff24 50%,transparent 51%) 0 0/10px 10px;pointer-events:none;opacity:.32}
 .community-center-card>*{position:relative}.community-center-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.community-center-title{display:flex;align-items:center;gap:9px}.community-center-title>.sprite{background:#f7f3ce;padding:3px;box-shadow:0 0 0 2px #83925d}.community-center-title h3{font-size:1.42rem;color:#45603d}.community-center-title p{font-size:.88rem;color:#6c6248;margin-top:2px}.community-center-head>strong{font-family:FarmPixel,monospace;font-size:1.55rem;color:#4d683f;white-space:nowrap}.community-center-head>strong span{font-size:.95rem;color:#777052;margin-left:2px}.community-room-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:11px 0 10px;padding:5px;background:#d2d8a8;box-shadow:inset 0 0 0 2px #9aa370}.community-room-strip img{width:100%;height:34px;object-fit:cover;object-position:center;image-rendering:pixelated;background:#c4ca98;box-shadow:0 0 0 1px #7f835d}.community-progress{height:13px!important}.community-center-open{width:100%;margin-top:10px;background:#f3d477!important;border-color:#8d622c!important;color:#513718!important;box-shadow:inset 0 2px #fff0ae,inset 0 -3px #c99738!important}.community-center-open:hover{background:#ffe596!important}
 @media(max-width:900px){.community-room-strip img{height:30px}.community-center-title h3{font-size:1.3rem}}
+
+/* Keep the outlook icon and caption together as one centered unit. */
+.outlook-main{display:flex;flex:0 1 auto;width:fit-content;max-width:100%;gap:3px;margin-inline:auto;justify-content:center}
+.outlook-main>.sprite,.outlook-main>.sprite-fallback{flex:0 0 26px;width:26px;height:26px}
+.outlook-main>.outlook-activity,.outlook-main>span:not(.sprite-fallback){flex:0 1 auto;width:auto;min-width:0;margin:0;text-align:left;line-height:1.25;overflow-wrap:anywhere}
+.community-room-image{position:relative;display:block;min-width:0}
+.community-room-image img{display:block}
+.room-complete-check{position:absolute;z-index:2;inset:0;display:flex;align-items:center;justify-content:center;color:#39d353;font-family:Arial,sans-serif;font-size:42px;font-weight:900;line-height:1;pointer-events:none;text-shadow:-2px -2px 0 #174b26,2px -2px 0 #174b26,-2px 2px 0 #174b26,2px 2px 0 #174b26,0 3px 2px #102c2580}
+.room-tab .room-complete-check{bottom:12px;font-size:40px}
+.community-room-image .room-complete-check{font-size:34px}
