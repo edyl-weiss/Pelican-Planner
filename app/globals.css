@@ -145,3 +145,10 @@ html[data-effects="off"] *,html[data-effects="off"] *:before,html[data-effects="
 @media(max-width:700px){.weather-strip{align-items:center;text-align:center}.day-controls{align-items:center}}
 
 .weather-strip{display:grid;grid-template-columns:repeat(3,max-content);align-items:center;justify-content:center;gap:12px}.weather-status-cell{display:inline-flex;align-items:center;justify-content:center;gap:5px;text-align:center;white-space:nowrap}.weather-status-cell .sprite,.weather-status-cell svg{flex:0 0 auto}@media(max-width:700px){.weather-strip{grid-template-columns:1fr;gap:2px}.weather-status-cell{justify-content:center}.weather-strip .muted{display:inline-flex}}
+
+/* Keep the weather/luck updater clear of the Next day action. */
+@media(min-width:701px){
+  .day-controls{justify-content:flex-end;gap:22px;margin-left:auto}
+  .day-controls .weather-strip{max-width:none;width:max-content;justify-self:end;margin-right:2px}
+  .next-day-button{position:relative;z-index:1}
+}
