@@ -228,3 +228,58 @@ html[data-effects="off"] .junimo-background{display:none}
 @media(prefers-reduced-motion:reduce){.junimo-background{display:none!important}}
 @media(max-width:1050px){.junimo-background{opacity:.2}.junimo-1{left:4px}.junimo-2{right:4px}.junimo-3{left:8px}.background-junimo,.background-junimo img{width:52px;height:52px}}
 @media(max-width:700px){.junimo-background{opacity:.16}.junimo-3{display:none}.junimo-1{top:215px;left:-8px}.junimo-2{top:62%;right:-8px}.background-junimo,.background-junimo img{width:46px;height:46px}}
+
+/* More quiet Valley life: canonical Wiki pet, butterfly, and snow animations stay in the page margins. */
+.ambient-sprite{position:absolute;display:block;pointer-events:none;transform-origin:center;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.1));will-change:transform}
+.ambient-sprite img{display:block;width:100%;height:100%;object-fit:contain;image-rendering:pixelated}
+
+/* Two extra Junimos only show where there is enough breathing room. */
+.junimo-4{top:72%;right:max(24px,calc(50% - 655px));transform:rotate(-3deg) scale(.78)}
+.junimo-5{top:35%;left:max(30px,calc(50% - 650px));transform:rotate(5deg) scale(.72)}
+html[data-effects="on"] .junimo-4{animation:junimo-float-b 10.5s ease-in-out -3.4s infinite alternate-reverse}
+html[data-effects="on"] .junimo-5{animation:junimo-float-a 11.5s ease-in-out -6.1s infinite alternate}
+
+/* Pets feel like tiny residents at the edge of the journal rather than stickers on the content. */
+.ambient-cat{width:58px;height:58px;left:max(8px,calc(50% - 715px));top:58%;opacity:.48;transform:rotate(-2deg)}
+.ambient-dog{width:70px;height:70px;right:max(4px,calc(50% - 720px));bottom:46px;opacity:.43;transform:rotate(2deg)}
+html[data-effects="on"] .ambient-cat{animation:pet-breathe 12s ease-in-out -2s infinite alternate}
+html[data-effects="on"] .ambient-dog{animation:pet-breathe 14s ease-in-out -7s infinite alternate-reverse}
+@keyframes pet-breathe{from{translate:0 0}to{translate:0 -5px}}
+
+/* Butterflies are spring/summer-only and deliberately sparse. */
+.ambient-butterfly{width:46px;height:35px;opacity:.42}
+.butterfly-1{top:29%;right:max(20px,calc(50% - 665px));transform:rotate(-9deg)}
+.butterfly-2{top:82%;left:max(26px,calc(50% - 650px));transform:rotate(11deg) scale(.82)}
+html[data-effects="on"] .butterfly-1{animation:butterfly-drift-a 8s ease-in-out -1.5s infinite alternate}
+html[data-effects="on"] .butterfly-2{animation:butterfly-drift-b 10s ease-in-out -5s infinite alternate-reverse}
+@keyframes butterfly-drift-a{from{translate:-4px 7px;rotate:-4deg}to{translate:8px -8px;rotate:5deg}}
+@keyframes butterfly-drift-b{from{translate:6px 5px;rotate:5deg}to{translate:-7px -7px;rotate:-5deg}}
+
+/* Winter gets tiny looping snow puffs in place of butterflies. */
+.ambient-snow{width:34px;height:34px;opacity:.3;filter:none}
+.snow-1{top:25%;left:max(12px,calc(50% - 690px))}
+.snow-2{top:53%;right:max(10px,calc(50% - 682px));transform:scale(.82)}
+.snow-3{top:78%;left:max(36px,calc(50% - 645px));transform:scale(.72)}
+html[data-effects="on"] .snow-1{animation:snow-drift 8s linear -1s infinite}
+html[data-effects="on"] .snow-2{animation:snow-drift 10s linear -5s infinite}
+html[data-effects="on"] .snow-3{animation:snow-drift 12s linear -8s infinite}
+@keyframes snow-drift{0%{translate:0 -5px}50%{translate:9px 8px}100%{translate:-4px 18px}}
+
+/* Seasonal tuning keeps the ambient cast integrated with the journal palette. */
+.junimo-background[data-season="Spring"] :is(.ambient-cat,.ambient-dog){opacity:.44}
+.junimo-background[data-season="Summer"] :is(.ambient-cat,.ambient-dog){opacity:.46}
+.junimo-background[data-season="Fall"] :is(.ambient-cat,.ambient-dog){opacity:.4}
+.junimo-background[data-season="Winter"] :is(.ambient-cat,.ambient-dog){opacity:.36;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.08)) brightness(1.05)}
+
+@media(max-width:1050px){
+ .junimo-4,.junimo-5{display:none}
+ .ambient-cat{left:-8px;width:50px;height:50px;opacity:.3}
+ .ambient-dog{right:-12px;width:60px;height:60px;opacity:.3}
+ .ambient-butterfly{width:38px;height:30px;opacity:.28}
+}
+@media(max-width:700px){
+ .ambient-dog,.butterfly-2,.snow-2,.snow-3{display:none}
+ .ambient-cat{top:76%;left:-14px;width:44px;height:44px;opacity:.22}
+ .butterfly-1{top:36%;right:-8px;width:34px;height:27px;opacity:.22}
+ .snow-1{top:40%;left:-4px;opacity:.2}
+}
