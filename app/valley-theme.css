@@ -688,7 +688,7 @@ button.villager-gift-chip{font:inherit;cursor:pointer;}
 /* Animated Junimo pointer: a lightweight follower avoids inconsistent animated CSS cursor support. */
 .animated-junimo-cursor{position:fixed;left:0;top:0;width:42px;height:42px;z-index:10000;pointer-events:none;opacity:0;transform:translate3d(-80px,-80px,0);transition:opacity .08s ease;will-change:transform;image-rendering:pixelated}
 .animated-junimo-cursor[data-enabled="true"][data-visible="true"]{opacity:1}
-.animated-junimo-cursor-tip{position:absolute;left:0;top:0;width:11px;height:15px;z-index:2;background:#fff7dd;clip-path:polygon(0 0,100% 64%,61% 68%,80% 100%,62% 100%,45% 72%,0 100%);filter:drop-shadow(-1px 0 0 #111) drop-shadow(1px 0 0 #111) drop-shadow(0 -1px 0 #111) drop-shadow(0 1px 0 #111);image-rendering:pixelated}
+.animated-junimo-cursor-tip{position:absolute;left:0;top:0;width:11px;height:15px;z-index:2;background:#242424;clip-path:polygon(0 0,100% 64%,61% 68%,80% 100%,62% 100%,45% 72%,0 100%);filter:drop-shadow(1px 1px 0 rgba(255,255,255,.28));image-rendering:pixelated}
 .animated-junimo-cursor-bob{position:absolute;left:8px;top:6px;display:block;width:32px;height:32px;transform-origin:50% 70%;animation:junimo-cursor-bob 1.92s steps(4,end) infinite}
 .animated-junimo-cursor img{display:block;width:32px;height:32px;object-fit:contain;image-rendering:pixelated;user-select:none;-webkit-user-drag:none;filter:drop-shadow(1px 2px 0 rgba(48,64,39,.18))}
 @keyframes junimo-cursor-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
