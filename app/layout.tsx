@@ -3,6 +3,7 @@ import "./globals.css";
 import "./valley-theme.css";
 import {LocaleProvider} from "./locale-provider";
 import PixelEffects from "./pixel-effects";
+import AnimatedJunimoCursor from "./animated-junimo-cursor";
 
 export const metadata: Metadata = {
   title: "Pelican Planner",
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased"><LocaleProvider>{children}<PixelEffects/></LocaleProvider></body>
+      <body className="antialiased"><LocaleProvider>{children}<PixelEffects/><AnimatedJunimoCursor/></LocaleProvider></body>
     </html>
   );
 }
