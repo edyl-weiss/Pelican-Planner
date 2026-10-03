@@ -191,8 +191,10 @@ html[data-effects="on"] .community-room-image:hover img{animation:sprite-nod 420
 html[data-effects="on"] .community-center-open:hover .sprite{animation:sprite-wiggle 360ms steps(5,end)}
 
 /* Seasonal Junimos: the official 48px Wiki animation sits behind the planner as a quiet seasonal detail. */
-.site-header,.journal,.footer{position:relative;z-index:1}
-.junimo-background{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+/* Keep ambient sprites in the planner’s own stacking context on every breakpoint. */
+.farm-app{position:relative;isolation:isolate;min-height:100vh}
+.site-header,.journal,.footer{position:relative;z-index:2}
+.junimo-background{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
 .background-junimo{position:absolute;display:block;width:64px;height:64px;opacity:.36;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.14));transform-origin:center;will-change:transform}
 .background-junimo img{display:block;width:64px;height:64px;image-rendering:pixelated}
 .junimo-1{top:230px;left:max(10px,calc(50% - 690px));transform:rotate(-4deg)}
@@ -282,4 +284,118 @@ html[data-effects="on"] .snow-3{animation:snow-drift 12s linear -8s infinite}
  .ambient-cat{top:76%;left:-14px;width:44px;height:44px;opacity:.22}
  .butterfly-1{top:36%;right:-8px;width:34px;height:27px;opacity:.22}
  .snow-1{top:40%;left:-4px;opacity:.2}
+}
+
+/* Desktop uses a viewport-backed ambient plane. This avoids wide-layout stacking/clipping while keeping every sprite behind the UI. */
+@media(min-width:1051px){
+  .junimo-background{position:fixed;inset:0;width:100vw;height:100vh;display:block;visibility:visible;opacity:1;overflow:hidden}
+  .background-junimo,.ambient-sprite{visibility:visible}
+  .junimo-1{top:21vh;left:max(18px,calc(50vw - 650px))}
+  .junimo-2{top:47vh;right:max(18px,calc(50vw - 650px))}
+  .junimo-3{bottom:11vh;left:max(46px,calc(50vw - 620px))}
+  .junimo-4{top:70vh;right:max(54px,calc(50vw - 615px))}
+  .junimo-5{top:34vh;left:max(66px,calc(50vw - 610px))}
+  .ambient-cat{top:58vh;left:max(12px,calc(50vw - 682px))}
+  .ambient-dog{bottom:5vh;right:max(10px,calc(50vw - 688px))}
+  .butterfly-1{top:28vh;right:max(48px,calc(50vw - 620px))}
+  .butterfly-2{top:80vh;left:max(72px,calc(50vw - 600px))}
+  .snow-1{top:24vh;left:max(28px,calc(50vw - 650px))}
+  .snow-2{top:52vh;right:max(36px,calc(50vw - 640px))}
+  .snow-3{top:76vh;left:max(88px,calc(50vw - 590px))}
+}
+html[data-effects="off"] .junimo-background{display:none}
+@media(prefers-reduced-motion:reduce){.junimo-background{display:none!important}}
+
+/* Encyclopedia: local-first Stardew reference. Broad searches become a chooser instead of guessing. */
+.farm-tabs [data-slot=tabs-trigger]:nth-child(5){background:#f2cfae;box-shadow:inset 0 3px #fff0da,inset 0 -4px #d5a77c,3px 3px #7b59362b}
+.encyclopedia-shell{display:grid;gap:16px}.encyclopedia-search-panel,.encyclopedia-results-panel,.encyclopedia-article{max-width:1120px;width:100%;margin:0 auto}.encyclopedia-search-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}.encyclopedia-search-heading>div:first-child{max-width:720px}.encyclopedia-search-heading h1{margin:2px 0 6px}.encyclopedia-search-heading p:last-child{line-height:1.45}.encyclopedia-offline-action{display:flex;flex-direction:column;align-items:flex-end;gap:5px;max-width:300px}.encyclopedia-offline-action small{text-align:right;color:#6c5a42;line-height:1.25}.encyclopedia-search-form{margin-top:18px;display:grid;gap:10px}.encyclopedia-search-box{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px;padding:6px 7px 6px 11px;background:#fff9e8;border:3px solid #a77b45;box-shadow:inset 2px 2px #ead5aa}.encyclopedia-search-box input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#423324;padding:7px 4px;font-size:1.08rem}.encyclopedia-search-box:focus-within{outline:3px solid #557b67;outline-offset:3px}.encyclopedia-category-row{display:flex;gap:7px;flex-wrap:wrap}.encyclopedia-category-row .btn{background:#f4e0b4}.encyclopedia-category-row .btn.selected{background:#dce9b8;border-color:#6c8250;box-shadow:inset 0 2px #f4f9df,0 2px #7b6d4935}.encyclopedia-results-grid,.encyclopedia-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.encyclopedia-feature-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.encyclopedia-result-card{display:grid;grid-template-columns:50px minmax(0,1fr);gap:10px;align-items:center;text-align:left;padding:11px 12px;border:2px solid #b49b6e;background:#fff4cf;color:#493824;box-shadow:inset 0 3px #fffbe9,3px 3px #72553a18}.encyclopedia-result-card:hover,.encyclopedia-result-card:focus-visible{background:#ffedb0;border-color:#8d7148}.encyclopedia-result-card>span{min-width:0}.encyclopedia-result-card strong,.encyclopedia-result-card small,.encyclopedia-result-card em{display:block}.encyclopedia-result-card strong{font-size:1.18rem;line-height:1.15}.encyclopedia-result-card small{margin-top:2px;color:#705d45}.encyclopedia-result-card em{margin-top:4px;font-style:normal;font-size:.94rem;line-height:1.3;color:#655339;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.encyclopedia-result-card.compact{grid-template-columns:38px minmax(0,1fr);padding:8px 10px}.encyclopedia-result-card.compact em{display:none}.encyclopedia-overview-hit{padding:12px;margin-bottom:16px;background:#e6efca;border:3px solid #9bad72}.encyclopedia-overview-hit .encyclopedia-result-card{margin-top:6px;background:#f8f5d9}.encyclopedia-refine-title{margin:4px 0 10px;font-size:1.45rem}.encyclopedia-empty{text-align:center;padding:28px 12px}.encyclopedia-empty h2{margin-top:8px}.encyclopedia-empty p{margin:6px auto 14px;max-width:620px}.encyclopedia-article{background:#fffdf0;border:3px solid #bba583;box-shadow:inset 0 0 0 4px #fff9e7,0 5px 0 #bba58329;padding:22px}.encyclopedia-article-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.encyclopedia-local-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border:2px solid #789264;background:#e2efc3;color:#365638;font-size:.92rem}.encyclopedia-title-row{display:flex;align-items:center;gap:16px;margin-top:12px}.encyclopedia-title-row h1{font-size:2.6rem}.encyclopedia-hero-sprite{border:0;background:transparent;padding:0}.encyclopedia-summary{margin-top:12px;font-size:1.13rem;line-height:1.5}.encyclopedia-facts,.encyclopedia-related,.encyclopedia-sources{margin-top:22px;padding-top:18px;border-top:2px dotted #cbb783}.encyclopedia-facts h2,.encyclopedia-related h2,.encyclopedia-sources h2{font-size:1.65rem;margin-bottom:9px}.encyclopedia-facts ul{margin:0;padding-left:24px}.encyclopedia-facts li{margin:7px 0;line-height:1.45}.encyclopedia-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.encyclopedia-source-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.encyclopedia-inline-entity{display:inline-flex;align-items:center;gap:2px;white-space:normal}.encyclopedia-inline-sprite{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;padding:0 2px;vertical-align:middle;transform:translateY(2px)}.encyclopedia-inline-sprite:hover .sprite,.encyclopedia-inline-sprite:focus-visible .sprite{transform:translateY(-2px);filter:drop-shadow(1px 2px #6c503932)}
+html[data-effects="on"] .encyclopedia-inline-sprite:hover .sprite{animation:sprite-nod 360ms steps(5,end)}
+
+/* The journal stays readable while letting the ambient Valley sprites peek through on desktop. */
+@media(min-width:701px){
+ .paper,.day-detail,.topline,.notice,.community-center-card,.encyclopedia-article{background-color:rgba(255,253,240,.89);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+ .encyclopedia-feature-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .farm-tabs [data-slot=tabs-trigger]{padding-left:13px;padding-right:13px}
+}
+@media(max-width:980px){.encyclopedia-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.encyclopedia-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.encyclopedia-search-heading{flex-direction:column}.encyclopedia-offline-action{align-items:flex-start;max-width:none}.encyclopedia-offline-action small{text-align:left}}
+@media(max-width:700px){
+ .farm-tabs [data-slot=tabs-trigger]{font-size:1.02rem;padding:6px 4px;gap:3px}.farm-tabs .sprite{width:21px;height:21px}.farm-tabs[data-slot=tabs-list]{gap:3px}
+ .paper,.day-detail,.topline,.notice,.community-center-card,.encyclopedia-article{background-color:rgba(255,253,240,.96)}
+ .encyclopedia-search-heading{gap:14px}.encyclopedia-search-box{grid-template-columns:auto minmax(0,1fr);padding:8px}.encyclopedia-search-box>.btn{grid-column:1/-1;width:100%}.encyclopedia-category-row{flex-wrap:nowrap;overflow-x:auto;padding:2px 0 6px;scrollbar-width:thin}.encyclopedia-category-row .btn{flex:0 0 auto}.encyclopedia-results-grid,.encyclopedia-feature-grid,.encyclopedia-related-grid{grid-template-columns:1fr}.encyclopedia-result-card{grid-template-columns:44px minmax(0,1fr)}.encyclopedia-title-row h1{font-size:2.2rem}.encyclopedia-title-row{align-items:flex-start}.encyclopedia-article{padding:15px}.encyclopedia-local-badge{font-size:.82rem}
+}
+@media(max-width:420px){.farm-tabs [data-slot=tabs-trigger]{font-size:.92rem;padding:5px 2px}.farm-tabs .sprite{width:19px;height:19px}}
+/* Five top-level tabs need a tighter phone treatment now that Encyclopedia is first-class. */
+@media(max-width:480px){
+ .farm-tabs [data-slot=tabs-trigger]{height:54px;min-width:0;padding:3px 1px;font-size:.78rem;line-height:1;gap:1px;flex-direction:column;justify-content:center;white-space:normal;text-align:center}
+ .farm-tabs .sprite{width:17px;height:17px}
+ .farm-tabs [data-slot=tabs-trigger]:nth-child(4){font-size:.72rem;line-height:.9;overflow-wrap:anywhere;letter-spacing:-.025em}
+}
+
+/* Compact layout guardrails: keep every journal surface comfortably inside its edges. */
+.journal,.paper,.day-detail,.notice,.community-center-card,.encyclopedia-search-panel,.encyclopedia-results-panel,.encyclopedia-article{min-width:0}
+.paper,.day-detail,.notice,.community-center-card{overflow-wrap:anywhere}
+.section-heading,.section-heading>*,.page-title,.topline>*,.encyclopedia-search-heading>*,.encyclopedia-title-row>*,.encyclopedia-article-top>*{min-width:0}
+.section-heading p,.page-title p,.notice p,.day-detail p,.encyclopedia-search-heading p,.encyclopedia-summary,.encyclopedia-facts li,.encyclopedia-sources p{overflow-wrap:anywhere}
+
+/* Encyclopedia spacing is deliberately a little denser than the main planner. */
+.encyclopedia-shell{gap:14px}
+.encyclopedia-search-panel,.encyclopedia-results-panel{padding:18px 20px}
+.encyclopedia-search-heading{gap:18px}
+.encyclopedia-search-heading>div:first-child{min-width:0}
+.encyclopedia-search-heading h1{font-size:2.35rem;line-height:1.04}
+.encyclopedia-offline-action{min-width:0}
+.encyclopedia-offline-action .btn{max-width:100%;white-space:normal;text-align:center}
+.encyclopedia-search-form{margin-top:14px;gap:9px}
+.encyclopedia-search-box{min-width:0}
+.encyclopedia-search-box input{overflow:hidden;text-overflow:ellipsis}
+.encyclopedia-category-row .btn{min-height:36px;padding:5px 10px}
+.encyclopedia-result-card{min-width:0;overflow:hidden;padding:10px 11px}
+.encyclopedia-result-card>span,.encyclopedia-result-card strong,.encyclopedia-result-card small,.encyclopedia-result-card em{min-width:0;overflow-wrap:anywhere}
+.encyclopedia-result-card strong{font-size:1.12rem}
+.encyclopedia-overview-hit{padding:10px;margin-bottom:13px}
+.encyclopedia-refine-title{margin:2px 0 8px}
+.encyclopedia-article{overflow:hidden;padding:19px 20px}
+.encyclopedia-article-top{flex-wrap:wrap}
+.encyclopedia-title-row{gap:13px;margin-top:10px}
+.encyclopedia-title-row h1{max-width:100%;font-size:2.4rem;line-height:1.04;overflow-wrap:anywhere}
+.encyclopedia-summary{margin-top:10px;font-size:1.08rem;line-height:1.43}
+.encyclopedia-facts,.encyclopedia-related,.encyclopedia-sources{margin-top:18px;padding-top:14px}
+.encyclopedia-facts h2,.encyclopedia-related h2,.encyclopedia-sources h2{font-size:1.55rem;margin-bottom:7px}
+.encyclopedia-facts ul{padding-left:21px;padding-right:2px}
+.encyclopedia-facts li{margin:5px 0;line-height:1.4}
+.encyclopedia-source-links .btn{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center}
+.encyclopedia-inline-entity{max-width:100%}
+
+@media(max-width:700px){
+ .journal{padding-left:12px;padding-right:12px}
+ .paper,.day-detail{padding:14px}
+ .section-heading{gap:9px;margin-bottom:11px}.section-heading h2{font-size:1.7rem;line-height:1.08}
+ .notice{padding:13px 14px}
+ .encyclopedia-shell{gap:11px}
+ .encyclopedia-search-panel,.encyclopedia-results-panel,.encyclopedia-article{padding:14px}
+ .encyclopedia-search-heading{gap:11px}
+ .encyclopedia-search-heading h1{font-size:2.05rem}
+ .encyclopedia-offline-action{width:100%;gap:4px}.encyclopedia-offline-action .btn{width:100%}.encyclopedia-offline-action small{width:100%}
+ .encyclopedia-search-form{margin-top:12px}
+ .encyclopedia-search-box{gap:6px;padding:7px 8px}.encyclopedia-search-box input{padding:6px 2px;font-size:1rem}
+ .encyclopedia-category-row{margin-inline:-2px;padding-inline:2px}
+ .encyclopedia-result-card{grid-template-columns:40px minmax(0,1fr);gap:9px;padding:9px 10px}
+ .encyclopedia-result-card strong{font-size:1.08rem}.encyclopedia-result-card em{font-size:.9rem}
+ .encyclopedia-overview-hit{padding:9px}
+ .encyclopedia-title-row{gap:11px}.encyclopedia-title-row h1{font-size:2rem}
+ .encyclopedia-summary{font-size:1.04rem}
+ .encyclopedia-facts,.encyclopedia-related,.encyclopedia-sources{margin-top:16px;padding-top:12px}
+ .encyclopedia-facts ul{padding-left:20px}
+ .encyclopedia-source-links{gap:6px}.encyclopedia-source-links .btn{flex:1 1 180px}
+}
+@media(max-width:420px){
+ .journal{padding-left:9px;padding-right:9px}
+ .paper,.day-detail,.notice,.community-center-card,.encyclopedia-search-panel,.encyclopedia-results-panel,.encyclopedia-article{padding-left:11px;padding-right:11px}
+ .encyclopedia-search-box{grid-template-columns:18px minmax(0,1fr);padding:6px 7px}
+ .encyclopedia-search-box svg{width:18px;height:18px}
+ .encyclopedia-result-card{grid-template-columns:36px minmax(0,1fr);gap:8px;padding:8px 9px}
+ .encyclopedia-result-card strong{font-size:1.02rem}.encyclopedia-result-card small{font-size:.9rem}.encyclopedia-result-card em{font-size:.86rem}
+ .encyclopedia-title-row{gap:9px}.encyclopedia-title-row h1{font-size:1.8rem}
+ .encyclopedia-local-badge{padding:4px 7px}
+ .encyclopedia-facts h2,.encyclopedia-related h2,.encyclopedia-sources h2{font-size:1.4rem}
 }
