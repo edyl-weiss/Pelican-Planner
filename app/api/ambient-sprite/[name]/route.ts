@@ -3,22 +3,6 @@ const SOURCES:Record<string,string[]>={
     'https://stardewvalleywiki.com/mediawiki/images/5/57/Junimo.gif',
     'https://wiki.stardewvalley.net/mediawiki/images/5/57/Junimo.gif',
   ],
-  butterfly:[
-    'https://stardewvalleywiki.com/mediawiki/images/6/6c/ButterflyAnimated.gif',
-    'https://wiki.stardewvalley.net/mediawiki/images/6/6c/ButterflyAnimated.gif',
-  ],
-  cat:[
-    'https://stardewvalleywiki.com/mediawiki/images/2/29/Cat.gif',
-    'https://wiki.stardewvalley.net/mediawiki/images/2/29/Cat.gif',
-  ],
-  dog:[
-    'https://stardewvalleywiki.com/mediawiki/images/9/99/Dog.gif',
-    'https://wiki.stardewvalley.net/mediawiki/images/9/99/Dog.gif',
-  ],
-  snow:[
-    'https://stardewvalleywiki.com/mediawiki/images/c/c0/SnowAnimated.gif',
-    'https://wiki.stardewvalley.net/mediawiki/images/c/c0/SnowAnimated.gif',
-  ],
 };
 
 export const runtime='nodejs';

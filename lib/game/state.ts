@@ -24,4 +24,3 @@ export type RunState=z.infer<typeof runSchema>;
 export type GameDate=RunState['date'];
 export type Plot=RunState['plots'][number];
 export const newRun=():RunState=>({activity:{days:[],showDaily:true},version:1,plannerMode:'full',simpleFarmSize:'Medium',name:'My Farm',farm:'Standard',date:{season:'Spring',day:1,year:1},gold:500,reserve:0,mineFloor:0,farming:0,goal:'Balanced',level:2,experience:'Familiar',luck:'Unknown',weather:'Sunny',tomorrow:'Unknown',noFishing:false,festivals:true,spoilers:'Normal',unlocks:[],done:[],donated:[],mutedSuggestions:[],inventory:[],chestContents:[],plots:[],reservations:[],notes:[],history:[],tiller:false,artisan:false});
-export function validateRun(value:unknown):RunState{return runSchema.parse(value)}

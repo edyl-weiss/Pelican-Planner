@@ -1,6 +1,5 @@
 export const SEASONS = ['Spring', 'Summer', 'Fall', 'Winter'] as const;
 export type Season = typeof SEASONS[number];
-export const DAYS_PER_SEASON = 28;
 export const SOURCE_ROOT = 'https://stardewvalleywiki.com/';
 export const wiki = (name: string) => SOURCE_ROOT + encodeURIComponent(name.replaceAll(' ', '_'));
 export interface Crop { name: string; seasons: Season[]; days: number; regrow: number; seed: number; sell: number; yield: number; fruit?: boolean; note?: string; buyable?:boolean }

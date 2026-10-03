@@ -5,7 +5,7 @@ import {useLocale} from './locale-provider';
 import {GoldAmount,RichText} from './farm-ui';
 import type {Crop} from '@/lib/game/data';
 import type {Plot,GameDate} from '@/lib/game/state';
-import {absoluteDay,dateLabel,fromDay,gold} from '@/lib/game/planner';
+import {absoluteDay,dateLabel,fromDay} from '@/lib/game/planner';
 import {obtainMethods} from '@/lib/game/obtain';
 const units:Record<string,number>={zero:0,one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19};
 const tens:Record<string,number>={twenty:20,thirty:30,forty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90};

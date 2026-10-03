@@ -60,7 +60,6 @@ export function lastPlantDay(c:Crop,season:GameDate['season']){return c.seasons.
 export function plotCrop(p:Plot):Crop|undefined{return p.customCrop?{name:p.crop,days:0,seed:0,...p.customCrop}:crops.find(c=>c.name===p.crop)}
 export function plotAlive(p:Plot,date:GameDate):boolean{const c=plotCrop(p);if(!c||absoluteDay(date)<absoluteDay(p.planted))return false;if(p.location&&p.location!=='Farm')return true;for(let day=absoluteDay(p.planted);day<=absoluteDay(date);){const d=fromDay(day);if(!c.seasons.includes(d.season))return false;day+=29-d.day;}return c.seasons.includes(date.season)}
 export interface Task{id:string;name:string;entity:string;detail:string;why:string;skip:string;group:0|1|2;category:string;confidence:string}
-export const suggestionKey=(task:Pick<Task,'category'|'entity'>)=>task.category+'::'+task.entity;
 export function makePlan(run:RunState):Task[]{
  const lucky=['Good','Very good'].includes(run.luck);const unlucky=['Bad','Very bad'].includes(run.luck);
  const list:Task[]=[];let plantingBudget=available(run,'Gold');const day=absoluteDay(run.date);const d=run.date;
