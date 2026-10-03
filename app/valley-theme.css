@@ -415,7 +415,7 @@ button.villager-gift-chip{font:inherit;cursor:pointer;}
  .paper,.day-detail,.topline,.notice,.play-layout>aside>.community-center-card,.encyclopedia-search-panel,.encyclopedia-results-panel,.encyclopedia-article{background-color:rgba(255,250,231,.68)!important;backdrop-filter:blur(8px) saturate(1.06);-webkit-backdrop-filter:blur(8px) saturate(1.06);}
  .play-layout>aside>section.gap-top,.outlook-day,.villager-quick-card,.villager-gift-group,.villager-universal-rules,.villager-heart-card{background-color:rgba(250,246,220,.62);backdrop-filter:blur(7px) saturate(1.05);-webkit-backdrop-filter:blur(7px) saturate(1.05);}
  .outlook-day:nth-child(2){background-color:rgba(247,217,186,.64);}.outlook-day:nth-child(3){background-color:rgba(230,218,242,.64);}
- .encyclopedia-browse-card,.encyclopedia-result-card,.villager-gift-chip{background-color:rgba(255,249,225,.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
+ .encyclopedia-browse-card,.encyclopedia-result-card,.villager-gift-chip{background-color:rgba(255,249,225,.76);}
 }
 
 /* Cozy Stardew notepad polish: pixel-stepped parchment, warm wood, soft glass. */
@@ -695,3 +695,7 @@ button.villager-gift-chip{font:inherit;cursor:pointer;}
 @media (hover:hover) and (pointer:fine){html,body,body a,body button,body [role="button"],body label,body summary,body select,body input[type="checkbox"],body input[type="radio"]{cursor:none}body input[type="text"],body input[type="search"],body input[type="email"],body input[type="number"],body textarea,body [contenteditable="true"]{cursor:text}}
 @media(prefers-reduced-motion:reduce){.animated-junimo-cursor-bob{animation:none}.animated-junimo-cursor{transition:none}}
 
+
+/* Encyclopedia performance: skip offscreen card paint and keep blur on parent panels only. */
+.encyclopedia-browse-card,.encyclopedia-result-card,.villager-gift-chip{content-visibility:auto;contain:layout paint style;contain-intrinsic-size:auto 106px;}
+.encyclopedia-browse-grid{contain:layout style;}

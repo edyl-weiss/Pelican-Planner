@@ -79,7 +79,7 @@ const curatedGear:EncyclopediaEntry[]=[
  ['Templar\'s Blade','templar blade','A sword in the broader weapon pool; use the source page for exact stats and acquisition details.'],
  ['Neptune\'s Glaive','neptune glaive','A sword that can appear through fishing treasure and other weapon sources.'],
  ['Dragontooth Cutlass','dragontooth sword','A late-game sword found through Ginger Island combat progression.'],
-].map(([title,alias,summary],index)=>({id:'gear-'+slug(title),title,aliases:[alias],category:'Tools & Gear' as const,summary,facts:['Exact damage, speed, defense, and special-effect values are left on the source page so the built-in summary stays version-resilient.'],related:index<2?['Sword','Weapons','Prismatic Shard']:['Sword','Weapons'],sources:[source(title)],keywords:['sword','weapon','combat']}));
+].map(([title,alias,summary],index)=>({id:'gear-'+slug(title),title,aliases:[alias],category:'Tools & Gear' as const,summary,facts:['Exact damage, speed, defense, and special-effect values are left on the source page so the built-in summary stays version-resilient.'],related:index<2?['Sword','Weapons','Prismatic Shard']:['Sword','Weapons'],sprite:spriteFor(title),sources:[source(title)],keywords:['sword','weapon','combat']}));
 
 function cropEntry(crop:Crop):EncyclopediaEntry{
  const facts=[
@@ -197,12 +197,25 @@ export const encyclopediaByTitle=new Map(encyclopediaEntries.map(entry=>[entry.t
 export const encyclopediaCategories:EncyclopediaCategory[]=['Overview','Crops','Fish','Villagers','Events','Bundles','Items','Tools & Gear','Places & Systems'];
 
 export function normalizeEncyclopediaQuery(text:string){return text.toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9\s-]+/g,' ').replace(/\s+/g,' ').trim()}
+
+type SearchRecord={entry:EncyclopediaEntry;title:string;aliases:string[];keywords:string[];body:string};
+const searchRecords:SearchRecord[]=encyclopediaEntries.map(entry=>({
+ entry,
+ title:normalizeEncyclopediaQuery(entry.title),
+ aliases:entry.aliases.map(normalizeEncyclopediaQuery),
+ keywords:entry.keywords.map(normalizeEncyclopediaQuery),
+ body:normalizeEncyclopediaQuery([entry.summary,...entry.facts,...entry.related].join(' ')),
+}));
+const searchRecordsByCategory=new Map<EncyclopediaCategory,SearchRecord[]>(encyclopediaCategories.map(category=>[category,searchRecords.filter(record=>record.entry.category===category)]));
+const exactLookup=new Map<string,EncyclopediaEntry>();
+for(const record of searchRecords){for(const key of [record.title,...record.aliases])if(key&&!exactLookup.has(key))exactLookup.set(key,record.entry)}
+
 export function searchEncyclopedia(query:string,category?:EncyclopediaCategory|'All'){
  const q=normalizeEncyclopediaQuery(query);const words=q.split(' ').filter(Boolean);
- const pool=category&&category!=='All'?encyclopediaEntries.filter(entry=>entry.category===category):encyclopediaEntries;
- if(!q)return pool.slice(0,24);
- const scored=pool.map(entry=>{
-  const title=normalizeEncyclopediaQuery(entry.title),aliases=entry.aliases.map(normalizeEncyclopediaQuery),keywords=entry.keywords.map(normalizeEncyclopediaQuery),body=normalizeEncyclopediaQuery([entry.summary,...entry.facts,...entry.related].join(' '));
+ const pool=category&&category!=='All'?searchRecordsByCategory.get(category)??[]:searchRecords;
+ if(!q)return pool.slice(0,24).map(record=>record.entry);
+ const scored=pool.map(record=>{
+  const {entry,title,aliases,keywords,body}=record;
   let score=0;let contextual=false;
   if(title===q)score=120;
   else if(aliases.includes(q))score=112;
@@ -210,7 +223,7 @@ export function searchEncyclopedia(query:string,category?:EncyclopediaCategory|'
   else if(aliases.some(x=>x.startsWith(q)))score=90;
   else if(title.includes(q))score=82;
   else if(aliases.some(x=>x.includes(q)))score=76;
-  else if(keywords.some(x=>x===q))score=72;
+  else if(keywords.includes(q))score=72;
   else if(keywords.some(x=>x.includes(q)))score=64;
   else if(words.length&&words.every(word=>title.includes(word)||aliases.some(x=>x.includes(word))||keywords.some(x=>x.includes(word))||body.includes(word))){score=48;contextual=true}
   else if(body.includes(q)){score=32;contextual=true}
@@ -222,6 +235,6 @@ export function searchEncyclopedia(query:string,category?:EncyclopediaCategory|'
  // with every entry that merely mentions it in a bundle, recipe, or related link.
  return (direct.length>=12?direct:[...direct,...contextual.slice(0,Math.max(0,36-direct.length))]).map(item=>item.entry);
 }
-export function exactEncyclopediaMatch(query:string){const q=normalizeEncyclopediaQuery(query);return encyclopediaEntries.find(entry=>normalizeEncyclopediaQuery(entry.title)===q||entry.aliases.some(alias=>normalizeEncyclopediaQuery(alias)===q))}
+export function exactEncyclopediaMatch(query:string){return exactLookup.get(normalizeEncyclopediaQuery(query))}
 export function encyclopediaSpritePath(entry:EncyclopediaEntry){if(!entry.sprite)return null;const record=registry[entry.sprite]??registry[entry.sprite+' Icon'];return record?.local_path??null}
 export function relatedEncyclopediaEntries(entry:EncyclopediaEntry){return entry.related.map(name=>encyclopediaByTitle.get(name.toLowerCase())).filter((item):item is EncyclopediaEntry=>!!item)}

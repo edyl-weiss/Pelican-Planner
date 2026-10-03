@@ -1510,5 +1510,257 @@
     "height": 24,
     "attribution": "Stardew Valley © ConcernedApe, via Stardew Valley Wiki",
     "checked_date": "2026-10-02"
+  },
+  "Garlic": {
+    "local_path": "/api/encyclopedia-sprite/garlic",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/garlic-d0f658.webp",
+    "source_page_url": "https://stardew.gs/crops/garlic/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Kale": {
+    "local_path": "/api/encyclopedia-sprite/kale",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/kale-71645c.webp",
+    "source_page_url": "https://stardew.gs/crops/kale/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Blue Jazz": {
+    "local_path": "/api/encyclopedia-sprite/blue-jazz",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/blue-jazz-ecd4ca.webp",
+    "source_page_url": "https://stardew.gs/crops/blue-jazz/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Tulip": {
+    "local_path": "/api/encyclopedia-sprite/tulip",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/tulip-e0e65f.webp",
+    "source_page_url": "https://stardew.gs/crops/tulip/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Rhubarb": {
+    "local_path": "/api/encyclopedia-sprite/rhubarb",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/rhubarb-98982e.webp",
+    "source_page_url": "https://stardew.gs/crops/rhubarb/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Radish": {
+    "local_path": "/api/encyclopedia-sprite/radish",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/radish-b8df1d.webp",
+    "source_page_url": "https://stardew.gs/crops/radish/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Hops": {
+    "local_path": "/api/encyclopedia-sprite/hops",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/hops-24dfb1.webp",
+    "source_page_url": "https://stardew.gs/crops/hops/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Summer Spangle": {
+    "local_path": "/api/encyclopedia-sprite/summer-spangle",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/summer-spangle-fdd7db.webp",
+    "source_page_url": "https://stardew.gs/crops/summer-spangle/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Starfruit": {
+    "local_path": "/api/encyclopedia-sprite/starfruit",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/starfruit-f322a2.webp",
+    "source_page_url": "https://stardew.gs/crops/starfruit/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Artichoke": {
+    "local_path": "/api/encyclopedia-sprite/artichoke",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/artichoke-a94710.webp",
+    "source_page_url": "https://stardew.gs/crops/artichoke/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Beet": {
+    "local_path": "/api/encyclopedia-sprite/beet",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/beet-bd0d67.webp",
+    "source_page_url": "https://stardew.gs/crops/beet/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Amaranth": {
+    "local_path": "/api/encyclopedia-sprite/amaranth",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/amaranth-95d5e1.webp",
+    "source_page_url": "https://stardew.gs/crops/amaranth/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Fairy Rose": {
+    "local_path": "/api/encyclopedia-sprite/fairy-rose",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/fairy-rose-114e5a.webp",
+    "source_page_url": "https://stardew.gs/crops/fairy-rose/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Sweet Gem Berry": {
+    "local_path": "/api/encyclopedia-sprite/sweet-gem-berry",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/sweet-gem-berry-d41592.webp",
+    "source_page_url": "https://stardew.gs/crops/sweet-gem-berry/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Carrot": {
+    "local_path": "/api/encyclopedia-sprite/carrot",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/carrot-7b8c96.webp",
+    "source_page_url": "https://stardew.gs/crops/carrot/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Summer Squash": {
+    "local_path": "/api/encyclopedia-sprite/summer-squash",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/summer-squash-84b862.webp",
+    "source_page_url": "https://stardew.gs/crops/summer-squash/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Broccoli": {
+    "local_path": "/api/encyclopedia-sprite/broccoli",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/broccoli-e650e3.webp",
+    "source_page_url": "https://stardew.gs/crops/broccoli/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Powdermelon": {
+    "local_path": "/api/encyclopedia-sprite/powdermelon",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/powdermelon-375666.webp",
+    "source_page_url": "https://stardew.gs/crops/powdermelon/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Infinity Blade": {
+    "local_path": "/api/encyclopedia-sprite/infinity-blade",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/infinity-blade-e90dc8.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Galaxy Sword": {
+    "local_path": "/api/encyclopedia-sprite/galaxy-sword",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/galaxy-sword-a18f63.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Dragontooth Cutlass": {
+    "local_path": "/api/encyclopedia-sprite/dragontooth-cutlass",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/dragontooth-cutlass-eab81f.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Lava Katana": {
+    "local_path": "/api/encyclopedia-sprite/lava-katana",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/lava-katana-78e14c.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Obsidian Edge": {
+    "local_path": "/api/encyclopedia-sprite/obsidian-edge",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/obsidian-edge-d0fef3.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Neptune's Glaive": {
+    "local_path": "/api/encyclopedia-sprite/neptunes-glaive",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/neptune-s-glaive-ebd6a5.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Bone Sword": {
+    "local_path": "/api/encyclopedia-sprite/bone-sword",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/bone-sword-7e7dae.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Templar's Blade": {
+    "local_path": "/api/encyclopedia-sprite/templars-blade",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/templar-s-blade-bdb0c6.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Forest Sword": {
+    "local_path": "/api/encyclopedia-sprite/forest-sword",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/forest-sword-a925d1.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Steel Smallsword": {
+    "local_path": "/api/encyclopedia-sprite/steel-smallsword",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/steel-smallsword-73dd25.webp",
+    "source_page_url": "https://stardew.gs/gear/",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
   }
 }

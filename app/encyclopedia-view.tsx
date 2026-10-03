@@ -1,5 +1,5 @@
 'use client';
-import {useMemo,useState,useCallback} from 'react';
+import {memo,useCallback,useDeferredValue,useMemo,useState} from 'react';
 import {Download,Search,WifiOff,ExternalLink,ArrowLeft} from 'lucide-react';
 import {useLocale} from './locale-provider';
 import {Sprite} from './farm-ui';
@@ -9,7 +9,9 @@ import assets from '@/lib/game/assets-source.json';
 import {giftSpriteName,giftTasteLabels,universalGiftTastes,villagerProfiles,type GiftTaste,type VillagerProfile} from '@/lib/game/villager-profiles';
 import {villagerHeartEvents,type VillagerHeartEvent} from '@/lib/game/villager-heart-events';
 
-const availableSprites=new Set(Object.keys(assets as Record<string,{local_path:string}>));
+const assetRegistry=assets as Record<string,{local_path:string}>;
+const availableSprites=new Set(Object.keys(assetRegistry));
+const spritePath=(name?:string)=>name?(assetRegistry[name]??assetRegistry[name+' Icon'])?.local_path:null;
 const giftTastes:GiftTaste[]=['loves','likes','neutrals','dislikes','hates'];
 const browseCategories=encyclopediaCategories.filter(category=>category!=='Overview');
 const browseAll=encyclopediaEntries.filter(entry=>entry.category!=='Overview').sort((a,b)=>a.title.localeCompare(b.title));
@@ -75,9 +77,9 @@ function EntryArticle({entry,onOpen,onBack}:{entry:EncyclopediaEntry;onOpen:(ent
  </article>;
 }
 
-function ResultCard({entry,onOpen}:{entry:EncyclopediaEntry;onOpen:(entry:EncyclopediaEntry)=>void}){return <button className="encyclopedia-result-card" onClick={()=>onOpen(entry)}>{entry.sprite&&<Sprite name={entry.sprite} size={42}/>}<span><strong>{entry.title}</strong><small>{entry.category}</small><em>{entry.summary}</em></span></button>}
+const ResultCard=memo(function ResultCard({entry,onOpen}:{entry:EncyclopediaEntry;onOpen:(entry:EncyclopediaEntry)=>void}){return <button className="encyclopedia-result-card" onClick={()=>onOpen(entry)}>{entry.sprite&&<Sprite name={entry.sprite} size={42}/>}<span><strong>{entry.title}</strong><small>{entry.category}</small><em>{entry.summary}</em></span></button>});
 
-function BrowseCard({entry,onOpen}:{entry:EncyclopediaEntry;onOpen:(entry:EncyclopediaEntry)=>void}){return <button type="button" className="encyclopedia-browse-card" onClick={()=>onOpen(entry)} title={`Open ${entry.title}`} aria-label={`Open ${entry.title} encyclopedia page`}><span className="encyclopedia-browse-sprite" aria-hidden="true">{entry.sprite?<Sprite name={entry.sprite} size={48}/>:<span className="encyclopedia-browse-placeholder">?</span>}</span><strong>{entry.title}</strong></button>}
+const BrowseCard=memo(function BrowseCard({entry,onOpen}:{entry:EncyclopediaEntry;onOpen:(entry:EncyclopediaEntry)=>void}){const path=spritePath(entry.sprite);return <button type="button" className="encyclopedia-browse-card" onClick={()=>onOpen(entry)} title={`Open ${entry.title}`} aria-label={`Open ${entry.title} encyclopedia page`}><span className="encyclopedia-browse-sprite" aria-hidden="true">{path?<img className="sprite" src={path} alt="" width={48} height={48} loading="lazy" decoding="async"/>:<span className="encyclopedia-browse-placeholder">?</span>}</span><strong>{entry.title}</strong></button>});
 
 function OfflineButton(){
  const[busy,setBusy]=useState(false);const[done,setDone]=useState(false);
@@ -95,15 +97,16 @@ function blobToDataUrl(blob:Blob){return new Promise<string>((resolve,reject)=>{
 export default function EncyclopediaView(){
  const{render}=useLocale();const[query,setQuery]=useState('');const[submitted,setSubmitted]=useState('');const[category,setCategory]=useState<'All'|EncyclopediaCategory>('All');const[active,setActive]=useState<EncyclopediaEntry|null>(null);
  const searchTerm=submitted||query;
- const results=useMemo(()=>searchEncyclopedia(searchTerm,category),[searchTerm,category]);
- const exact=useMemo(()=>{const candidate=exactEncyclopediaMatch(searchTerm);return candidate&&results.some(item=>item.id===candidate.id)?candidate:undefined},[searchTerm,results]);
+ const deferredSearchTerm=useDeferredValue(searchTerm);
+ const results=useMemo(()=>searchEncyclopedia(deferredSearchTerm,category),[deferredSearchTerm,category]);
+ const exact=useMemo(()=>{const candidate=exactEncyclopediaMatch(deferredSearchTerm);return candidate&&results.some(item=>item.id===candidate.id)?candidate:undefined},[deferredSearchTerm,results]);
  const hasSearch=normalizeEncyclopediaQuery(searchTerm).length>0;
  const browseEntries=category==='All'?browseAll:browseByCategory.get(category)??[];
- const open=(entry:EncyclopediaEntry)=>{setActive(entry);setSubmitted(entry.title);setQuery(entry.title);window.requestAnimationFrame(()=>document.getElementById('encyclopedia-top')?.scrollIntoView({behavior:'smooth',block:'start'}))};
- const runSearch=()=>{setSubmitted(query.trim());setActive(null)};
- const chooseCategory=(next:'All'|EncyclopediaCategory)=>{setCategory(next);setActive(null);setQuery('');setSubmitted('');window.requestAnimationFrame(()=>document.getElementById('encyclopedia-browser')?.scrollIntoView({behavior:'smooth',block:'nearest'}))};
- const back=()=>setActive(null);
- const broadMatches=results.filter(item=>item.id!==exact?.id);
+ const open=useCallback((entry:EncyclopediaEntry)=>{setActive(entry);setSubmitted(entry.title);setQuery(entry.title);window.requestAnimationFrame(()=>document.getElementById('encyclopedia-top')?.scrollIntoView({behavior:'smooth',block:'start'}))},[]);
+ const runSearch=useCallback(()=>{setSubmitted(query.trim());setActive(null)},[query]);
+ const chooseCategory=useCallback((next:'All'|EncyclopediaCategory)=>{setCategory(next);setActive(null);setQuery('');setSubmitted('');window.requestAnimationFrame(()=>document.getElementById('encyclopedia-browser')?.scrollIntoView({behavior:'smooth',block:'nearest'}))},[]);
+ const back=useCallback(()=>setActive(null),[]);
+ const broadMatches=useMemo(()=>results.filter(item=>item.id!==exact?.id),[results,exact]);
  return render(<div className="encyclopedia-shell" id="encyclopedia-top"><section className="paper encyclopedia-search-panel"><div className="encyclopedia-search-heading"><div><p className="eyebrow">Pelican Planner reference</p><h1>Encyclopedia</h1><p>Look up crops, fish, villagers, events, bundles, items, places, and game systems. The useful part is stored here, so you’re not stuck if the Wiki is down.</p></div><OfflineButton/></div><form className="encyclopedia-search-form" onSubmit={e=>{e.preventDefault();runSearch()}}><label className="encyclopedia-search-box"><Search size={21}/><input value={query} onChange={e=>{setQuery(e.target.value);setSubmitted('');setActive(null)}} placeholder="Try Cabbage, sword, Wood, Abigail…" aria-label="Search the Stardew Encyclopedia"/><button className="btn primary" type="submit">Search</button></label><div className="encyclopedia-category-row" role="group" aria-label="Filter encyclopedia category"><button type="button" className={'btn compact '+(category==='All'?'selected':'')} onClick={()=>chooseCategory('All')}>All</button>{browseCategories.map(item=><button type="button" key={item} className={'btn compact '+(category===item?'selected':'')} onClick={()=>chooseCategory(item)}>{item}</button>)}</div></form></section>
  {active?<EntryArticle entry={active} onOpen={open} onBack={back}/>:<section className="paper encyclopedia-results-panel">
   {!hasSearch?<><div className="section-heading ruled" id="encyclopedia-browser"><div><h2>{category==='All'?'Browse the Valley':category}</h2><p className="small muted">{browseEntries.length} {category==='All'?'entries across the local encyclopedia':`${category.toLowerCase()} entries`} · click any sprite card to open its page</p></div></div><div className="encyclopedia-browse-grid encyclopedia-category-expand" key={category}>{browseEntries.map(entry=><BrowseCard key={entry.id} entry={entry} onOpen={open}/>)}</div></>:
