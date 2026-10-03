@@ -1,17 +1,17 @@
 'use client';
-/* eslint-disable @next/next/no-img-element -- Small canonical Stardew Valley Wiki GIFs are used as decorative pixel animations. */
+/* eslint-disable @next/next/no-img-element -- Same-origin routes proxy the canonical Stardew Valley Wiki GIFs so decorative animations do not depend on browser hotlinking. */
 import type {GameDate} from '@/lib/game/state';
 
 const ASSETS={
- junimo:'https://www.stardewvalleywiki.com/mediawiki/images/5/57/Junimo.gif',
- butterfly:'https://stardewvalleywiki.com/mediawiki/images/6/6c/ButterflyAnimated.gif',
- cat:'https://stardewvalleywiki.com/mediawiki/images/2/29/Cat.gif',
- dog:'https://stardewvalleywiki.com/mediawiki/images/9/99/Dog.gif',
- snow:'https://www.stardewvalleywiki.com/mediawiki/images/c/c0/SnowAnimated.gif',
+ junimo:'/api/ambient-sprite/junimo',
+ butterfly:'/api/ambient-sprite/butterfly',
+ cat:'/api/ambient-sprite/cat',
+ dog:'/api/ambient-sprite/dog',
+ snow:'/api/ambient-sprite/snow',
 } as const;
 
 function AmbientGif({src,className,width,height}:{src:string;className:string;width:number;height:number}){
- return <span className={className}><img src={src} alt="" width={width} height={height} loading="eager" referrerPolicy="no-referrer" onError={event=>{event.currentTarget.parentElement?.remove()}}/></span>;
+ return <span className={className}><img src={src} alt="" width={width} height={height} loading="eager" decoding="async"/></span>;
 }
 
 export default function SeasonalJunimos({season}:{season:GameDate['season']}){

@@ -5,7 +5,7 @@
 [data-season="Fall"]{--canopy:#efb879;--season:#8b4d2e;--season-strong:#a45d35;--season-dark:#713e28;--season-bright:#efb56c;--season-soft:#f5d6a0;--meadow:#efd09c}
 [data-season="Winter"]{--canopy:#bdcde8;--season:#58608d;--season-strong:#636fa1;--season-dark:#454d7a;--season-bright:#bbc7ef;--season-soft:#e5e6f7;--meadow:#dce7ee}
 body{background:var(--meadow);color:var(--ink)}
-.farm-app{background: url('/theme/meadow-tile.svg') repeat,var(--meadow);background-size:192px 192px;isolation:isolate}
+.farm-app{position:relative;background:url('/theme/meadow-tile.svg') repeat,var(--meadow);background-size:192px 192px;isolation:isolate}
 .site-header{background:#93d5ea url('/theme/valley-header.svg') center bottom/auto 224px repeat-x;border-bottom:6px solid #749956;box-shadow:0 4px #bed894;image-rendering:pixelated;color:var(--ink)}
 .header-inner{min-height:176px;padding-top:24px;padding-bottom:28px;gap:24px}
 .brand{padding:9px 18px 11px 10px;background:#fff1c8;border:14px solid transparent;border-image:url('/theme/wood-frame.svg') 8 / 14px stretch;box-shadow:0 6px 0 #42664c30;gap:5px}
@@ -192,8 +192,8 @@ html[data-effects="on"] .community-center-open:hover .sprite{animation:sprite-wi
 
 /* Seasonal Junimos: the official 48px Wiki animation sits behind the planner as a quiet seasonal detail. */
 .site-header,.journal,.footer{position:relative;z-index:1}
-.junimo-background{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.28}
-.background-junimo{position:absolute;display:block;width:64px;height:64px;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.14));transform-origin:center;will-change:transform}
+.junimo-background{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.background-junimo{position:absolute;display:block;width:64px;height:64px;opacity:.36;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.14));transform-origin:center;will-change:transform}
 .background-junimo img{display:block;width:64px;height:64px;image-rendering:pixelated}
 .junimo-1{top:230px;left:max(10px,calc(50% - 690px));transform:rotate(-4deg)}
 .junimo-2{top:48%;right:max(8px,calc(50% - 690px));transform:rotate(4deg) scale(.92)}
@@ -209,25 +209,25 @@ html[data-effects="on"] .junimo-3{animation:junimo-float-a 9.5s ease-in-out -4.1
 .junimo-background[data-season="Spring"] .junimo-2 img{filter:hue-rotate(285deg) saturate(.92) brightness(1.14)}
 .junimo-background[data-season="Spring"] .junimo-3 img{filter:hue-rotate(55deg) saturate(.9) brightness(1.08)}
 /* Summer: brighter orchard tones. */
-.junimo-background[data-season="Summer"]{opacity:.3}
+
 .junimo-background[data-season="Summer"] .junimo-1 img{filter:hue-rotate(330deg) saturate(1.15) brightness(1.1)}
 .junimo-background[data-season="Summer"] .junimo-2 img{filter:hue-rotate(45deg) saturate(1.18) brightness(1.1)}
 .junimo-background[data-season="Summer"] .junimo-3 img{filter:saturate(1.18) brightness(1.05)}
 /* Fall: pumpkin, berry, and plum shades. */
-.junimo-background[data-season="Fall"]{opacity:.29}
+
 .junimo-background[data-season="Fall"] .junimo-1 img{filter:sepia(.45) hue-rotate(325deg) saturate(1.45) brightness(1.03)}
 .junimo-background[data-season="Fall"] .junimo-2 img{filter:hue-rotate(245deg) saturate(.9) brightness(.96)}
 .junimo-background[data-season="Fall"] .junimo-3 img{filter:sepia(.28) hue-rotate(300deg) saturate(1.2) brightness(.98)}
 /* Winter: soft icy blues with one nearly-snowy Junimo. */
-.junimo-background[data-season="Winter"]{opacity:.25}
+
 .junimo-background[data-season="Winter"] .junimo-1 img{filter:hue-rotate(70deg) saturate(.62) brightness(1.28)}
 .junimo-background[data-season="Winter"] .junimo-2 img{filter:hue-rotate(95deg) saturate(.52) brightness(1.32)}
 .junimo-background[data-season="Winter"] .junimo-3 img{filter:grayscale(.7) saturate(.3) brightness(1.45)}
 
 html[data-effects="off"] .junimo-background{display:none}
 @media(prefers-reduced-motion:reduce){.junimo-background{display:none!important}}
-@media(max-width:1050px){.junimo-background{opacity:.2}.junimo-1{left:4px}.junimo-2{right:4px}.junimo-3{left:8px}.background-junimo,.background-junimo img{width:52px;height:52px}}
-@media(max-width:700px){.junimo-background{opacity:.16}.junimo-3{display:none}.junimo-1{top:215px;left:-8px}.junimo-2{top:62%;right:-8px}.background-junimo,.background-junimo img{width:46px;height:46px}}
+@media(max-width:1050px){.background-junimo{opacity:.27}.junimo-1{left:4px}.junimo-2{right:4px}.junimo-3{left:8px}.background-junimo,.background-junimo img{width:52px;height:52px}}
+@media(max-width:700px){.background-junimo{opacity:.22}.junimo-3{display:none}.junimo-1{top:215px;left:-8px}.junimo-2{top:62%;right:-8px}.background-junimo,.background-junimo img{width:46px;height:46px}}
 
 /* More quiet Valley life: canonical Wiki pet, butterfly, and snow animations stay in the page margins. */
 .ambient-sprite{position:absolute;display:block;pointer-events:none;transform-origin:center;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.1));will-change:transform}
@@ -240,14 +240,14 @@ html[data-effects="on"] .junimo-4{animation:junimo-float-b 10.5s ease-in-out -3.
 html[data-effects="on"] .junimo-5{animation:junimo-float-a 11.5s ease-in-out -6.1s infinite alternate}
 
 /* Pets feel like tiny residents at the edge of the journal rather than stickers on the content. */
-.ambient-cat{width:58px;height:58px;left:max(8px,calc(50% - 715px));top:58%;opacity:.48;transform:rotate(-2deg)}
-.ambient-dog{width:70px;height:70px;right:max(4px,calc(50% - 720px));bottom:46px;opacity:.43;transform:rotate(2deg)}
+.ambient-cat{width:58px;height:58px;left:max(8px,calc(50% - 715px));top:58%;opacity:.3;transform:rotate(-2deg)}
+.ambient-dog{width:70px;height:70px;right:max(4px,calc(50% - 720px));bottom:46px;opacity:.28;transform:rotate(2deg)}
 html[data-effects="on"] .ambient-cat{animation:pet-breathe 12s ease-in-out -2s infinite alternate}
 html[data-effects="on"] .ambient-dog{animation:pet-breathe 14s ease-in-out -7s infinite alternate-reverse}
 @keyframes pet-breathe{from{translate:0 0}to{translate:0 -5px}}
 
 /* Butterflies are spring/summer-only and deliberately sparse. */
-.ambient-butterfly{width:46px;height:35px;opacity:.42}
+.ambient-butterfly{width:46px;height:35px;opacity:.3}
 .butterfly-1{top:29%;right:max(20px,calc(50% - 665px));transform:rotate(-9deg)}
 .butterfly-2{top:82%;left:max(26px,calc(50% - 650px));transform:rotate(11deg) scale(.82)}
 html[data-effects="on"] .butterfly-1{animation:butterfly-drift-a 8s ease-in-out -1.5s infinite alternate}
@@ -256,7 +256,7 @@ html[data-effects="on"] .butterfly-2{animation:butterfly-drift-b 10s ease-in-out
 @keyframes butterfly-drift-b{from{translate:6px 5px;rotate:5deg}to{translate:-7px -7px;rotate:-5deg}}
 
 /* Winter gets tiny looping snow puffs in place of butterflies. */
-.ambient-snow{width:34px;height:34px;opacity:.3;filter:none}
+.ambient-snow{width:34px;height:34px;opacity:.24;filter:none}
 .snow-1{top:25%;left:max(12px,calc(50% - 690px))}
 .snow-2{top:53%;right:max(10px,calc(50% - 682px));transform:scale(.82)}
 .snow-3{top:78%;left:max(36px,calc(50% - 645px));transform:scale(.72)}
@@ -266,10 +266,10 @@ html[data-effects="on"] .snow-3{animation:snow-drift 12s linear -8s infinite}
 @keyframes snow-drift{0%{translate:0 -5px}50%{translate:9px 8px}100%{translate:-4px 18px}}
 
 /* Seasonal tuning keeps the ambient cast integrated with the journal palette. */
-.junimo-background[data-season="Spring"] :is(.ambient-cat,.ambient-dog){opacity:.44}
-.junimo-background[data-season="Summer"] :is(.ambient-cat,.ambient-dog){opacity:.46}
-.junimo-background[data-season="Fall"] :is(.ambient-cat,.ambient-dog){opacity:.4}
-.junimo-background[data-season="Winter"] :is(.ambient-cat,.ambient-dog){opacity:.36;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.08)) brightness(1.05)}
+.junimo-background[data-season="Spring"] :is(.ambient-cat,.ambient-dog){opacity:.3}
+.junimo-background[data-season="Summer"] :is(.ambient-cat,.ambient-dog){opacity:.31}
+.junimo-background[data-season="Fall"] :is(.ambient-cat,.ambient-dog){opacity:.27}
+.junimo-background[data-season="Winter"] :is(.ambient-cat,.ambient-dog){opacity:.25;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.08)) brightness(1.05)}
 
 @media(max-width:1050px){
  .junimo-4,.junimo-5{display:none}
