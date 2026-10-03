@@ -189,3 +189,42 @@ html[data-effects="on"] .next-day-button:hover .sprite{animation:sprite-wiggle 3
 html[data-effects="on"] .weather-status-button:hover :is(svg,.sprite),html[data-effects="on"] .weather-update-button:hover svg{animation:sprite-nod 360ms steps(5,end)}
 html[data-effects="on"] .community-room-image:hover img{animation:sprite-nod 420ms steps(6,end)}
 html[data-effects="on"] .community-center-open:hover .sprite{animation:sprite-wiggle 360ms steps(5,end)}
+
+/* Seasonal Junimos: the official 48px Wiki animation sits behind the planner as a quiet seasonal detail. */
+.site-header,.journal,.footer{position:relative;z-index:1}
+.junimo-background{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.28}
+.background-junimo{position:absolute;display:block;width:64px;height:64px;filter:drop-shadow(2px 3px 0 rgba(67,72,44,.14));transform-origin:center;will-change:transform}
+.background-junimo img{display:block;width:64px;height:64px;image-rendering:pixelated}
+.junimo-1{top:230px;left:max(10px,calc(50% - 690px));transform:rotate(-4deg)}
+.junimo-2{top:48%;right:max(8px,calc(50% - 690px));transform:rotate(4deg) scale(.92)}
+.junimo-3{bottom:130px;left:max(20px,calc(50% - 670px));transform:rotate(3deg) scale(.86)}
+html[data-effects="on"] .junimo-1{animation:junimo-float-a 7s ease-in-out infinite alternate}
+html[data-effects="on"] .junimo-2{animation:junimo-float-b 8.5s ease-in-out -2.2s infinite alternate}
+html[data-effects="on"] .junimo-3{animation:junimo-float-a 9.5s ease-in-out -4.1s infinite alternate-reverse}
+@keyframes junimo-float-a{from{translate:0 0;rotate:-2deg}to{translate:0 -10px;rotate:2deg}}
+@keyframes junimo-float-b{from{translate:0 6px;rotate:3deg}to{translate:0 -7px;rotate:-2deg}}
+
+/* Spring: fresh greens with a blossom-pink friend. */
+.junimo-background[data-season="Spring"] .junimo-1 img{filter:saturate(1.08) brightness(1.03)}
+.junimo-background[data-season="Spring"] .junimo-2 img{filter:hue-rotate(285deg) saturate(.92) brightness(1.14)}
+.junimo-background[data-season="Spring"] .junimo-3 img{filter:hue-rotate(55deg) saturate(.9) brightness(1.08)}
+/* Summer: brighter orchard tones. */
+.junimo-background[data-season="Summer"]{opacity:.3}
+.junimo-background[data-season="Summer"] .junimo-1 img{filter:hue-rotate(330deg) saturate(1.15) brightness(1.1)}
+.junimo-background[data-season="Summer"] .junimo-2 img{filter:hue-rotate(45deg) saturate(1.18) brightness(1.1)}
+.junimo-background[data-season="Summer"] .junimo-3 img{filter:saturate(1.18) brightness(1.05)}
+/* Fall: pumpkin, berry, and plum shades. */
+.junimo-background[data-season="Fall"]{opacity:.29}
+.junimo-background[data-season="Fall"] .junimo-1 img{filter:sepia(.45) hue-rotate(325deg) saturate(1.45) brightness(1.03)}
+.junimo-background[data-season="Fall"] .junimo-2 img{filter:hue-rotate(245deg) saturate(.9) brightness(.96)}
+.junimo-background[data-season="Fall"] .junimo-3 img{filter:sepia(.28) hue-rotate(300deg) saturate(1.2) brightness(.98)}
+/* Winter: soft icy blues with one nearly-snowy Junimo. */
+.junimo-background[data-season="Winter"]{opacity:.25}
+.junimo-background[data-season="Winter"] .junimo-1 img{filter:hue-rotate(70deg) saturate(.62) brightness(1.28)}
+.junimo-background[data-season="Winter"] .junimo-2 img{filter:hue-rotate(95deg) saturate(.52) brightness(1.32)}
+.junimo-background[data-season="Winter"] .junimo-3 img{filter:grayscale(.7) saturate(.3) brightness(1.45)}
+
+html[data-effects="off"] .junimo-background{display:none}
+@media(prefers-reduced-motion:reduce){.junimo-background{display:none!important}}
+@media(max-width:1050px){.junimo-background{opacity:.2}.junimo-1{left:4px}.junimo-2{right:4px}.junimo-3{left:8px}.background-junimo,.background-junimo img{width:52px;height:52px}}
+@media(max-width:700px){.junimo-background{opacity:.16}.junimo-3{display:none}.junimo-1{top:215px;left:-8px}.junimo-2{top:62%;right:-8px}.background-junimo,.background-junimo img{width:46px;height:46px}}

@@ -135,6 +135,23 @@ export const festivalGuidance:Record<string,{window:string;location:string}>={
  'Night Market':{window:'5pm–2am',location:'Beach'},
  'Feast of the Winter Star':{window:'9am–2pm',location:'Pelican Town'},
 };
+
+export const festivalSprites:Record<string,string>={
+ 'Egg Festival':'Large Egg',
+ 'Desert Festival':'Cactus Fruit',
+ 'Flower Dance':'Blue Jazz',
+ 'Luau':'Coconut',
+ 'Trout Derby':'Tiger Trout',
+ 'Dance of the Moonlight Jellies':'Sea Urchin',
+ 'Stardew Valley Fair':'Pumpkin',
+ 'Spirit’s Eve':'Pumpkin',
+ 'Festival of Ice':'Frozen Tear',
+ 'SquidFest':'Sea Urchin',
+ 'Night Market':'Mussel',
+ 'Feast of the Winter Star':'Honey',
+};
+export const festivalSprite=(name:string)=>festivalSprites[name]??'Calendar';
+
 export const FARM_TYPES=['Standard','Riverland','Forest','Hill-top','Wilderness','Four Corners','Beach','Meadowlands'] as const;
 export const LEVELS=['Relaxed','Guided','Efficient','Highly Optimized','Min-Max'] as const;
 export const GOALS=['Balanced','Community Center','Maximum Profit','Fast Greenhouse','Mining','Friendship','Low Effort'] as const;

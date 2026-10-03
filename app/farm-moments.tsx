@@ -7,7 +7,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import type { ActivityDay, GameDate, RunState } from "@/lib/game/state";
-import { bundles, SEASONS } from "@/lib/game/data";
+import { bundles, SEASONS, festivalSprite } from "@/lib/game/data";
 import {
   absoluteDay,
   available,
@@ -81,7 +81,7 @@ export function MorningReminder({ run }: { run: RunState }) {
         {events.map((e) => (
           <div key={e.name}>
             <Sprite
-              name={e.type === "birthday" ? e.name : "Calendar"}
+              name={e.type === "birthday" ? e.name : festivalSprite(e.name)}
               size={36}
             />
             <p>
