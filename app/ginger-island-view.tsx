@@ -1,6 +1,7 @@
 'use client';
 /* eslint-disable @next/next/no-img-element -- The interactive base map is the canonical Ginger Island map from the Stardew Valley Wiki, with an offline-styled fallback behind it. */
-import {useMemo,useState} from 'react';
+import {useMemo,useRef,useState} from 'react';
+import type {PointerEvent as ReactPointerEvent} from 'react';
 import type {RunState} from '@/lib/game/state';
 import type {UpdateRun} from './farm-journal';
 import {ISLAND_HOTSPOTS,ISLAND_REGIONS,TOTAL_GOLDEN_WALNUTS,WALNUT_ACTIVITIES,type IslandRegion} from '@/lib/game/ginger-island';
@@ -9,20 +10,39 @@ import {dateLabel} from '@/lib/game/planner';
 const MAP_URL='https://stardewvalleywiki.com/mediawiki/images/4/47/Ginger_Island_Map.png';
 
 export default function GingerIslandView({run,update}:{run:RunState;update:UpdateRun}){
- const[region,setRegion]=useState<(typeof ISLAND_REGIONS)[number]>('All');const[search,setSearch]=useState('');const[selectedHotspot,setSelectedHotspot]=useState<string|null>('farm');const[zoom,setZoom]=useState(1);const[mapFailed,setMapFailed]=useState(false);
+ const[region,setRegion]=useState<(typeof ISLAND_REGIONS)[number]>('All');const[search,setSearch]=useState('');const[selectedHotspot,setSelectedHotspot]=useState<string|null>('farm');const[zoom,setZoom]=useState(1);const[mapFailed,setMapFailed]=useState(false);const[isPanning,setIsPanning]=useState(false);
+ const mapViewportRef=useRef<HTMLDivElement|null>(null);
+ const panRef=useRef<{pointerId:number;x:number;y:number;scrollLeft:number;scrollTop:number}|null>(null);
  const progress=run.islandProgress.walnuts;const found=WALNUT_ACTIVITIES.reduce((sum,item)=>sum+Math.min(item.max,progress[item.id]??0),0);
  const activities=useMemo(()=>WALNUT_ACTIVITIES.filter(item=>(region==='All'||item.region===region)&&(!search.trim()||`${item.name} ${item.hint} ${item.region}`.toLowerCase().includes(search.toLowerCase()))&&(!run.islandProgress.hideCompleted||(progress[item.id]??0)<item.max)),[region,search,run.islandProgress.hideCompleted,progress]);
  const selected=ISLAND_HOTSPOTS.find(h=>h.id===selectedHotspot);
  const setCount=(id:string,max:number,value:number)=>update({...run,islandProgress:{...run.islandProgress,walnuts:{...progress,[id]:Math.max(0,Math.min(max,value))}}});
  const pin=(name:string)=>update({...run,notes:[...run.notes,{id:crypto.randomUUID(),label:`Ginger Island: ${name}`,date:run.date,done:false}]},`Pinned ${name} for ${dateLabel(run.date)}.`);
  const focus=(id:string,hotspotRegion:IslandRegion)=>{setSelectedHotspot(id);setRegion(hotspotRegion)};
+ const startPan=(event:ReactPointerEvent<HTMLDivElement>)=>{
+  if(event.button!==0||(event.target as HTMLElement).closest('button'))return;
+  const viewport=mapViewportRef.current;if(!viewport)return;
+  if(viewport.scrollWidth<=viewport.clientWidth&&viewport.scrollHeight<=viewport.clientHeight)return;
+  panRef.current={pointerId:event.pointerId,x:event.clientX,y:event.clientY,scrollLeft:viewport.scrollLeft,scrollTop:viewport.scrollTop};
+  viewport.setPointerCapture(event.pointerId);setIsPanning(true);event.preventDefault();
+ };
+ const movePan=(event:ReactPointerEvent<HTMLDivElement>)=>{
+  const viewport=mapViewportRef.current,pan=panRef.current;if(!viewport||!pan||pan.pointerId!==event.pointerId)return;
+  if(event.buttons===0){panRef.current=null;setIsPanning(false);return;}
+  viewport.scrollLeft=pan.scrollLeft-(event.clientX-pan.x);viewport.scrollTop=pan.scrollTop-(event.clientY-pan.y);event.preventDefault();
+ };
+ const endPan=(event:ReactPointerEvent<HTMLDivElement>)=>{
+  const viewport=mapViewportRef.current,pan=panRef.current;if(!pan||pan.pointerId!==event.pointerId)return;
+  panRef.current=null;setIsPanning(false);
+  if(viewport?.hasPointerCapture(event.pointerId))viewport.releasePointerCapture(event.pointerId);
+ };
  return <div className="island-page" translate="no">
   <div className="island-head"><div><p className="eyebrow">Late-game field guide</p><h2>Ginger Island</h2><p className="muted">Use the island itself as your checklist. Click a location, track walnuts as you find them, and pin anything you want to remember today.</p></div><div className="walnut-meter"><strong>{found}<span>/{TOTAL_GOLDEN_WALNUTS}</span></strong><div><b>Golden Walnuts</b><small>{TOTAL_GOLDEN_WALNUTS-found} left</small></div></div></div>
   {!run.unlocks.includes('Island')&&<div className="notice island-lock"><strong>Not marked unlocked yet.</strong><span>You can still browse the map, but Pelican Planner will not assume Ginger Island activities belong in your daily plan until your save marks the Island unlock.</span></div>}
   <div className="island-map-layout">
    <section className="ginger-map-shell" aria-label="Interactive Ginger Island map">
     <div className="ginger-map-toolbar"><div className="island-region-chips">{ISLAND_REGIONS.map(r=><button key={r} className={`btn compact ${region===r?'selected':''}`} onClick={()=>setRegion(r)}>{r}</button>)}</div><div className="map-zoom"><button className="btn quiet compact" onClick={()=>setZoom(z=>Math.max(1,z-.2))} aria-label="Zoom map out">−</button><span>{Math.round(zoom*100)}%</span><button className="btn quiet compact" onClick={()=>setZoom(z=>Math.min(1.8,z+.2))} aria-label="Zoom map in">+</button></div></div>
-    <div className="ginger-map-viewport"><div className="ginger-map-stage" style={{width:`${zoom*100}%`,height:`${zoom*100}%`}}><div className="ginger-map-fallback" aria-hidden="true"><span className="island-mass north"/><span className="island-mass west"/><span className="island-mass east"/><span className="island-mass south"/></div>{!mapFailed&&<img className="ginger-map-image" src={MAP_URL} alt="Ginger Island map" onError={()=>setMapFailed(true)}/>} {ISLAND_HOTSPOTS.map(h=>{const tooltipId=`ginger-hotspot-${h.id}`;return <button key={h.id} className={`island-hotspot ${selectedHotspot===h.id?'active':''} ${region!=='All'&&region!==h.region?'muted-pin':''}`} style={{left:`${h.x}%`,top:`${h.y}%`}} onClick={()=>focus(h.id,h.region)} aria-label={`${h.name}: ${h.subtitle}`} aria-describedby={tooltipId}><span className="hotspot-dot"/><span id={tooltipId} role="tooltip" className="hotspot-tooltip"><strong>{h.name}</strong><small>{h.subtitle}</small></span></button>})}</div></div>
+    <div ref={mapViewportRef} className={`ginger-map-viewport ${isPanning?'is-panning':''}`} onPointerDown={startPan} onPointerMove={movePan} onPointerUp={endPan} onPointerCancel={endPan} onLostPointerCapture={endPan} aria-label="Ginger Island map. Hold left click and drag to pan when zoomed."><div className="ginger-map-stage" style={{width:`${zoom*100}%`,height:`${zoom*100}%`}}><div className="ginger-map-fallback" aria-hidden="true"><span className="island-mass north"/><span className="island-mass west"/><span className="island-mass east"/><span className="island-mass south"/></div>{!mapFailed&&<img className="ginger-map-image" src={MAP_URL} alt="Ginger Island map" draggable={false} onError={()=>setMapFailed(true)}/>} {ISLAND_HOTSPOTS.map(h=>{const tooltipId=`ginger-hotspot-${h.id}`;return <button key={h.id} className={`island-hotspot ${selectedHotspot===h.id?'active':''} ${region!=='All'&&region!==h.region?'muted-pin':''}`} style={{left:`${h.x}%`,top:`${h.y}%`}} onClick={()=>focus(h.id,h.region)} aria-label={`${h.name}: ${h.subtitle}`} aria-describedby={tooltipId}><span className="hotspot-dot"/><span id={tooltipId} role="tooltip" className="hotspot-tooltip"><strong>{h.name}</strong><small>{h.subtitle}</small></span></button>})}</div></div>
     <div className="map-location-strip">{ISLAND_HOTSPOTS.filter(h=>region==='All'||h.region===region).map(h=><button key={h.id} className={selectedHotspot===h.id?'active':''} onClick={()=>focus(h.id,h.region)}><strong>{h.name}</strong><span>{h.subtitle}</span></button>)}</div>
     {mapFailed&&<p className="label-note map-fallback-note">The wiki map image could not load. Interactive locations and walnut tracking still work from the built-in island layout.</p>}
    </section>

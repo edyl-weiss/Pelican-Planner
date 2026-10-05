@@ -26,6 +26,13 @@ export const MACHINE_RECIPES:MachineRecipe[]=[
  {machine:'Oil Maker',product:'Oil from Sunflower Seeds',minutes:3200},
 ];
 
+const PRODUCT_SPRITES:Record<string,string>={
+ Coffee:'Coffee','Green Tea':'Green Tea',Mead:'Mead',Vinegar:'Vinegar',Beer:'Beer','Pale Ale':'Pale Ale',Juice:'Juice',Wine:'Wine',
+ 'Jelly / Pickles / Aged Roe':'Jelly',Caviar:'Caviar','Cheese / Goat Cheese':'Cheese',Mayonnaise:'Mayonnaise',Cloth:'Cloth',Seeds:'Seed Maker',
+ 'Smoked Fish':'Smoked Fish','Dried Fruit / Mushrooms / Raisins':'Dried Fruit','Truffle Oil':'Truffle Oil','Oil from Corn':'Oil','Oil from Sunflower':'Oil','Oil from Sunflower Seeds':'Oil',
+};
+export const machineProductSpriteName=(product:string)=>PRODUCT_SPRITES[product]??product;
+
 export const timeToStartOffset=(time:string)=>{
  const match=/^(\d{2}):(\d{2})$/.exec(time);
  if(!match)return null;

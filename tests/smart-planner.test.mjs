@@ -18,6 +18,10 @@ assert.deepEqual(machine.machineReadyAt({season:'Spring',day:1,year:1},'06:00',6
 assert.deepEqual(machine.machineReadyAt({season:'Spring',day:1,year:1},'01:50',6000),{date:{season:'Spring',day:5,year:1},time:'7:10 PM',overnight:false});
 assert.equal(machine.MACHINE_RECIPES.find(x=>x.machine==='Fish Smoker')?.minutes,50);
 assert.equal(machine.MACHINE_RECIPES.find(x=>x.machine==='Seed Maker')?.minutes,20);
+assert.equal(machine.machineProductSpriteName('Wine'),'Wine');
+assert.equal(machine.machineProductSpriteName('Juice'),'Juice');
+assert.equal(machine.machineProductSpriteName('Oil from Sunflower'),'Oil');
+assert.equal(machine.machineProductSpriteName('Dried Fruit / Mushrooms / Raisins'),'Dried Fruit');
 
 const island=await loadDataModule(await transpile('../lib/game/ginger-island.ts'));
 assert.equal(island.TOTAL_GOLDEN_WALNUTS,130);
