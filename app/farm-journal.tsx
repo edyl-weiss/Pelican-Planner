@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- Community Center room previews use canonical Stardew Valley Wiki room art. */
 import {useLocale,LanguageSwitch} from './locale-provider';
 import {useEffect,useRef,useState,useCallback,useMemo} from 'react';
+import dynamic from 'next/dynamic';
 import {CloudRain,Sun,Cloud,Check as CheckIcon,RefreshCw} from 'lucide-react';
 import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs';
 import {Dialog,DialogContent,DialogTitle,DialogDescription} from '@/components/ui/dialog';
@@ -12,15 +13,10 @@ import {makePlan,makeSimplePlan,startNextDay,startNextDaySimple,deadlines,dateLa
 import {bundles,LEVELS,wiki,festivalSprite} from '@/lib/game/data';
 import {Sprite,Choice,NumberField,RichText,GoldAmount} from './farm-ui';
 import FarmCalendar from './farm-calendar';
-import PlanView from './plan-view';
-import CollectionView from './collection-view';
-import MoreView from './more-view';
-import EncyclopediaView from './encyclopedia-view';
 import OnboardingDialog from './onboarding-dialog';
 import ModeChoiceDialog from './mode-choice-dialog';
 import DayStartDialog from './day-start-dialog';
 import {InfoTip,ObtainBlock} from './item-tooltip';
-import SaveImportDialog from './save-import-dialog';
 import KrobusBuddy from './krobus-buddy';
 import {createJournalBackup} from '@/lib/game/journal-backup';
 import {captureActivity,closeActivityDay,dayEntry,brokenRecords,personalRecords} from '@/lib/game/activity';
@@ -31,6 +27,13 @@ import {SeasonalDetails,MorningReminder,HarvestPreview,SeasonTransition,DailySum
 import SeasonalJunimos from './seasonal-junimos';
 import PlannerNotepad from './planner-notepad';
 export type UpdateRun=(next:RunState|((previous:RunState)=>RunState),reason?:string)=>void;
+const DeferredView=()=> <div className="paper deferred-view" role="status" aria-live="polite">Opening planner…</div>;
+// Keep heavyweight secondary tools out of the initial Play bundle. They load only when opened.
+const PlanView=dynamic(()=>import('./plan-view'),{loading:DeferredView});
+const CollectionView=dynamic(()=>import('./collection-view'),{loading:DeferredView});
+const EncyclopediaView=dynamic(()=>import('./encyclopedia-view'),{loading:DeferredView});
+const MoreView=dynamic(()=>import('./more-view'),{loading:DeferredView});
+const SaveImportDialog=dynamic(()=>import('./save-import-dialog'));
 const WeatherIcon=({weather}:{weather:string})=>weather==='Rain'||weather==='Storm'||weather==='Green Rain'?<CloudRain size={26}/>:weather==='Sunny'?<Sun size={26}/>:<Cloud size={26}/>;
 
 export default function FarmJournal(){
@@ -39,7 +42,7 @@ export default function FarmJournal(){
  const[importCheck,setImportCheck]=useState<RunState|null>(null);
  const[dayStartOpen,setDayStartOpen]=useState(false);
  const[importOpen,setImportOpen]=useState(false);const[importMode,setImportMode]=useState<'game'|'journal'>('game');
- const[run,setRun]=useState<RunState>(newRun);const[tab,setTab]=useState('Play');const[planSection,setPlanSection]=useState('Calendar');const[loaded,setLoaded]=useState(false);const[modeChoiceOpen,setModeChoiceOpen]=useState(false);const[setupOpen,setSetupOpen]=useState(false);const[setupFirstRun,setSetupFirstRun]=useState(false);const[status,setStatus]=useState('Loading farm…');const[error,setError]=useState('');const[message,setMessage]=useState('');const[dirty,setDirty]=useState(false);const[saving,setSaving]=useState(false);const[detail,setDetail]=useState<Task|null>(null);const[checkin,setCheckin]=useState(false);const[selected,setSelected]=useState<GameDate>(newRun().date);const[calendarView,setCalendarView]=useState<GameDate>(newRun().date);const revision=useRef(0);const runRef=useRef(run);const generation=useRef(0);const simpleNextDayIntroSeenRef=useRef(false);
+ const[run,setRun]=useState<RunState>(newRun);const[tab,setTab]=useState('Play');const[planSection,setPlanSection]=useState('Calendar');const[loaded,setLoaded]=useState(false);const[modeChoiceOpen,setModeChoiceOpen]=useState(false);const[setupOpen,setSetupOpen]=useState(false);const[setupFirstRun,setSetupFirstRun]=useState(false);const[status,setStatus]=useState('Loading farm…');const[error,setError]=useState('');const[message,setMessage]=useState('');const[dirty,setDirty]=useState(false);const[saving,setSaving]=useState(false);const[detail,setDetail]=useState<Task|null>(null);const[checkin,setCheckin]=useState(false);const[selected,setSelected]=useState<GameDate>(()=>run.date);const[calendarView,setCalendarView]=useState<GameDate>(()=>run.date);const revision=useRef(0);const runRef=useRef(run);const generation=useRef(0);const simpleNextDayIntroSeenRef=useRef(false);
  const loadFarm=useCallback(async()=>{try{const response=await fetch('/api/run');const data=await response.json() as {error?:string;state?:unknown;revision:number;notice?:string};if(!response.ok)throw new Error(data.error);if(!Number.isSafeInteger(data.revision)||data.revision<0)throw new Error('Invalid saved-farm response.');if(data.notice)setMessage(data.notice);let modeSeen=false;let storedMode:RunState['plannerMode']|null=null;let onboardingSeen=false;try{modeSeen=localStorage.getItem('pelican-planner-mode-choice-seen')==='yes';const raw=localStorage.getItem('pelican-planner-mode');storedMode=raw==='simple'||raw==='full'?raw:null;onboardingSeen=(localStorage.getItem('pelican-planner-onboarding-seen')??localStorage.getItem('farm-journal-onboarding-seen'))==='yes';}catch{}if(data.state){const parsed=runSchema.parse(data.state);const saved=storedMode?{...parsed,plannerMode:storedMode}:parsed;setRun(saved);runRef.current=saved;setSelected(saved.date);setCalendarView(saved.date);revision.current=data.revision;setStatus('Farm saved');setSetupOpen(false);if(!modeSeen)setModeChoiceOpen(true);}else{const fresh={...newRun(),plannerMode:storedMode??'full'} as RunState;setRun(fresh);runRef.current=fresh;setSelected(fresh.date);setCalendarView(fresh.date);setStatus('New farm · not saved');revision.current=0;if(!onboardingSeen){setSetupFirstRun(true);if(modeSeen)setSetupOpen(true);else setModeChoiceOpen(true);}}setLoaded(true);setDirty(false);}catch(e){setError(e instanceof Error?e.message:'Could not load your farm.');setStatus('Draft only');setLoaded(true);}},[]);
  // Loading persisted external state on mount is intentional; edits are handled explicitly.
  // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -58,7 +61,12 @@ export default function FarmJournal(){
  const openSetup=()=>{setSetupFirstRun(false);setSetupOpen(true);};
  const exportFarm=()=>{try{const backup=createJournalBackup(runRef.current,{locale,effects,taskLimit:limit});const url=URL.createObjectURL(new Blob([JSON.stringify(backup,null,2)],{type:'application/json'}));const a=document.createElement('a');const name=runRef.current.name.replace(/[^a-z0-9_-]/gi,'-').replace(/-+/g,'-').slice(0,50)||'my-farm';a.href=url;a.download=`pelican-planner-${name}-${backup.exportedAt.slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();window.setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('Backup downloaded. Your farm is packed and ready to travel.');}catch{setError('The download did not work. Try again before closing this tab.');}};
 
- const allTasks=useMemo(()=>run.plannerMode==='simple'?makeSimplePlan(run):makePlan(run),[run]);const harvestInbox=run.plots.filter(p=>p.nextHarvest<=absoluteDay(run.date)&&plotAlive(p,fromDay(Math.max(absoluteDay(run.date),p.nextHarvest)))).sort((a,b)=>a.nextHarvest-b.nextHarvest);const machineInbox=readyMachineBatches(run);const tasks=run.plannerMode==='simple'?allTasks.slice(0,3):allTasks.slice(0,limit===99?99:Math.min(limit,run.level===1?3:run.level===2?5:99));const misses=deadlines(run);const complete=bundles.filter(b=>bundleDone(run,b)).length;
+ const allTasks=useMemo(()=>run.plannerMode==='simple'?makeSimplePlan(run):makePlan(run),[run]);
+ const harvestInbox=useMemo(()=>run.plots.filter(p=>p.nextHarvest<=absoluteDay(run.date)&&plotAlive(p,fromDay(Math.max(absoluteDay(run.date),p.nextHarvest)))).sort((a,b)=>a.nextHarvest-b.nextHarvest),[run.date,run.plots]);
+ const machineInbox=useMemo(()=>readyMachineBatches(run),[run]);
+ const tasks=useMemo(()=>run.plannerMode==='simple'?allTasks.slice(0,3):allTasks.slice(0,limit===99?99:Math.min(limit,run.level===1?3:run.level===2?5:99)),[allTasks,limit,run.level,run.plannerMode]);
+ const misses=useMemo(()=>deadlines(run),[run]);
+ const complete=useMemo(()=>bundles.filter(b=>bundleDone(run,b)).length,[run.donated]);
  const toggleTask=(task:Task)=>update(r=>{const completing=!r.done.includes(task.id);const unlock=task.id.endsWith(':fishing-intro')?'Fishing Rod':task.id.endsWith(':community-center-intro')?'Forest Magic':null;return {...r,done:completing?[...r.done,task.id]:r.done.filter(id=>id!==task.id),unlocks:completing&&unlock?[...new Set([...r.unlocks,unlock])]:r.unlocks,notes:r.notes.map(n=>task.id.endsWith(':note-'+n.id)?{...n,done:completing}:n)}});
  const selectDate=(d:GameDate)=>{setSelected(d);setCalendarView(d);setTab('Plan')};
  const advance=(weather:RunState['weather'],luck:RunState['luck'],activity:ActivityDay)=>{try{const previous=runRef.current;const closed=closeActivityDay(previous,activity);const next=previous.plannerMode==='simple'?startNextDaySimple(closed):startNextDay(closed,weather,luck);update(next,`Moved to ${dateLabel(next.date)}. Plan recalculated.`);const broken=brokenRecords(previous,closed);if(broken.length)setRecords(broken);setDailySummary(previous.plannerMode==='simple'?null:next.activity.showDaily?dayEntry(closed):null);if(previous.date.day===28)setRecapPeriod({date:previous.date,year:previous.date.season==='Winter'});setGoodCatch(null);setSelected(next.date);setCalendarView(next.date);setDayStartOpen(false);setTab('Play')}catch(e){setError(e instanceof Error?e.message:'Could not start the next day.');}};

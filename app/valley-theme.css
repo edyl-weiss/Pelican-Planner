@@ -1360,3 +1360,87 @@ button.villager-gift-chip{font:inherit;cursor:pointer;}
   .farm-tabs [data-slot=tabs-trigger]{min-height:56px;height:auto;line-height:1.12;padding-top:4px;padding-bottom:5px;}
   .farm-tabs [data-slot=tabs-trigger]:nth-child(4){line-height:1.05;}
 }
+
+/* Performance polish: secondary planner chunks show a stable placeholder while loading. */
+.deferred-view{
+  min-height:180px;
+  display:grid;
+  place-items:center;
+  color:#6d5a43;
+  text-align:center;
+}
+
+/* Ginger Island motion is deliberately transform/opacity based to avoid expensive map repaints. */
+.ginger-map-stage{isolation:isolate;contain:layout paint;}
+.ginger-map-image{
+  opacity:0;
+  transform:scale(.992);
+  transition:opacity .24s ease,transform .34s cubic-bezier(.2,.75,.25,1);
+}
+.ginger-map-stage.is-loaded .ginger-map-image{opacity:1;transform:scale(1);}
+.island-water-motion{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;}
+.island-water-motion i{
+  position:absolute;
+  width:34px;
+  height:5px;
+  border-top:2px solid rgba(238,252,255,.72);
+  border-bottom:1px solid rgba(255,255,255,.28);
+  border-radius:50%;
+  opacity:.28;
+  animation:island-wave 3.8s ease-in-out infinite;
+  will-change:transform,opacity;
+}
+.island-water-motion i:nth-child(1){left:7%;top:20%;animation-delay:-.8s;}
+.island-water-motion i:nth-child(2){right:8%;top:29%;width:26px;animation-delay:-2.1s;}
+.island-water-motion i:nth-child(3){left:16%;bottom:13%;width:42px;animation-delay:-1.5s;}
+.island-water-motion i:nth-child(4){right:16%;bottom:9%;width:30px;animation-delay:-3s;}
+@keyframes island-wave{
+  0%,100%{transform:translate3d(-5px,0,0) scaleX(.9);opacity:.18;}
+  50%{transform:translate3d(6px,-2px,0) scaleX(1.08);opacity:.62;}
+}
+.island-hotspot{
+  animation:island-pin-arrive .3s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay:var(--pin-delay,0ms);
+}
+@keyframes island-pin-arrive{
+  from{transform:translate(-50%,-50%) scale(.58);}
+  to{transform:translate(-50%,-50%) scale(1);}
+}
+.hotspot-dot{transition:transform .14s ease,background-color .14s ease,box-shadow .14s ease;}
+.hotspot-ripple{
+  position:absolute;
+  left:50%;top:50%;
+  width:18px;height:18px;
+  transform:translate(-50%,-50%) scale(.9);
+  border:2px solid rgba(255,233,116,.82);
+  opacity:0;
+  pointer-events:none;
+}
+.island-hotspot.active .hotspot-ripple{animation:island-pin-ripple 1.8s ease-out infinite;}
+@keyframes island-pin-ripple{
+  0%{opacity:.8;transform:translate(-50%,-50%) scale(.72);}
+  75%,100%{opacity:0;transform:translate(-50%,-50%) scale(2.1);}
+}
+.island-hotspot:hover .hotspot-dot{transform:scale(1.22) translateY(-1px);box-shadow:0 0 0 3px #5b3523,2px 5px #0003;}
+.island-location-card h3{animation:island-card-title .2s ease both;}
+@keyframes island-card-title{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
+.island-progress-track span{transition:width .25s ease;}
+
+@media(prefers-reduced-motion:reduce){
+ .ginger-map-image,.island-progress-track span{transition:none;}
+ .island-water-motion i,.island-hotspot,.island-hotspot.active .hotspot-ripple,.island-location-card h3{animation:none!important;}
+ .ginger-map-image{opacity:1;transform:none;}
+}
+
+
+/* Long directories/lists can skip paint work while well outside the viewport. */
+.walnut-row{content-visibility:auto;contain-intrinsic-size:auto 72px;}
+
+/* Pelican Planner's own effects toggle also disables decorative island motion. */
+html[data-effects="off"] .ginger-map-image,
+html[data-effects="off"] .island-progress-track span{transition:none;}
+html[data-effects="off"] .ginger-map-image{opacity:1;transform:none;}
+html[data-effects="off"] .island-water-motion i,
+html[data-effects="off"] .island-hotspot,
+html[data-effects="off"] .island-hotspot.active .hotspot-ripple,
+html[data-effects="off"] .island-location-card h3{animation:none!important;}
