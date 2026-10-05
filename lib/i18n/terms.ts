@@ -9,6 +9,11 @@ Green Bean|青豆
 Cauliflower|花椰菜
 Potato|土豆
 Strawberry|草莓
+Blue Jazz|蓝爵
+Tulip|郁金香
+Summer Spangle|夏季亮片
+Hops|啤酒花
+Fairy Rose|玫瑰仙子
 Blueberry|蓝莓
 Melon|甜瓜
 Tomato|西红柿
@@ -253,4 +258,8 @@ Dwarvish Translation Guide|矮人语翻译指南
 Community Center restored|社区中心已修复
 Pickaxe|十字镐
 Traveling Cart|旅行货车
+Pelican Town|鹈鹕镇
+Calico Desert|卡利科沙漠
+Bamboo Pole|竹鱼竿
+Progression|进度
 `.trim().split('\n').map(line=>line.split('|')));

@@ -7,10 +7,12 @@ const SOURCES:Record<string,string[]>={
 
 export const runtime='nodejs';
 export const revalidate=604800;
+const SPRITE_TIMEOUT_MS=5_000;
 
 async function load(url:string){
   const response=await fetch(url,{
     redirect:'follow',
+    signal:AbortSignal.timeout(SPRITE_TIMEOUT_MS),
     headers:{
       'User-Agent':'Mozilla/5.0 (compatible; PelicanPlanner/1.0; +https://stardewvalleywiki.com/)',
       'Accept':'image/gif,image/*;q=0.9,*/*;q=0.5',

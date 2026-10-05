@@ -59,6 +59,10 @@ const templates: [RegExp,string][]=[
  [/^Currently floor (\d+)$/,'当前位于第{0}层'],
  [/^By (Spring|Summer|Fall|Winter) (\d+)$/,'最晚{0}{1}日'],
  [/^(\d+) days left$/,'还剩{0}天'],
+ [/^([\d,]+)g \/seed$/,'每颗种子{0}金'],
+ [/^Need (\d+) gold-quality$/,'需要{0}个金星品质'],
+ [/^last standard planting day (Spring|Summer|Fall|Winter) (\d+)$/,'常规种植最晚到{0}{1}日'],
+ [/^Grow extra (.+) for the Quality Crops Bundle$/,'多种一些{0}，为高品质作物收集包做准备'],
  [/^([\d,]+)g$/,'{0}金'],
  [/^([\d,]+) (.+)$/,'{0} {1}'],
  [/^(.+) birthday$/,'{0}的生日'],
@@ -70,7 +74,7 @@ export function translate(text:string,locale:Locale):string{
  const s=text.trim();const before=text.slice(0,text.indexOf(s));const after=text.slice(text.indexOf(s)+s.length);
  const exact=dictionary[s];if(exact!==undefined)return before+exact+after;
  for(const [pattern,replacement] of templates){const match=s.match(pattern);if(match)return before+replacement.replace(/\{(\d+)\}/g,(_,i)=>translate((match[Number(i)+1]??'').trim(),locale))+after;}
- if(/^\d{1,2}(am|pm)$/.test(s)){const h=parseInt(s);return `${s.endsWith('am')?(h===12?'凌晨':'上午'):(h===12?'中午':'下午')}${h}点`;}
+ const time=s.match(/^(\d{1,2})(?::(\d{2}))?(am|pm)$/);if(time){const h=Number(time[1]),minute=time[2],period=time[3];const label=period==='am'?(h===12?'凌晨':'上午'):(h===12?'中午':'下午');return `${label}${h}${minute?':'+minute:'点'}`;}
  // Compound display labels are composed of independently translated segments.
  for(const separator of [' · ',', ',' / ','–']){if(s.includes(separator)){const parts=s.split(separator);const translated=parts.map(part=>translate(part,locale));if(translated.some((part,i)=>part!==parts[i]))return before+translated.join(separator)+after;}}
  return text;

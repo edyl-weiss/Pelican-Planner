@@ -18,17 +18,11 @@ That file could not be read. Choose a journal JSON backup and try again.|无法�
 That backup belongs to a different app. Choose a Pelican Planner backup.|这份备份来自其他应用，请选择 Pelican Planner 备份。
 This backup needs a newer version of the journal. Update the site, then try again.|这份备份需要更新版本的日记，请更新网站后重试。
 Choose a journal JSON backup. Game saves can be imported with Import save.|请选择日记 JSON 备份。游戏存档请使用“导入存档”。
-IN KROBUS WE TRUST|我们信克罗布斯。
-Today|今天
 Priority|优先
-Next|接下来
-Priority|优先
-Next|接下来
 Optional|可选
 Today at a glance|今天一览
 Update weather & luck|更新天气和运势
 Welcome tomorrow|迎接新一天
-Ready to harvest|可以收获
 Harvest schedule|收获安排
 Open crop planner|打开作物计划
 Ready today|今天可以收获
@@ -46,14 +40,14 @@ Walk me through setup|带我一步步设置
 Preferences|偏好设置
 Planning style|规划风格
 How much detail|计划细致程度
-Suggestions I tucked away|我暂时收起的建议
+Hidden suggestions|已隐藏的建议
 Change your mind any time. Removing one here lets that kind of suggestion pop back into your plan.|随时可以改变主意。在这里点回来，那类建议就会重新出现在计划里。
 Nothing hidden. Your suggestions are all welcome.|还没有收起任何建议，欢迎来点灵感。
 Show again|重新显示
 How’s the farm feeling today?|农场今天怎么样？
-Tell me what’s new, and I’ll freshen up today’s plan.|告诉我农场有什么新变化，我来帮你更新今天的计划。
-Why it could be a good fit|它为什么适合今天
-If today gets busy|如果今天有点忙
+Tell me what changed and I’ll update today’s plan.|告诉我有哪些变化，我会更新今天的计划。
+Why this is on today’s list|为什么今天会看到这项
+If you skip it today|如果今天跳过
 Checking this off saves your progress. Update gold, supplies and harvests whenever you like.|勾选后会记下进度。金币、物资和收获可以在方便的时候更新。
 Hide this kind of suggestion|不再显示这类建议
 The crop catalog covers|作物目录收录了
@@ -104,7 +98,6 @@ Pelican Planner|Pelican Planner
 IN KROBUS WE TRUST|我们信克罗布斯。
 Play|今天
 Plan|计划
-Collection|收藏
 More|更多
 Calendar|日历
 Crops|农作物
@@ -175,7 +168,6 @@ Opening your farm journal…|正在翻开农场手记…
 Year|年份
 · Year|· 年份
 Update today’s weather|更新今日天气
-Update|更新
 Today’s plan|今日计划
 Light day|轻松的一天
 A full day|充实的一天
@@ -371,7 +363,7 @@ Primary goal|主要目标
 Planning intensity:|规划强度：
 A few essentials and room to wander.|只安排几件要事，留些时间随处逛逛。
 Seasonal priorities with flexible tasks.|关注季节重点，任务安排保持灵活。
-More eligible tasks and fishing opportunities. Precise travel-time optimization is not yet modeled.|提供更多可做的任务与钓鱼机会，暂未精确优化行走路线与时间。
+Shows more optional tasks and fishing opportunities. Exact travel time is not calculated.|显示更多可选任务和钓鱼机会。暂不计算精确移动时间。
 Don’t recommend fishing|不推荐钓鱼任务
 Include festivals in my daily plan|在每日计划中显示节日
 Always keep this much gold unspent|始终保留的金币
@@ -380,7 +372,6 @@ Farming level|耕种等级
 Mine floor|矿井层数
 Tiller: +10% crop sale prices|农耕人：作物售价提高10%
 Artisan: +40% artisan sale prices|工匠：工匠物品售价提高40%
-Unlocked in my game|游戏中已经解锁
 Spoiler detail|剧透程度
 Minimal and Normal hide locked late-game calendar events. Full reveals their dates; the planner still respects unlock requirements.|“尽量不剧透”和“普通”会隐藏尚未解锁的后期活动。“完整显示”会显示日期，但计划仍会检查解锁条件。
 Bring your farm along|带上我的农场
@@ -395,7 +386,7 @@ Load previous save|载入上一份存档
 Changes remain in this tab until you choose Save farm. If offline, keep the tab open or export a backup.|点击“保存农场”前，更改只保留在当前标签页。离线时请保持页面打开，或导出备份。
 Built for standard Stardew Valley 1.6 runs. Wiki data was checked on October 1, 2026; individual patch versions have not been exhaustively tested.|适用于星露谷物语1.6标准流程。维基数据核对日期为2026年10月1日，尚未逐一完整测试各补丁版本。
 This first version includes all 30 standard bundles, 16 crop comparisons, seasonal events and common bundle fish. Recommendations are rule-based and explain their assumptions.|此版本包含全部30个标准收集包、16种作物比较、季节活动及常见收集包鱼类。建议基于规则，并说明计算前提。
-Remixed bundles, multiplayer assignments, fertilizer growth, advanced processing queues, perfection and complete save parsing still need expansion. Ask the Planner and automatic route optimization are not included yet.|重新混合的收集包、多人分工、肥料生长加成、复杂加工排程、完美度及完整存档解析仍待扩展。暂未提供问答助手和自动路线优化。
+Remixed bundles, multiplayer task assignments, fertilizer growth bonuses, complex machine queues, perfection, and some save data are not fully covered yet. Automatic route planning is not included.|混合收集包、多人任务分工、肥料生长加成、复杂机器队列、完美度和部分存档数据尚未完整支持。暂不提供自动路线规划。
 Sprites © ConcernedApe, retrieved from the Stardew Valley Wiki. This is an unofficial fan tool, with no affiliation or endorsement.|像素素材版权归ConcernedApe所有，取自星露谷物语维基。本工具由玩家制作，非官方出品或授权合作。
 Start a fresh farm|新建农场
 Start a fresh farm?|开始一个新农场？
@@ -506,14 +497,14 @@ Setup · Step|设置 · 第
 Your farm & calendar|你的农场与日历
 How do you like to play?|你喜欢怎样游玩？
 Add your current progress|补充当前进度
-We’ll start on Spring 1, Year 1. Add a name and farm type so the journal feels like yours.|我们会从第1年春季1日开始。填写农场名称和类型，让手记更贴合你的农场。
+We’ll start on Spring 1, Year 1. Add your farm name and type, then we’ll set up the rest.|我们会从第1年春季1日开始。先填写农场名称和类型，再设置其他内容。
 Match the journal to the date your current save is on.|让手记日期与你当前的游戏存档保持一致。
 Starting gold|初始金币
 Current gold|当前金币
 Spring 1 · Year 1|第1年春季1日
 You can advance the journal one day at a time from here.|之后可以每天推进一次手记日期。
 These choices shape how busy the daily plan feels and which kinds of goals it prioritizes.|这些选项会决定每日计划的紧凑程度，以及优先关注哪些目标。
-Lower settings keep the day loose. Higher settings surface more eligible tasks and opportunities.|较低强度会让每天更轻松；较高强度会显示更多可做任务和机会。
+Lower settings keep the list short. Higher settings show more optional tasks.|较低设置会让清单更短；较高设置会显示更多可选任务。
 These can stay at their defaults for a fresh save. Fill them in only if your run starts with custom progress.|新存档可保留默认值。只有在自定义开局时才需要填写这些内容。
 Optional, but adding these now makes recommendations more accurate immediately.|这些是可选项，但现在填写能让推荐立刻更准确。
 Unlocked in my game|我已解锁
@@ -542,7 +533,7 @@ Main planning goal|主要规划目标
 Plan detail:|计划详细程度：
 Show only the most important daily tasks.|只显示每天最重要的任务。
 Show core priorities plus useful optional tasks.|显示核心优先事项和实用的可选任务。
-Show more optimization opportunities and time-sensitive tasks. Exact travel routing is not modeled.|显示更多优化机会和时间敏感任务。目前不计算精确移动路线。
+Show more planning detail and time-sensitive reminders. Exact travel routes are not calculated.|显示更多规划细节和限时提醒。暂不计算精确移动路线。
 Hide fishing tasks|隐藏钓鱼任务
 Include festival reminders|显示节日提醒
 Minimum gold reserve|最低金币预留
@@ -566,7 +557,7 @@ Restore previous save|恢复上一份存档
 Recovered changes stay as a draft until you choose Save farm. If you are offline, keep this tab open or download a backup.|恢复后的更改会先作为草稿保留，直到你选择“保存农场”。离线时请保持此标签页打开，或下载备份。
 Planner data & limitations|计划数据与限制
 Built for standard Stardew Valley 1.6 runs. Core crop, bundle, fishing, shop and calendar rules were cross-checked again on October 1, 2026.|适用于标准的星露谷物语 1.6 存档。作物、收集包、钓鱼、商店与日历等核心规则已于 2026 年 10 月 1 日再次交叉核对。
-The planner uses the classic Community Center bundle set. Remixed bundles, exact travel routing, full artisan-processing optimization, fertilizer growth-speed bonuses and some modded or late-game systems are not fully modeled yet.|计划器使用经典社区中心收集包。混合收集包、精确路线规划、完整工匠加工优化、肥料生长速度加成，以及部分模组或后期系统尚未完整建模。
+The planner uses the classic Community Center bundles. Remixed bundles, exact travel routes, full artisan-processing math, fertilizer growth bonuses, and some modded or late-game systems are not fully covered.|规划器使用经典社区中心收集包。混合收集包、精确移动路线、完整工匠加工计算、肥料生长加成，以及部分模组或后期系统尚未完整支持。
 Reset planner|重置计划器
 Reset planner?|重置计划器？
 Start a fresh planner draft? Download a backup first if you want to keep this one.|开始新的计划草稿吗？如果想保留当前农场，请先下载备份。
@@ -588,4 +579,58 @@ Click for details; double-click to donate or undo.|单击查看详情；双击�
 quality or better|或更高品质
 Strategy|策略
 Tracked|已记录
+How do you want to use the planner?|你想怎样使用规划器？
+Keep things light, or give the planner more of your farm details. You can switch anytime.|想轻松一点，或让规划器参考更多农场细节都可以。随时都能切换。
+A short daily list with planting tips, fishing reminders, and seasonal things worth catching.|每天只看一小份清单，包含种植建议、钓鱼提醒和别错过的季节内容。
+No weather or luck check-ins.|不用每天填写天气或运气。
+Factor in weather, luck, mine progress, unlocks, crop timing, and more.|把天气、运气、矿井进度、解锁内容、作物时间等一起算进去。
+Best if you like planning a few steps ahead.|适合喜欢提前多想几步的玩家。
+Nothing is locked in. You can change modes from the top bar whenever you want.|不用担心选错，随时可以从顶部切换模式。
+A quick setup, then you’re in|简单设置一下就能开始
+Tell Pelican Planner where you are in the game and what you care about most. That’s all Simple Mode needs.|告诉 Pelican Planner 你玩到哪里，以及现在最在意什么，简单模式就够用了。
+Already have a save file handy?|手边已经有存档了吗？
+What should the planner focus on?|你希望规划器重点帮你看什么？
+Pick what matters most right now. You can change this later.|先选现在最重要的目标，之后随时可以改。
+What matters most to you?|你现在最看重什么？
+That’s it. Your daily list will stay short and change with the season.|就这样。每天的清单会保持简短，并随季节变化。
+Full Mode uses more of your farm details to make the daily plan more specific.|完整模式会参考更多农场细节，让每日计划更贴合你的存档。
+Bring in an existing save|导入已有存档
+Read your date, progress, and supported growing crops|读取日期、进度和支持的在种作物
+Have your Stardew save file ready?|已经准备好星露谷存档了吗？
+Add your farm name and type, then we’ll set up the rest.|先填农场名称和类型，再设置其他内容。
+Tell the planner how you play and what you’re working toward.|告诉规划器你的玩法和目前的目标。
+Lower keeps the list short. Higher points out more things you could do.|数值低时清单更短，数值高时会提醒更多可做的事。
+Starting fresh? You can leave these alone. Only change them if your save already has some progress.|新档可以保持默认。只有存档已有进度时才需要修改。
+These are optional, but filling them in helps the planner match your save right away.|这些都不是必填，但填写后规划器会更快贴合你的存档。
+You can change any of this later under More.|这些设置之后都能在“更多”里修改。
+Pick a day, see what’s coming up, then get back to the farm.|选一天看看接下来有什么，再回农场忙自己的事。
+Nothing on the calendar. The day is yours.|日历上没安排，这一天随你发挥。
+Good picks for today|今天值得种
+No planting rush today.|今天不用急着种东西。
+The bigger picture|看看整个季节
+Plan the season|规划这个季节
+No events or recorded harvests on this day.|这一天没有活动或已记录的收获。
+Based on daily watering.|按每天浇水计算。
+Show the little pixel effects and animations. Your reduced-motion setting still takes priority.|显示像素互动效果和动画。系统的减少动态效果设置仍然优先。
+Just the things most worth remembering today.|只显示今天最值得记住的事。
+The main priorities, plus a few useful extras.|主要事项，再加几条有用提醒。
+More planning detail and more time-sensitive reminders.|显示更多规划细节和限时提醒。
+Need cloud recovery or the full data controls? Switch to Full Mode.|需要云端恢复或完整数据工具时，请切换到完整模式。
+A restored backup stays as a draft until you choose Save farm.|恢复的备份会先作为草稿，点击“保存农场”后才会保存。
+Your saved notes will show up here.|保存的笔记会显示在这里。
+Bring your farm into Pelican Planner|把农场导入 Pelican Planner
+Here’s what was found|这是读取到的内容
+A few things to check|有几项需要确认
+Meet Willy and get the Bamboo Pole|去见威利并拿到竹鱼竿
+Finish the Community Center introduction|完成社区中心的前置剧情
+Willy’s “To The Beach” letter first arrives on Spring 2. Meet him at the beach to receive the Bamboo Pole; fishing recommendations stay locked until you record the rod as obtained.|威利的“去沙滩”来信最早会在第1年春季2日送达。去沙滩见他并领取竹鱼竿；在记录已拿到鱼竿前，规划器不会推荐钓鱼任务。
+The quest can be finished later. Pelican Planner will keep this reminder instead of suggesting fishing early.|这个任务不必当天完成。在拿到鱼竿前，鹈鹕规划器会保留这条提醒，而不是提前推荐钓鱼。
+If Lewis’s cutscene has not triggered: Spring 5+ · non-rainy · enter Pelican Town from the Bus Stop 8am–1pm. Then inspect the golden scroll and meet the Wizard after his letter.|如果还没触发刘易斯的剧情：春季5日之后，非雨天的上午8点到下午1点，从巴士站进入鹈鹕镇。之后查看金色卷轴，收到法师来信后去见他。
+Forest Magic is what lets you read Junimo bundle text. Until then, Pelican Planner will tell you to save bundle items instead of pretending you can donate them.|获得森林魔法后才能读懂祝尼魔的收集包文字。在此之前，鹈鹕规划器只会提醒你把所需物品留好，不会假设你已经可以献祭。
+You can keep farming and saving seasonal items while you finish the introduction.|完成这段前置剧情期间，照常种田，并把当季收集包需要的物品留好即可。
+Crop quality is decided at harvest and improves with Farming level and fertilizer. Growing extras gives you more chances to reach 5 gold-quality crops.|作物品质在收获时决定，会受耕种等级和肥料影响。多种一些，凑齐5个金星品质作物的机会也更大。
+You only need 3 of the 4 Quality Crops options, so another season can cover this slot.|高品质作物收集包的4种作物只需完成其中3种，这一项也可以留到其他季节补上。
+Beach · “To The Beach” quest|沙滩 · “去沙滩”任务
+Beach · Willy’s letter arrives today|沙滩 · 威利的来信今天送达
+Starts 10am|上午10点开始
 `.trim().split('\n').map(line=>line.split('|')));

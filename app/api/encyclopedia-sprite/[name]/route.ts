@@ -97,6 +97,7 @@ const SOURCES:Record<string,string>={
 
 export const runtime='nodejs';
 export const revalidate=2592000;
+const SPRITE_TIMEOUT_MS=5_000;
 
 const fallback=`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" shape-rendering="crispEdges"><rect width="48" height="48" fill="none"/><path fill="#6d8f51" d="M22 11h5v8h7v5h-7v13h-6V24h-7v-5h8z"/><path fill="#42693c" d="M14 13h8v6h-8zm13-6h8v7h-8z"/></svg>`;
 
@@ -105,7 +106,7 @@ export async function GET(_request:Request,{params}:{params:Promise<{name:string
  const url=SOURCES[name];
  if(!url)return new Response('Not found',{status:404});
  try{
-  const response=await fetch(url,{cache:'force-cache',headers:{'User-Agent':'Mozilla/5.0 (compatible; PelicanPlanner/1.0)'}});
+  const response=await fetch(url,{cache:'force-cache',signal:AbortSignal.timeout(SPRITE_TIMEOUT_MS),headers:{'User-Agent':'Mozilla/5.0 (compatible; PelicanPlanner/1.0)'}});
   if(!response.ok)throw new Error(`Sprite source returned ${response.status}`);
   const type=response.headers.get('content-type')??'image/webp';
   if(!type.startsWith('image/'))throw new Error('Unexpected sprite content type');

@@ -125,7 +125,7 @@ export default function PlannerNotepad(){
 
  const toggleHidden=()=>setHiddenPreference(!hidden);
  const openMobile=()=>{setHiddenPreference(false);setMobileOpen(true)};
- const clearNotes=()=>{if(chunks.length&&window.confirm('Delete every note chunk?'))persist([])};
+ const clearNotes=()=>{if(chunks.length&&window.confirm('Delete every saved note?'))persist([])};
 
  return <>
   <button type="button" className="notepad-mobile-toggle" onClick={openMobile} aria-label="Open notepad"><FileText size={20}/><span>Notes</span></button>
@@ -138,7 +138,7 @@ export default function PlannerNotepad(){
     </div>
    </div>
    {!hidden&&<>
-    <p className="notepad-instructions">Type a note and press Enter to save. Shift+Enter adds a line. Highlight Encyclopedia text and right-click to save it here.</p>
+    <p className="notepad-instructions">Write a note and press Enter to save it. Use Shift+Enter for a new line. You can also highlight text in the Encyclopedia, right-click, and save it here.</p>
     <div className="notepad-composer">
      <textarea
       ref={draftRef}
@@ -156,7 +156,7 @@ export default function PlannerNotepad(){
      <span className="notepad-enter-hint" aria-hidden="true">Enter ↵</span>
     </div>
     <div className="notepad-chunks" aria-live="polite">
-     {chunks.length===0?<p className="notepad-empty">Saved notes will appear here as separate chunks.</p>:chunks.map(chunk=><article className={`notepad-chunk ${chunk.source==='selection'?'from-selection':''}`} key={chunk.id}>
+     {chunks.length===0?<p className="notepad-empty">Your saved notes will show up here.</p>:chunks.map(chunk=><article className={`notepad-chunk ${chunk.source==='selection'?'from-selection':''}`} key={chunk.id}>
       <div className="notepad-chunk-head">
        <span>{chunk.source==='selection'?<><BookOpen size={13}/>Encyclopedia</>:<><FileText size={13}/>Note</>}</span>
        <button type="button" className="notepad-chunk-delete" onClick={()=>removeChunk(chunk.id)} aria-label="Delete this note" title="Delete note"><X size={15}/></button>

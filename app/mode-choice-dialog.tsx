@@ -1,20 +1,32 @@
 'use client';
-import {Dialog,DialogContent,DialogDescription,DialogTitle} from '@/components/ui/dialog';
-import {Sprite} from './farm-ui';
-import type {RunState} from '@/lib/game/state';
 
-export default function ModeChoiceDialog({open,onChoose}:{open:boolean;onChoose:(mode:RunState['plannerMode'])=>void}){
- return <Dialog open={open}><DialogContent className="farm-dialog setup-dialog mode-choice-dialog" showCloseButton={false} onEscapeKeyDown={e=>e.preventDefault()} onPointerDownOutside={e=>e.preventDefault()}>
-  <div className="setup-hero"><Sprite name="Calendar" size={58}/><div><p className="eyebrow">Welcome to Pelican Planner!</p><DialogTitle>How much detail do you want?</DialogTitle></div></div>
-  <DialogDescription>Choose Simple or Full Mode.</DialogDescription>
-  <div className="mode-choice-grid">
-   <button className="mode-choice-card simple" onClick={()=>onChoose('simple')}>
-    <Sprite name="Parsnip" size={56}/><span><strong>Simple Mode</strong><small>Planting, fishing, and seasonal recommendations.</small><em>Fewer inputs and fewer recommendations.</em></span>
-   </button>
-   <button className="mode-choice-card full" onClick={()=>onChoose('full')}>
-    <Sprite name="Quality Sprinkler" size={56}/><span><strong>Full Mode</strong><small>Track weather, luck, progress, and crop math.</small><em>More inputs and deeper planning.</em></span>
-   </button>
-  </div>
-  <p className="label-note">Switch modes anytime from the top bar.</p>
- </DialogContent></Dialog>;
+import {Dialog,DialogContent,DialogDescription,DialogTitle} from '@/components/ui/dialog';
+import type {RunState} from '@/lib/game/state';
+import {Sprite} from './farm-ui';
+
+type PlannerMode=RunState['plannerMode'];
+type Props={open:boolean;onChoose:(mode:PlannerMode)=>void};
+
+const modes:[PlannerMode,string,string,string,string][]=[
+ ['simple','Parsnip','Simple Mode','A short daily list with planting tips, fishing reminders, and seasonal things worth catching.','No weather or luck check-ins.'],
+ ['full','Quality Sprinkler','Full Mode','Factor in weather, luck, mine progress, unlocks, crop timing, and more.','Best if you like planning a few steps ahead.'],
+];
+
+export default function ModeChoiceDialog({open,onChoose}:Props){
+ return <Dialog open={open}>
+  <DialogContent className="farm-dialog setup-dialog mode-choice-dialog" showCloseButton={false} onEscapeKeyDown={event=>event.preventDefault()} onPointerDownOutside={event=>event.preventDefault()}>
+   <div className="setup-hero">
+    <Sprite name="Calendar" size={58}/>
+    <div><p className="eyebrow">Welcome to Pelican Planner!</p><DialogTitle>How do you want to use the planner?</DialogTitle></div>
+   </div>
+   <DialogDescription>Keep things light, or give the planner more of your farm details. You can switch anytime.</DialogDescription>
+   <div className="mode-choice-grid">
+    {modes.map(([mode,sprite,title,description,note])=><button key={mode} className={`mode-choice-card ${mode}`} onClick={()=>onChoose(mode)}>
+     <Sprite name={sprite} size={56}/>
+     <span><strong>{title}</strong><small>{description}</small><em>{note}</em></span>
+    </button>)}
+   </div>
+   <p className="label-note">Nothing is locked in. You can change modes from the top bar whenever you want.</p>
+  </DialogContent>
+ </Dialog>;
 }
