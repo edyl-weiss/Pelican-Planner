@@ -7,7 +7,7 @@ import ts from 'typescript';
 
 const out=new URL('../.sites-runtime/encyclopedia-test/',import.meta.url);
 await mkdir(out,{recursive:true});
-for(const name of ['data','obtain','villager-profiles','villager-heart-events','encyclopedia','encyclopedia-offline']){
+for(const name of ['data','obtain','villager-profiles','villager-heart-events','encyclopedia-crafting','encyclopedia','encyclopedia-offline']){
   const input=await readFile(new URL(`../lib/game/${name}.ts`,import.meta.url),'utf8');
   const code=ts.transpileModule(input,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText
     .replace(/from '(\.\/[^']+)'/g,(full,spec)=>`from '${spec.endsWith('.json')?spec:spec+'.js'}'${spec.endsWith('.json')?" with {type:'json'}":''}`);
@@ -29,6 +29,16 @@ test('Broad sword search keeps the generic article and named choices',()=>{const
 test('Cabbage resolves to Red Cabbage without requiring an exact title',()=>assert.equal(enc.searchEncyclopedia('cabbage')[0]?.title,'Red Cabbage'));
 test('Bundle search stays focused enough to be a chooser',()=>{const r=enc.searchEncyclopedia('bundle');assert.equal(r[0]?.title,'Bundles');assert(r.length<=45);assert(r.some(e=>e.title==='Spring Foraging'))});
 test('Every Encyclopedia entry resolves a sprite',()=>{for(const entry of enc.encyclopediaEntries)assert(entry.sprite,`${entry.category}: ${entry.title}`)});
+test('Trees and Crafting have useful first-class browse coverage',()=>{
+ assert(enc.encyclopediaCategories.includes('Trees'));
+ assert(enc.encyclopediaCategories.includes('Crafting'));
+ const trees=enc.encyclopediaEntries.filter(e=>e.category==='Trees');
+ const crafting=enc.encyclopediaEntries.filter(e=>e.category==='Crafting');
+ assert(trees.length>=15,`trees: ${trees.length}`);
+ assert(crafting.length>=45,`crafting: ${crafting.length}`);
+ for(const title of ['Oak Tree','Maple Tree','Pine Tree','Mahogany Tree','Mystic Tree','Green Rain Trees'])assert(trees.some(e=>e.title===title),title);
+ for(const title of ['Tapper','Mushroom Log','Keg','Furnace','Heavy Furnace','Tree Fertilizer','Crystalarium'])assert(crafting.some(e=>e.title===title),title);
+});
 test('Every referenced Encyclopedia sprite has a static file or cached proxy source',()=>{const proxyRoute=spriteProxyRoute;for(const entry of enc.encyclopediaEntries){const sprite=enc.encyclopediaSpritePath(entry);assert(sprite,`${entry.title}: missing path`);if(sprite.startsWith('/sprites/'))assert(existsSync(new URL('../public'+sprite,import.meta.url)),`${entry.title}: ${sprite}`);else{assert(sprite.startsWith('/api/encyclopedia-sprite/'),`${entry.title}: unexpected sprite path ${sprite}`);assert(proxyRoute.includes(JSON.stringify(sprite.split('/').pop())),`${entry.title}: proxy mapping missing for ${sprite}`)}}});
 test('All giftable villagers have a complete local gift profile',()=>{assert.equal(Object.keys(villagers.villagerProfiles).length,34);for(const [name,profile] of Object.entries(villagers.villagerProfiles)){assert(profile.birthday?.season&&profile.birthday?.day,`${name}: birthday`);for(const tier of ['loves','likes','neutrals','dislikes','hates'])assert(Array.isArray(profile[tier]),`${name}: ${tier}`)}});
 test('Every villager gift label resolves to a bundled local sprite',()=>{const assets=assetsRegistry;const available=new Set(Object.keys(assets));for(const [name,profile] of Object.entries(villagers.villagerProfiles)){for(const tier of ['loves','likes','neutrals','dislikes','hates'])for(const gift of profile[tier]){const sprite=villagers.giftSpriteName(gift,available);assert.notEqual(sprite,'Bundle Green',`${name}: ${gift}`);assert(assets[sprite]?.local_path,`${name}: ${gift} -> ${sprite}`)}}});
@@ -44,6 +54,6 @@ test('Offline reader refines broad search and links inline sprites to entries',(
  const document={getElementById(id){return id==='app'?app:id==='q'?q:id==='searchForm'?form:id==='back'?back:{onclick:null}},querySelectorAll(){return []}};
  const context=vm.createContext({document,window:{scrollTo(){}},console});vm.runInContext(script,context,{timeout:3000});
  vm.runInContext("q.value='sword';list('sword')",context,{timeout:3000});assert(app.innerHTML.includes('General article'));assert(app.innerHTML.includes('Galaxy Sword'));
- vm.runInContext("openEntry('bundle-construction')",context,{timeout:3000});assert(app.innerHTML.includes('data-open="item-wood"'));assert(app.innerHTML.includes('data:image/png;base64'));
+ vm.runInContext("openEntry('bundle-construction')",context,{timeout:3000});assert(app.innerHTML.includes(`data-open="${enc.encyclopediaByTitle.get('wood').id}"`));assert(app.innerHTML.includes('data:image/png;base64'));
 });
 console.log(`${passed} Encyclopedia checks passed.`);

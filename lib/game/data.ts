@@ -104,7 +104,7 @@ export const events:CalendarEvent[]=[
  ['Kent:4','Lewis:7','Vincent:10','Haley:14','Pam:18','Shane:20','Pierre:26','Emily:27'],
  ['Jas:4','Gus:8','Maru:10','Alex:13','Sam:17','Demetrius:19','Dwarf:22','Willy:24','Leo:26'],
  ['Penny:2','Elliott:5','Jodi:11','Abigail:13','Sandy:15','Marnie:18','Robin:21','George:24'],
- ['Krobus:1','Linus:3','Caroline:7','Sebastian:10','Harvey:14','Wizard:17','Evelyn:20','Leah:23','Clint:26']][i].map(s=>{const[name,d]=s.split(':');return {name,day:Number(d),season,type:'birthday' as const,minYear:name==='Kent'?2:1,requires:name==='Leo'?'Island':undefined}})),
+ ['Krobus:1','Linus:3','Caroline:7','Sebastian:10','Harvey:14','Wizard:17','Evelyn:20','Leah:23','Clint:26']][i].map(s=>{const[name,d]=s.split(':');return {name,day:Number(d),season,type:'birthday' as const,minYear:name==='Kent'?2:1,requires:name==='Leo'?'Island':name==='Sandy'?'Bus':name==='Krobus'?'Sewers':name==='Dwarf'?'Dwarvish Translation Guide':name==='Wizard'?'Forest Magic':undefined}})),
  {name:'Egg Festival',season:'Spring',day:13,type:'festival'},
  {name:'Desert Festival',season:'Spring',day:15,end:17,type:'festival',requires:'Bus'},
  {name:'Flower Dance',season:'Spring',day:24,type:'festival'},

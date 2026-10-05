@@ -1,0 +1,32 @@
+'use client';
+import {useMemo,useState} from 'react';
+import type {RunState} from '@/lib/game/state';
+import type {UpdateRun} from './farm-journal';
+import {MACHINE_RECIPES,machineReadyAt,machineReadyLabel,timeToStartOffset} from '@/lib/game/machines';
+import {absoluteDay,dateLabel} from '@/lib/game/planner';
+import {Choice,NumberField,Sprite} from './farm-ui';
+
+const recipeLabel=(machine:string,product:string)=>`${machine} · ${product}`;
+
+export default function MachinePlanner({run,update}:{run:RunState;update:UpdateRun}){
+ const recipes=MACHINE_RECIPES;
+ const[recipeName,setRecipeName]=useState(recipeLabel(recipes[7].machine,recipes[7].product));
+ const[quantity,setQuantity]=useState(1);const[startedTime,setStartedTime]=useState('06:00');const[feedback,setFeedback]=useState('');
+ const selected=recipes.find(r=>recipeLabel(r.machine,r.product)===recipeName)??recipes[0];
+ const preview=useMemo(()=>{try{return machineReadyAt(run.date,startedTime,selected.minutes)}catch{return null}},[run.date,startedTime,selected.minutes]);
+ const active=run.machineBatches.filter(b=>!b.collected).sort((a,b)=>absoluteDay(machineReadyAt(a.started,a.startedTime,a.processingMinutes).date)-absoluteDay(machineReadyAt(b.started,b.startedTime,b.processingMinutes).date));
+ const add=()=>{if(timeToStartOffset(startedTime)===null){setFeedback('Choose a load time from 6:00 AM through 1:50 AM, in 10-minute steps.');return}const batch:RunState['machineBatches'][number]={id:crypto.randomUUID(),machine:selected.machine,product:selected.product,quantity,started:run.date,startedTime,processingMinutes:selected.minutes,collected:false};update({...run,machineBatches:[...run.machineBatches,batch]},`Started ${quantity} ${selected.machine}${quantity===1?'':'s'} making ${selected.product}.`);setFeedback(`Added. Expected collection: ${machineReadyLabel(batch)}.`)};
+ return <div className="machine-planner" translate="no">
+  <div className="machine-intro"><div><p className="eyebrow">Set it and forget it</p><h2>Machine planner</h2><p className="muted">Log a batch once. Pelican Planner will surface it on the day it should be ready, and keep reminding you until you collect it.</p></div><div className="machine-count-badge"><strong>{active.length}</strong><span>active batches</span></div></div>
+  <div className="machine-layout">
+   <section className="paper machine-entry"><h3>Start a batch</h3><div className="machine-form"><Choice label="Recipe" value={recipeName} options={recipes.map(r=>recipeLabel(r.machine,r.product))} onChange={setRecipeName}/><NumberField label="How many machines?" value={quantity} min={1} max={9999} onChange={setQuantity}/><label className="field">Loaded at<input type="time" step={600} value={startedTime} onChange={e=>setStartedTime(e.target.value)}/></label></div>
+   <div className="machine-ready-preview"><Sprite name={selected.machine} size={42}/><div><span className="small muted">Expected collection</span><strong>{preview?`${dateLabel(preview.date)} · ${preview.time}`:'Choose a valid in-game time'}</strong><small>{preview?.overnight?'Finishes while you sleep; ready to collect at 6:00 AM.':'Uses Stardew’s in-game processing clock.'}</small></div></div>
+   <button className="btn primary" onClick={add}>Add {quantity} {selected.machine}{quantity===1?'':'s'}</button>{feedback&&<p className="tool-note">{feedback}</p>}
+   </section>
+   <section className="paper machine-queue"><div className="section-heading"><div><p className="eyebrow">Queue</p><h3>What finishes next</h3></div>{run.machineBatches.some(b=>b.collected)&&<button className="btn quiet compact" onClick={()=>update({...run,machineBatches:run.machineBatches.filter(b=>!b.collected)})}>Clear collected</button>}</div>
+   {active.length?active.map(batch=>{const ready=machineReadyAt(batch.started,batch.startedTime,batch.processingMinutes);const readyDay=absoluteDay(ready.date),today=absoluteDay(run.date),due=readyDay<=today;return <article className={`machine-batch ${due?'is-ready':''}`} key={batch.id}><Sprite name={batch.machine} size={38}/><div><strong>{batch.quantity}× {batch.product}</strong><p className="small muted">{batch.machine} · loaded {dateLabel(batch.started)} at {batch.startedTime}</p><p className="machine-due">{readyDay<today?`Overdue · was due ${dateLabel(ready.date)} · ${ready.time}`:readyDay===today?`Due today · ${ready.time}`:`Ready ${dateLabel(ready.date)} · ${ready.time}`}</p></div><div className="machine-actions">{due&&<button className="btn primary compact" onClick={()=>update({...run,machineBatches:run.machineBatches.map(x=>x.id===batch.id?{...x,collected:true}:x)},`Collected ${batch.quantity} ${batch.product}.`)}>Collected</button>}<button className="btn quiet compact" aria-label={`Remove ${batch.product} batch`} onClick={()=>update({...run,machineBatches:run.machineBatches.filter(x=>x.id!==batch.id)})}>Remove</button></div></article>}):<p className="empty-note">No machine batches yet. Add one and its collection day will join your planner.</p>}
+   </section>
+  </div>
+  <p className="label-note">Timing note: overnight processing from 2:00–6:00 AM runs faster than daytime processing, so the collection date can change depending on when you load the machine.</p>
+ </div>
+}

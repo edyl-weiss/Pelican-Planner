@@ -1762,5 +1762,599 @@
     "height": 48,
     "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
     "checked_date": "2026-10-03"
+  },
+  "Acorn": {
+    "local_path": "/api/encyclopedia-sprite/acorn",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/acorn-309-2bf512.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Acorn",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Maple Seed": {
+    "local_path": "/api/encyclopedia-sprite/maple-seed",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/maple-seed-310-819664.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Maple_Seed",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Pine Cone": {
+    "local_path": "/api/encyclopedia-sprite/pine-cone",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/pine-cone-311-d0a41e.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Pine_Cone",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mahogany Seed": {
+    "local_path": "/api/encyclopedia-sprite/mahogany-seed",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/mahogany-seed-292-5b36d1.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mahogany_Seed",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mystic Tree Seed": {
+    "local_path": "/api/encyclopedia-sprite/mystic-tree-seed",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/mystic-tree-seed-mystictreeseed-dfa671.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mystic_Tree_Seed",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mushroom Tree Seed": {
+    "local_path": "/api/encyclopedia-sprite/mushroom-tree-seed",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/mushroom-tree-seed-891-12c5d2.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mushroom_Tree_Seed",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mossy Seed": {
+    "local_path": "/api/encyclopedia-sprite/mossy-seed",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/mossy-seed-mossyseed-75b483.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mossy_Seed",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Tree Fertilizer": {
+    "local_path": "/api/encyclopedia-sprite/tree-fertilizer",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/tree-fertilizer-805-60724b.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Tree_Fertilizer",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mystic Syrup": {
+    "local_path": "/api/encyclopedia-sprite/mystic-syrup",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/mystic-syrup-mysticsyrup-a38e63.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mystic_Syrup",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Coal": {
+    "local_path": "/api/encyclopedia-sprite/coal",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/coal-382-4b6994.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Coal",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Fiber": {
+    "local_path": "/api/encyclopedia-sprite/fiber",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/fiber-771-4581d5.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Fiber",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Clay": {
+    "local_path": "/api/encyclopedia-sprite/clay",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/clay-330-2da884.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Clay",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Sap": {
+    "local_path": "/api/encyclopedia-sprite/sap",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/sap-92-91ddae.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Sap",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Moss": {
+    "local_path": "/api/encyclopedia-sprite/moss",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/moss-moss-75ab88.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Moss",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Refined Quartz": {
+    "local_path": "/api/encyclopedia-sprite/refined-quartz",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/refined-quartz-338-b43017.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Refined_Quartz",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Battery Pack": {
+    "local_path": "/api/encyclopedia-sprite/battery-pack",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/battery-pack-787-c668ff.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Battery_Pack",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Iridium Bar": {
+    "local_path": "/api/encyclopedia-sprite/iridium-bar",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/iridium-bar-337-d1bd4d.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Iridium_Bar",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Radioactive Bar": {
+    "local_path": "/api/encyclopedia-sprite/radioactive-bar",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/radioactive-bar-910-5212f9.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Radioactive_Bar",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Bone Fragment": {
+    "local_path": "/api/encyclopedia-sprite/bone-fragment",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/bone-fragment-881-bcf15b.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Bone_Fragment",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Cinder Shard": {
+    "local_path": "/api/encyclopedia-sprite/cinder-shard",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/cinder-shard-848-982fd6.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Cinder_Shard",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Copper Ore": {
+    "local_path": "/api/encyclopedia-sprite/copper-ore",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/copper-ore-378-e399ca.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Copper_Ore",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Iron Ore": {
+    "local_path": "/api/encyclopedia-sprite/iron-ore",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/iron-ore-380-2a6946.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Iron_Ore",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Gold Ore": {
+    "local_path": "/api/encyclopedia-sprite/gold-ore",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/gold-ore-384-e3e325.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Gold_Ore",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Iridium Ore": {
+    "local_path": "/api/encyclopedia-sprite/iridium-ore",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/iridium-ore-386-e865a7.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Iridium_Ore",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Radioactive Ore": {
+    "local_path": "/api/encyclopedia-sprite/radioactive-ore",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/radioactive-ore-909-d4a58c.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Radioactive_Ore",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Bee House": {
+    "local_path": "/api/encyclopedia-sprite/bee-house",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/bee-house-340ff4.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Bee_House",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Tapper": {
+    "local_path": "/api/encyclopedia-sprite/tapper",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/tapper-109e56.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Tapper",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Heavy Tapper": {
+    "local_path": "/api/encyclopedia-sprite/heavy-tapper",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/heavy-tapper-2aca44.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Heavy_Tapper",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Keg": {
+    "local_path": "/api/encyclopedia-sprite/keg",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/keg-ce8198.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Keg",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Furnace": {
+    "local_path": "/api/encyclopedia-sprite/furnace",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/furnace-6b631f.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Furnace",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Heavy Furnace": {
+    "local_path": "/api/encyclopedia-sprite/heavy-furnace",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/heavy-furnace-f2453b.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Heavy_Furnace",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mushroom Log": {
+    "local_path": "/api/encyclopedia-sprite/mushroom-log",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/mushroom-log-7110d1.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mushroom_Log",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Preserves Jar": {
+    "local_path": "/api/encyclopedia-sprite/preserves-jar",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/preserves-jar-436ae3.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Preserves_Jar",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Cheese Press": {
+    "local_path": "/api/encyclopedia-sprite/cheese-press",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/cheese-press-8a2ff0.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Cheese_Press",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mayonnaise Machine": {
+    "local_path": "/api/encyclopedia-sprite/mayonnaise-machine",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/mayonnaise-machine-9a8427.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mayonnaise_Machine",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Seed Maker": {
+    "local_path": "/api/encyclopedia-sprite/seed-maker",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/seed-maker-e5b519.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Seed_Maker",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Loom": {
+    "local_path": "/api/encyclopedia-sprite/loom",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/loom-a4860f.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Loom",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Oil Maker": {
+    "local_path": "/api/encyclopedia-sprite/oil-maker",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/oil-maker-dc8679.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Oil_Maker",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Recycling Machine": {
+    "local_path": "/api/encyclopedia-sprite/recycling-machine",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/recycling-machine-f35a70.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Recycling_Machine",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Worm Bin": {
+    "local_path": "/api/encyclopedia-sprite/worm-bin",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/worm-bin-e7be38.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Worm_Bin",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Deluxe Worm Bin": {
+    "local_path": "/api/encyclopedia-sprite/deluxe-worm-bin",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/deluxe-worm-bin-a7ca84.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Deluxe_Worm_Bin",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Bait Maker": {
+    "local_path": "/api/encyclopedia-sprite/bait-maker",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/bait-maker-6a5159.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Bait_Maker",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Fish Smoker": {
+    "local_path": "/api/encyclopedia-sprite/fish-smoker",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/fish-smoker-1f9269.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Fish_Smoker",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Dehydrator": {
+    "local_path": "/api/encyclopedia-sprite/dehydrator",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/dehydrator-1ee407.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Dehydrator",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Charcoal Kiln": {
+    "local_path": "/api/encyclopedia-sprite/charcoal-kiln",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/charcoal-kiln-4170c3.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Charcoal_Kiln",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Lightning Rod": {
+    "local_path": "/api/encyclopedia-sprite/lightning-rod",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/lightning-rod-1e66b0.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Lightning_Rod",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Solar Panel": {
+    "local_path": "/api/encyclopedia-sprite/solar-panel",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/solar-panel-243bce.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Solar_Panel",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Crystalarium": {
+    "local_path": "/api/encyclopedia-sprite/crystalarium",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/crystalarium-3f3fb3.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Crystalarium",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Geode Crusher": {
+    "local_path": "/api/encyclopedia-sprite/geode-crusher",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/geode-crusher-05e55d.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Geode_Crusher",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Bone Mill": {
+    "local_path": "/api/encyclopedia-sprite/bone-mill",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/bone-mill-99c9ab.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Bone_Mill",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Cask": {
+    "local_path": "/api/encyclopedia-sprite/cask",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/cask-163-b4c407.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Cask",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Chest": {
+    "local_path": "/api/encyclopedia-sprite/chest",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/chest-130-337786.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Chest",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Big Chest": {
+    "local_path": "/api/encyclopedia-sprite/big-chest",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/big-chest-bigchest-a3dfbb.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Big_Chest",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Scarecrow": {
+    "local_path": "/api/encyclopedia-sprite/scarecrow",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/scarecrow-8-55701f.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Scarecrow",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Sprinkler": {
+    "local_path": "/api/encyclopedia-sprite/sprinkler",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/sprinkler-599-68a9a7.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Sprinkler",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Iridium Sprinkler": {
+    "local_path": "/api/encyclopedia-sprite/iridium-sprinkler",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/iridium-sprinkler-645-c7c2b8.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Iridium_Sprinkler",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Banana": {
+    "local_path": "/api/encyclopedia-sprite/banana",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/banana-91-5e3de1.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Banana",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mango": {
+    "local_path": "/api/encyclopedia-sprite/mango",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/mango-834-a3a82e.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mango",
+    "width": 48,
+    "height": 48,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Oak Tree": {
+    "local_path": "/api/encyclopedia-sprite/oak-tree",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/wildtree-tree1-summer-de640a.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Oak_Tree",
+    "width": 48,
+    "height": 64,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Maple Tree": {
+    "local_path": "/api/encyclopedia-sprite/maple-tree",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/wildtree-tree2-summer-b546fc.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Maple_Tree",
+    "width": 48,
+    "height": 64,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Pine Tree": {
+    "local_path": "/api/encyclopedia-sprite/pine-tree",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/wildtree-tree3-fall-6040e8.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Pine_Tree",
+    "width": 48,
+    "height": 64,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mahogany Tree": {
+    "local_path": "/api/encyclopedia-sprite/mahogany-tree",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/wildtree-tree8-summer-23a56b.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mahogany_Tree",
+    "width": 48,
+    "height": 64,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mushroom Tree": {
+    "local_path": "/api/encyclopedia-sprite/mushroom-tree",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/wildtree-mushroom-tree-048e0e.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mushroom_Tree",
+    "width": 48,
+    "height": 64,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Mystic Tree": {
+    "local_path": "/api/encyclopedia-sprite/mystic-tree",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/wildtree-mystic-tree-a955f3.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Mystic_Tree",
+    "width": 48,
+    "height": 64,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Green Rain Trees": {
+    "local_path": "/api/encyclopedia-sprite/green-rain-trees",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/wildtree-tree1-greenrain-43f497.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Green_Rain_Trees",
+    "width": 48,
+    "height": 64,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
+  },
+  "Palm Tree": {
+    "local_path": "/api/encyclopedia-sprite/palm-tree",
+    "original_image_url": "https://cdn.source.gs/stardew-valley/img/wildtree-tree-palm-1949d4.webp",
+    "source_page_url": "https://www.stardewvalleywiki.com/Palm_Tree",
+    "width": 48,
+    "height": 64,
+    "attribution": "Stardew Valley © ConcernedApe, game-extracted sprite via stardew.gs",
+    "checked_date": "2026-10-03"
   }
 }

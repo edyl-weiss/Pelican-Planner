@@ -64,7 +64,8 @@ export function MorningReminder({ run }: { run: RunState }) {
   const [dismissed, setDismissed] = useState(false);
   const events = eventsOn(run, run.date).filter(
     (e) =>
-      e.type === "birthday" ||
+      (e.type === "birthday" &&
+        (!e.requires || run.unlocks.includes(e.requires))) ||
       (e.type === "festival" &&
         run.festivals &&
         (!e.requires || run.unlocks.includes(e.requires))),

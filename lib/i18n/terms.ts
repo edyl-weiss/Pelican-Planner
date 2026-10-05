@@ -246,6 +246,11 @@ Steel Pickaxe|钢十字镐
 Coop|鸡舍
 Barn|畜棚
 Watering Can|水壶
+Fishing Rod|鱼竿
+Forest Magic|森林魔法
+Sewers|下水道
+Dwarvish Translation Guide|矮人语翻译指南
+Community Center restored|社区中心已修复
 Pickaxe|十字镐
 Traveling Cart|旅行货车
 `.trim().split('\n').map(line=>line.split('|')));
