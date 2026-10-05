@@ -12,7 +12,7 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint": "eslint app lib components",
-    "test": "node tests/planner.test.mjs && node tests/activity.test.mjs && node tests/journal-backup.test.mjs && node tests/preferences.test.mjs && node tests/security.test.mjs && node tests/localization.test.mjs && node tests/encyclopedia.test.mjs && node tests/smart-planner.test.mjs",
+    "test": "node tests/typography.test.mjs && node tests/planner.test.mjs && node tests/activity.test.mjs && node tests/journal-backup.test.mjs && node tests/preferences.test.mjs && node tests/security.test.mjs && node tests/localization.test.mjs && node tests/encyclopedia.test.mjs && node tests/smart-planner.test.mjs",
     "test:smoke": "node tests/smoke.test.mjs",
     "test:i18n": "node tests/localization.test.mjs"
   },
