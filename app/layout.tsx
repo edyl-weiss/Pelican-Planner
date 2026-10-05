@@ -4,6 +4,7 @@ import "./valley-theme.css";
 import {LocaleProvider} from "./locale-provider";
 import PixelEffects from "./pixel-effects";
 import AnimatedJunimoCursor from "./animated-junimo-cursor";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: "Pelican Planner",
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased"><LocaleProvider>{children}<PixelEffects/><AnimatedJunimoCursor/></LocaleProvider></body>
+      <body className="antialiased"><LocaleProvider>{children}<PixelEffects/><AnimatedJunimoCursor/></LocaleProvider><Analytics /></body>
     </html>
   );
 }
