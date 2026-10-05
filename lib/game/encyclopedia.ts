@@ -198,7 +198,37 @@ export const encyclopediaEntries=all;
 export const encyclopediaByTitle=new Map(encyclopediaEntries.map(entry=>[entry.title.toLowerCase(),entry]));
 export const encyclopediaCategories:EncyclopediaCategory[]=['Overview','Crops','Fish','Villagers','Events','Bundles','Trees','Crafting','Items','Tools & Gear','Places & Systems'];
 
+const inlineLinkEntries=encyclopediaEntries.filter(entry=>entry.sprite&&entry.title.length>2).sort((a,b)=>b.title.length-a.title.length);
+const inlineTermLookup=new Map<string,EncyclopediaEntry>();
+for(const entry of inlineLinkEntries){for(const term of [entry.title,...entry.aliases]){const key=term.toLowerCase();if(term.length>2&&!inlineTermLookup.has(key))inlineTermLookup.set(key,entry)}}
+const escapeInlinePattern=(text:string)=>text.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const inlinePatternSource=[...inlineTermLookup.keys()].sort((a,b)=>b.length-a.length).map(escapeInlinePattern).join('|');
+const isEntityWordChar=(char:string|undefined)=>!!char&&/[A-Za-z0-9]/.test(char);
+
+export interface EncyclopediaInlineMatch{start:number;end:number;text:string;entry:EncyclopediaEntry}
+export function findEncyclopediaInlineMatches(text:string):EncyclopediaInlineMatch[]{
+ if(!text||!inlinePatternSource)return [];
+ const pattern=new RegExp(`(${inlinePatternSource})`,'gi');
+ const matches:EncyclopediaInlineMatch[]=[];
+ let match:RegExpExecArray|null;
+ while((match=pattern.exec(text))){
+  const start=match.index,end=start+match[0].length;
+  // Only link complete terms. This prevents Carp in Carpenter, Sap in Cindersap,
+  // Shad in Shadow, Eel in Freelance, Mine/Cart in Minecarts, and similar collisions.
+  if(isEntityWordChar(text[start-1])||isEntityWordChar(text[end]))continue;
+  const entry=inlineTermLookup.get(match[0].toLowerCase());
+  if(entry)matches.push({start,end,text:match[0],entry});
+ }
+ return matches;
+}
+
 export function normalizeEncyclopediaQuery(text:string){return text.toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9\s-]+/g,' ').replace(/\s+/g,' ').trim()}
+function containsWholeNormalizedTerm(text:string,term:string){
+ if(!term)return false;
+ let start=text.indexOf(term);
+ while(start!==-1){const end=start+term.length;if(!isEntityWordChar(text[start-1])&&!isEntityWordChar(text[end]))return true;start=text.indexOf(term,start+1)}
+ return false;
+}
 
 type SearchRecord={entry:EncyclopediaEntry;title:string;aliases:string[];keywords:string[];body:string};
 const searchRecords:SearchRecord[]=encyclopediaEntries.map(entry=>({
@@ -226,9 +256,9 @@ export function searchEncyclopedia(query:string,category?:EncyclopediaCategory|'
   else if(title.includes(q))score=82;
   else if(aliases.some(x=>x.includes(q)))score=76;
   else if(keywords.includes(q))score=72;
-  else if(keywords.some(x=>x.includes(q)))score=64;
-  else if(words.length&&words.every(word=>title.includes(word)||aliases.some(x=>x.includes(word))||keywords.some(x=>x.includes(word))||body.includes(word))){score=48;contextual=true}
-  else if(body.includes(q)){score=32;contextual=true}
+  else if(keywords.some(x=>containsWholeNormalizedTerm(x,q)))score=64;
+  else if(words.length&&words.every(word=>title.includes(word)||aliases.some(x=>x.includes(word))||keywords.some(x=>containsWholeNormalizedTerm(x,word))||containsWholeNormalizedTerm(body,word))){score=48;contextual=true}
+  else if(containsWholeNormalizedTerm(body,q)){score=32;contextual=true}
   return {entry,score,contextual};
  }).filter(item=>item.score>0).sort((a,b)=>b.score-a.score||a.entry.title.localeCompare(b.entry.title));
  const direct=scored.filter(item=>!item.contextual);

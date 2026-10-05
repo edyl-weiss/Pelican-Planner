@@ -3,7 +3,7 @@ import {memo,useCallback,useDeferredValue,useMemo,useState} from 'react';
 import {Download,Search,WifiOff,ExternalLink,ArrowLeft} from 'lucide-react';
 import {useLocale} from './locale-provider';
 import {Sprite} from './farm-ui';
-import {encyclopediaCategories,encyclopediaEntries,encyclopediaByTitle,exactEncyclopediaMatch,normalizeEncyclopediaQuery,relatedEncyclopediaEntries,searchEncyclopedia,type EncyclopediaCategory,type EncyclopediaEntry} from '@/lib/game/encyclopedia';
+import {encyclopediaCategories,encyclopediaEntries,encyclopediaByTitle,exactEncyclopediaMatch,findEncyclopediaInlineMatches,normalizeEncyclopediaQuery,relatedEncyclopediaEntries,searchEncyclopedia,type EncyclopediaCategory,type EncyclopediaEntry} from '@/lib/game/encyclopedia';
 import {buildOfflineEncyclopediaHtml} from '@/lib/game/encyclopedia-offline';
 import assets from '@/lib/game/assets-source.json';
 import {giftSpriteName,giftTasteLabels,universalGiftTastes,villagerProfiles,type GiftTaste,type VillagerProfile} from '@/lib/game/villager-profiles';
@@ -16,15 +16,18 @@ const giftTastes:GiftTaste[]=['loves','likes','neutrals','dislikes','hates'];
 const browseCategories=encyclopediaCategories.filter(category=>category!=='Overview');
 const browseAll=encyclopediaEntries.filter(entry=>entry.category!=='Overview').sort((a,b)=>a.title.localeCompare(b.title));
 const browseByCategory=new Map<EncyclopediaCategory,EncyclopediaEntry[]>(browseCategories.map(category=>[category,browseAll.filter(entry=>entry.category===category)]));
-const escapeRegExp=(text:string)=>text.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-const linkableEntries=encyclopediaEntries.filter(entry=>entry.sprite&&entry.title.length>2).sort((a,b)=>b.title.length-a.title.length);
-const termMap=new Map<string,EncyclopediaEntry>();
-for(const entry of linkableEntries){for(const term of [entry.title,...entry.aliases]){const key=term.toLowerCase();if(term.length>2&&!termMap.has(key))termMap.set(key,entry)}}
-const entityPattern=new RegExp(`(${[...termMap.keys()].sort((a,b)=>b.length-a.length).map(escapeRegExp).join('|')})`,'gi');
-
 function EntityText({text,current,onOpen}:{text:string;current:string;onOpen:(entry:EncyclopediaEntry)=>void}){
- const chunks=text.split(entityPattern);
- return <>{chunks.map((chunk,index)=>{const target=termMap.get(chunk.toLowerCase());if(!target||target.id===current)return <span key={index}>{chunk}</span>;return <span className="encyclopedia-inline-entity" key={index}><span>{chunk}</span><button type="button" className="encyclopedia-inline-sprite" title={`Open ${target.title}`} aria-label={`Open ${target.title}`} onClick={()=>onOpen(target)}><Sprite name={target.sprite!} size={20}/></button></span>})}</>;
+ const matches=findEncyclopediaInlineMatches(text);
+ if(!matches.length)return <>{text}</>;
+ const nodes=[];let cursor=0;
+ for(const [index,match] of matches.entries()){
+  if(match.start>cursor)nodes.push(<span key={`text-${index}`}>{text.slice(cursor,match.start)}</span>);
+  if(match.entry.id===current)nodes.push(<span key={`self-${index}`}>{match.text}</span>);
+  else nodes.push(<span className="encyclopedia-inline-entity" key={`entity-${index}`}><span>{match.text}</span><button type="button" className="encyclopedia-inline-sprite" title={`Open ${match.entry.title}`} aria-label={`Open ${match.entry.title}`} onClick={()=>onOpen(match.entry)}><Sprite name={match.entry.sprite!} size={20}/></button></span>);
+  cursor=match.end;
+ }
+ if(cursor<text.length)nodes.push(<span key="text-tail">{text.slice(cursor)}</span>);
+ return <>{nodes}</>;
 }
 
 function GiftChip({name,onOpen}:{name:string;onOpen:(entry:EncyclopediaEntry)=>void}){
