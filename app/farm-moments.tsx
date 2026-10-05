@@ -79,11 +79,11 @@ export function MorningReminder({ run }: { run: RunState }) {
               <span className="small">
                 {e.type === "birthday"
                   ? say(
-                      "Birthday today. A little gift goes a long way.",
+                      "It’s their birthday! A favorite gift goes a long way.",
                       "今天过生日，一份小礼物很暖心。",
                     )
                   : say(
-                      "On today. Check the festival’s entry time.",
+                      "The festival’s today! Check the entry time before you head over.",
                       "今天举办，请留意入场时间。",
                     )}
               </span>
@@ -198,7 +198,7 @@ export function SeasonTransition({ run }: { run: RunState }) {
                   )
                   .join(" · ")
               : say(
-                  "No tracked crops are due to die overnight.",
+                  "Your tracked crops should make it into the new season!",
                   "已记录的作物中，没有会在今晚枯萎的。",
                 )}
           </p>
@@ -219,7 +219,7 @@ export function SeasonTransition({ run }: { run: RunState }) {
                   .map((c) => `${t(c.name)} (${gold(c.seed)})`)
                   .join(" · ")
               : say(
-                  "Keep gold for upgrades, or check protected growing spaces.",
+                  "Saving for an upgrade? Keep your gold, or check whether you have space in the Greenhouse!",
                   "可以为升级存些金币，或查看温室等种植空间。",
                 )}
           </p>

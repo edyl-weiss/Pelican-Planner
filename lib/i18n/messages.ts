@@ -1,4 +1,17 @@
 export const messages: Record<string,string> = Object.fromEntries(`
+Collections|我的收藏
+Spring fishing notebook|春季钓鱼手册
+Summer fishing notebook|夏季钓鱼手册
+Fall fishing notebook|秋季钓鱼手册
+Winter fishing notebook|冬季钓鱼手册
+Welcome to Pelican Planner!|欢迎来到 Pelican Planner！
+How do you want to use the planner?|想怎样安排你的农场生活？
+How much planning sounds fun? Pick the option that suits you today. You can always switch later!|想简单看看，还是仔细规划？选一个现在喜欢的方式，之后随时都能切换！
+Want to jump straight into your day? Get a short list of planting tips, fishing reminders, and seasonal finds!|想直接开始新的一天？看看简短的种植建议、钓鱼提醒和当季好物吧！
+No need to check in with the weather or Fortune Teller!|不用每天填写天气或查看占卜运势！
+Love planning ahead? Add your weather, luck, and farm progress for suggestions that fit your day!|喜欢提前安排？填入天气、运势和农场进度，让建议更贴合你今天的计划！
+A little more detail to help you decide what to do next.|多一点细节，帮你想好接下来做什么。
+Want to try the other mode? Just switch from the top bar whenever you like!|想试试另一种方式？随时都能在顶部切换！
 Next day|下一天
 Set tomorrow’s weather and luck|设置明天的天气和运势
 Click effects, harvest effects and Krobus animation. Respects your device’s reduced-motion setting.|点击特效、收获特效和科罗布斯动画。遵循设备的减少动态效果设置。
@@ -12,7 +25,7 @@ Check the preview, restore it, then choose Save farm.|核对预览，恢复日�
 This moves your journal. Your Stardew game save travels separately.|这里转移的是农场日记，游戏存档需要另外转移。
 Import from the game instead|从游戏导入
 Import the full, uncompressed Stardew save. Game files are read in your browser and never modified.|导入完整、未压缩的星露谷存档。文件只在浏览器中读取，不会被修改。
-Backup downloaded. Your farm is packed and ready to travel.|备份已下载，农场已经打包好，可以出发啦。
+Backup downloaded! Your farm journal is packed and ready to go.|备份已下载，农场已经打包好，可以出发啦。
 The download did not work. Try again before closing this tab.|下载没成功。关闭这个页面之前，请再试一次。
 That file could not be read. Choose a journal JSON backup and try again.|无法读取这个文件，请选择日记 JSON 备份后重试。
 That backup belongs to a different app. Choose a Pelican Planner backup.|这份备份来自其他应用，请选择 Pelican Planner 备份。
@@ -54,7 +67,7 @@ The crop catalog covers|作物目录收录了
 crops, plus all 30 standard bundles, seasonal events and common bundle fish. Each suggestion includes a reason.|种作物，还有全部30个标准收集包、季节活动和常见收集包鱼类。每条建议都会说明推荐理由。
 Game import reads farm details and supported growing crops. Review the preview and import limits before applying.|导入会读取农场信息和支持的在种作物。应用前请核对预览及导入范围。
 Imported farm details, backpack items, professions, recognized unlocks and supported growing crops. Your game file was not modified.|已导入农场信息、背包物品、职业、已识别的解锁内容和支持的在种作物。游戏文件未被修改。
-Existing crop added. Your calendar and forecasts are updated.|已补录作物，日历与收获预测已更新。
+Crop added! Your calendar and harvest forecasts are up to date.|已补录作物，日历与收获预测已更新。
 For winter, indoor or other crops, use Add an existing crop and enter the remaining growth time.|冬季、室内或其他作物，请使用“添加已种植作物”并填写剩余生长天数。
 Farm|农场
 Greenhouse|温室
@@ -85,11 +98,11 @@ Available lightning rods can intercept strikes. Check your farm for damage befor
 Lightning can damage crops and trees.|雷击可能损坏作物和树木。
 Gather green-rain moss and fiber|收集绿雨中的苔藓和纤维
 Green rain today|今天有绿雨
-Extra weeds and temporary trees make this a useful gathering day. Bring a scythe and axe.|额外的杂草和临时树木适合采集，记得带上镰刀和斧头。
+There’s extra moss and fiber to gather today! Bring your scythe and axe for the weeds and temporary trees.|额外的杂草和临时树木适合采集，记得带上镰刀和斧头。
 Temporary weeds disappear after today.|临时杂草会在今天结束后消失。
-Good daily luck improves ladder chances from rocks. Bring food and aim for the next elevator checkpoint.|今日好运提高砸石发现梯子的概率。带上食物，争取解锁下一个电梯层。
-Poor daily luck makes ladder hunting less favorable. Consider farm chores or forage unless mining is your priority.|运气较差不利于找梯子。除非以采矿为目标，否则可优先处理农场事务或采集。
-Rain waters outdoor crops, freeing time for a mine trip. Bring food and aim for an elevator checkpoint.|雨水会浇灌室外作物，可腾出时间下矿。带上食物，争取解锁一个电梯层。
+A promising day for the Mines! Good luck helps with ladders from rocks. Pack some food and aim for your next elevator checkpoint.|今日好运提高砸石发现梯子的概率。带上食物，争取解锁下一个电梯层。
+Ladders may be harder to find today. How about some farm chores or foraging, unless you’re keen to mine?|运气较差不利于找梯子。除非以采矿为目标，否则可优先处理农场事务或采集。
+The rain’s taking care of your outdoor crops! Pack some food and see if you can reach another elevator checkpoint.|雨水会浇灌室外作物，可腾出时间下矿。带上食物，争取解锁一个电梯层。
 Gather ore in the mines|在矿井采集矿石
 Choose an unlocked floor for the ore you need|选择已解锁且产出所需矿石的楼层
 Good luck can improve rock drops and ladder chances. Bring food; rewards are still random.|好运可改善岩石掉落和发现梯子的概率。带上食物，收益仍有随机性。
@@ -175,7 +188,7 @@ Don’t miss:|别错过：
 Do first|先做这些
 Next|接下来
 If you have time|有空再做
-No planned tasks.|暂无计划任务。
+Your list is clear! What would you like to do today?|暂无计划任务。
 Tasks shown|显示任务数
 3 tasks|3项任务
 5 tasks|5项任务
@@ -194,7 +207,7 @@ Floor|层数
 Start next day|开始新的一天
 Don’t miss|别错过
 This season|本季提醒
-No tracked deadlines this season.|本季暂无追踪中的截止事项。
+No deadlines on your list this season!|本季暂无追踪中的截止事项。
 / 30 bundles|/ 30个收集包
 Open collection|查看收藏
 recent plan changes|条最近的计划变更
@@ -218,7 +231,7 @@ TV forecast: tomorrow|电视预报：明日天气
 Back to today|返回今天
 Choose a crop.|请选择一种作物。
 This purchase would spend reserved gold. Reduce the quantity or review your reserves.|这笔花费会动用预留金币，请减少数量或调整预留。
-Planting recorded. Adjust for any missed watering days below.|种植已记录。如有漏浇水，请在下方调整。
+Planting added! If you miss a watering day, you can adjust the harvest below.|种植已记录。如有漏浇水，请在下方调整。
 Could not record planting.|无法记录种植。
 This purchase already has reserved resources.|已经为这项购买预留了资源。
 You do not have enough unreserved resources for this purchase.|可用资源不足，暂时无法为这项购买预留。
@@ -228,9 +241,9 @@ Your game date:|游戏日期：
 Jump to today|回到今天
 Looking ahead|看看未来
 ’s birthday|的生日
-Check preferred gifts before giving.|送礼前先看看对方喜欢什么。
+Take a peek at their favorite gifts before you visit!|送礼前先看看对方喜欢什么。
 Check the Wiki for entry times and location.|请在维基中确认入场时间与地点。
-Check the bushes during the season.|采集季记得看看灌木丛。
+Keep an eye on the bushes while the berries are in season!|采集季记得看看灌木丛。
 Details|详情
 ready|可收获
 Assumes daily watering.|按每天浇水计算。
@@ -240,7 +253,7 @@ Task|待办
 Upgrade watering can|升级水壶
 Pin|记下
 Remove|移除
-Browsing dates does not advance your farm.|浏览日历不会推进农场日期。
+Have a look around! Browsing the calendar keeps your farm on its current day.|浏览日历不会推进农场日期。
 Next on the farm|农场接下来的事
 Your fields|我的田地
 planted tiles|格已种植
@@ -249,7 +262,7 @@ Ready to harvest|可以收获了
 Added the minimum normal-quality harvest to inventory. Edit quantities and quality in Collection to match your game.|已按最低产量将普通品质作物加入物品栏。请在收藏中按实际情况调整数量与品质。
 Harvest|收获
 Missed water|漏浇一天
-Record what you plant. Harvest dates will appear on your calendar.|记下种了什么，收获日期就会出现在日历上。
+Plant something new? Add it here and we’ll put the harvest dates on your calendar!|记下种了什么，收获日期就会出现在日历上。
 Record today’s planting|记录今天的种植
 Crop|作物
 Tiles planted|种植格数
@@ -259,7 +272,7 @@ Standard growth only. Fertilizer and Agriculturist are not modeled in this versi
 This crop catalog covers spring, summer and fall. Winter seeds, Powdermelon, indoor growing and special crops are not modeled yet.|当前作物目录涵盖春、夏、秋季，暂未包含冬季种子、霜瓜、室内种植和特殊作物。
 Harvest forecast|收获预估
 Potential gross sales from your next recorded harvests. Assumes normal quality and daily watering.|按普通品质和每天浇水，预估下一次已记录收获的销售总额。
-Plantings will appear here.|记录种植后，就能在这里看到预估。
+Your crops will appear here once you add a planting!|记录种植后，就能在这里看到预估。
 These are potential sales, not money already earned. Keep bundle items before shipping the rest.|这里显示预估销售额。出货前请先留好收集包需要的物品。
 crop ledger|作物账本
 Planting on day|种植日：
@@ -348,7 +361,7 @@ Tracked qualifying inventory:|物品栏中符合要求的数量：
 recorded as donated|已记录为献祭
 Undo donation|撤销献祭记录
 Mark donated|标记已献祭
-Previous saved version loaded as a draft. Review it and choose Save farm to keep it.|已将上一个存档载入为草稿。检查后点击“保存农场”即可保留。
+Your previous save is ready to review! Choose Save farm if you’d like to keep this version.|已将上一个存档载入为草稿。检查后点击“保存农场”即可保留。
 Recovery is unavailable.|暂时无法恢复存档。
 Your farm, your pace|我的农场，我的节奏
 Make yourself at home|慢慢打理自己的小天地
@@ -393,13 +406,13 @@ Start a fresh farm?|开始一个新农场？
 This replaces the current draft. Export your journal first if you want to keep this run. The saved farm changes only when you choose Save farm.|这会替换当前草稿。如需保留本次记录，请先导出手记。点击“保存农场”后才会覆盖云存档。
 Keep this farm|保留当前农场
 Started a fresh farm.|已新建农场。
-Fresh farm started. Choose your preferences, then save when ready.|新农场已准备好。选好偏好后，记得保存。
+A fresh farm awaits! Choose your preferences, then save when you’re ready.|新农场已准备好。选好偏好后，记得保存。
 Start fresh|开始新农场
 Export draft & reload saved farm|导出草稿并重新载入存档
 Season calendar|季节日历
 Previous season|上一季
 Next season|下一季
-Select a day to look ahead.|选一天，看看有什么安排。
+Pick a day to see what’s coming up!|选一天，看看有什么安排。
 Birthdays & harvests|生日与收获
 Monday|星期一
 Tuesday|星期二
@@ -424,31 +437,31 @@ Requires a copper pickaxe. Clint holds the tool for two days.|需要先有铜十
 Houses 4 coop animals. Allow 3 days for construction; animals cost extra.|可饲养4只鸡舍动物，建造需3天，购买动物另需费用。
 Houses 4 barn animals. Allow 3 days for construction; animals cost extra.|可饲养4只畜棚动物，建造需3天，购买动物另需费用。
 Today · check entry times|就在今天 · 请确认入场时间
-This event has a fixed date. Plan farm chores around it.|这是固定日期的活动，记得给农活和节日都留出时间。
+Festival day! Finish any farm chores you want to do before heading over.|这是固定日期的活动，记得给农活和节日都留出时间。
 It returns next year (multi-day events may continue tomorrow).|明年还会再举办；多日活动明天可能仍可参加。
 Birthday today|今天是生日
-Birthday gifts give a larger friendship boost. Check the villager’s preferred gifts.|生日礼物能带来更多好感度，送礼前请确认村民喜好。
-You can build friendship on other days.|其他日子也可以慢慢培养友谊。
+A birthday gift can make a big difference! Check what they love before you stop by.|生日礼物能带来更多好感度，送礼前请确认村民喜好。
+Missed today? You can still build your friendship with a visit or gift another day.|其他日子也可以慢慢培养友谊。
 Your recorded crop is ready|记录中的作物已经成熟
-The harvest date assumes daily watering. Record the harvest in Plan to update the next date.|收获日期按每天浇水计算。在计划中记录收获，即可更新下次日期。
+Harvest time! If you’ve watered every day, these should be ready. Record your harvest in Plan to update the next date.|收获日期按每天浇水计算。在计划中记录收获，即可更新下次日期。
 Mature crops can wait, but crops that cannot survive next season will die.|成熟作物可以暂留，但不适应下一季的作物会在换季时枯萎。
-Still needed for a standard Community Center bundle. Catch success depends on skill and chance.|标准社区中心收集包仍需要这条鱼。能否钓获取决于技巧和运气。
+Your Community Center still needs this fish! Give it a try while the conditions are right, though a catch isn’t guaranteed.|标准社区中心收集包仍需要这条鱼。能否钓获取决于技巧和运气。
 Wait for another eligible day. Seasonal and rain requirements can delay completion.|也可等下一个符合条件的日子，但季节和雨天要求可能延后完成时间。
 Available in your tracked inventory|记录的物品栏中已有
-Completes a missing seasonal crop slot. Record donation in Collection.|可补齐一项季节作物需求，请在收藏中记录献祭。
-Keep one safely in a chest for later.|可以先在箱子里留一个，之后再献祭。
+One more crop for your bundle! Once you’ve donated it in-game, check it off in Collection.|可补齐一项季节作物需求，请在收藏中记录献祭。
+No rush! Tuck one away in a chest for your next visit.|可以先在箱子里留一个，之后再献祭。
 Other sources may be available, but a missed seasonal harvest can delay this bundle.|可能还有其他获取途径，但错过当季收获可能延后收集包进度。
-Highest conservative seasonal profit per tile among tracked crops. Assumes daily watering and timely replanting; buying seeds depends on shop access.|在已收录作物中，每格本季保守净收益最高。按每天浇水、及时补种计算，种子购买仍受商店条件限制。
-Gold stays available for upgrades and other priorities.|可以把金币留给升级或其他目标。
+This crop comes out ahead in our raw-crop comparison for the rest of the season! The estimate assumes daily watering and prompt replanting. Check that you can buy the seeds today.|在已收录作物中，每格本季保守净收益最高。按每天浇水、及时补种计算，种子购买仍受商店条件限制。
+Saving for something else? You can keep the gold for an upgrade or another goal.|可以把金币留给升级或其他目标。
 Water your crops|给作物浇水
 Check unwatered tiles|看看哪些格子还没浇水
-Outdoor crops need water to grow. Sprinklers can cover this work.|户外作物需要浇水才能生长，洒水器也可以完成这项工作。
+Give any uncovered crops a drink! Your sprinklers can handle the tiles they reach.|户外作物需要浇水才能生长，洒水器也可以完成这项工作。
 Unwatered crops pause growth for a day.|漏浇一天，作物就会暂停生长一天。
 Check the Traveling Cart|逛逛旅行货车
-The stock may include a missing bundle item. Buy only if it fits your budget.|货物中可能有收集包缺少的物品，量力而行就好。
+Worth a peek! The cart might have a missing bundle item. Check the price before spending your savings.|货物中可能有收集包缺少的物品，量力而行就好。
 Stock changes next visit. No item is guaranteed.|下次来时货物会变化，不保证出现特定物品。
-Every five floors is a useful stopping point. Bring food and leave enough time to return.|每五层可解锁电梯进度，适合当作小目标。带上食物，也给回家留些时间。
-Mine progression can move to another day.|下矿的计划也可以改天继续。
+Try for the next five-floor checkpoint! Bring some food and leave yourself time to get home.|每五层可解锁电梯进度，适合当作小目标。带上食物，也给回家留些时间。
+The Mines will be there tomorrow. Come back when you feel ready!|下矿的计划也可以改天继续。
 Gather seasonal forage|采集当季野生物
 Keep one of each missing item for the Crafts Room. Forage spawns are random.|工艺室缺少的物品各留一个，野生物的出现带有随机性。
 Another walk this season may find the missing items.|本季再散散步，也许就能找到缺少的物品。
@@ -497,12 +510,12 @@ Setup · Step|设置 · 第
 Your farm & calendar|你的农场与日历
 How do you like to play?|你喜欢怎样游玩？
 Add your current progress|补充当前进度
-We’ll start on Spring 1, Year 1. Add your farm name and type, then we’ll set up the rest.|我们会从第1年春季1日开始。先填写农场名称和类型，再设置其他内容。
-Match the journal to the date your current save is on.|让手记日期与你当前的游戏存档保持一致。
+Your first spring awaits! Add your farm name and type, and we’ll start on Spring 1, Year 1.|我们会从第1年春季1日开始。先填写农场名称和类型，再设置其他内容。
+Let’s catch up with your farm! Set the date to match your current save.|让手记日期与你当前的游戏存档保持一致。
 Starting gold|初始金币
 Current gold|当前金币
 Spring 1 · Year 1|第1年春季1日
-You can advance the journal one day at a time from here.|之后可以每天推进一次手记日期。
+From here, move your journal ahead whenever you finish a day in-game!|之后可以每天推进一次手记日期。
 These choices shape how busy the daily plan feels and which kinds of goals it prioritizes.|这些选项会决定每日计划的紧凑程度，以及优先关注哪些目标。
 Lower settings keep the list short. Higher settings show more optional tasks.|较低设置会让清单更短；较高设置会显示更多可选任务。
 These can stay at their defaults for a fresh save. Fill them in only if your run starts with custom progress.|新存档可保留默认值。只有在自定义开局时才需要填写这些内容。
@@ -516,8 +529,8 @@ Continue|继续
 Start planning|开始规划
 You can edit all of this later in More.|之后可随时在“更多”中修改这些设置。
 Run setup guide|运行设置向导
-You can run the setup guide anytime from More.|你可以随时在“更多”中重新打开设置向导。
-Setup complete. Your calendar is ready.|设置完成，日历已经准备好了。
+Want another look at setup? You’ll find the guide under More!|你可以随时在“更多”中重新打开设置向导。
+You’re all set! Your farm calendar is ready.|设置完成，日历已经准备好了。
 Close|关闭
 Language|语言
 Interaction effects|互动特效
@@ -580,53 +593,53 @@ quality or better|或更高品质
 Strategy|策略
 Tracked|已记录
 How do you want to use the planner?|你想怎样使用规划器？
-Keep things light, or give the planner more of your farm details. You can switch anytime.|想轻松一点，或让规划器参考更多农场细节都可以。随时都能切换。
-A short daily list with planting tips, fishing reminders, and seasonal things worth catching.|每天只看一小份清单，包含种植建议、钓鱼提醒和别错过的季节内容。
-No weather or luck check-ins.|不用每天填写天气或运气。
-Factor in weather, luck, mine progress, unlocks, crop timing, and more.|把天气、运气、矿井进度、解锁内容、作物时间等一起算进去。
-Best if you like planning a few steps ahead.|适合喜欢提前多想几步的玩家。
-Nothing is locked in. You can change modes from the top bar whenever you want.|不用担心选错，随时可以从顶部切换模式。
+How much planning sounds fun? Pick the option that suits you today. You can always switch later!|想轻松一点，或让规划器参考更多农场细节都可以。随时都能切换。
+Want to jump straight into your day? Get a short list of planting tips, fishing reminders, and seasonal finds!|每天只看一小份清单，包含种植建议、钓鱼提醒和别错过的季节内容。
+No need to check in with the weather or Fortune Teller!|不用每天填写天气或运气。
+Love planning ahead? Add your weather, luck, and farm progress for suggestions that fit your day!|把天气、运气、矿井进度、解锁内容、作物时间等一起算进去。
+A little more detail to help you decide what to do next.|适合喜欢提前多想几步的玩家。
+Want to try the other mode? Just switch from the top bar whenever you like!|不用担心选错，随时可以从顶部切换模式。
 A quick setup, then you’re in|简单设置一下就能开始
-Tell Pelican Planner where you are in the game and what you care about most. That’s all Simple Mode needs.|告诉 Pelican Planner 你玩到哪里，以及现在最在意什么，简单模式就够用了。
+Tell us where you are in the game and what you’d like to work on. That’s all you need to get started!|告诉 Pelican Planner 你玩到哪里，以及现在最在意什么，简单模式就够用了。
 Already have a save file handy?|手边已经有存档了吗？
 What should the planner focus on?|你希望规划器重点帮你看什么？
-Pick what matters most right now. You can change this later.|先选现在最重要的目标，之后随时可以改。
+What sounds good right now? Pick a goal, and change it whenever you like!|先选现在最重要的目标，之后随时可以改。
 What matters most to you?|你现在最看重什么？
-That’s it. Your daily list will stay short and change with the season.|就这样。每天的清单会保持简短，并随季节变化。
-Full Mode uses more of your farm details to make the daily plan more specific.|完整模式会参考更多农场细节，让每日计划更贴合你的存档。
+You’re all set! Your daily list will stay short, with fresh suggestions as the seasons change.|就这样。每天的清单会保持简短，并随季节变化。
+Let’s get to know your farm! Add a few details so your daily suggestions fit what you’re working on.|完整模式会参考更多农场细节，让每日计划更贴合你的存档。
 Bring in an existing save|导入已有存档
 Read your date, progress, and supported growing crops|读取日期、进度和支持的在种作物
 Have your Stardew save file ready?|已经准备好星露谷存档了吗？
 Add your farm name and type, then we’ll set up the rest.|先填农场名称和类型，再设置其他内容。
-Tell the planner how you play and what you’re working toward.|告诉规划器你的玩法和目前的目标。
-Lower keeps the list short. Higher points out more things you could do.|数值低时清单更短，数值高时会提醒更多可做的事。
-Starting fresh? You can leave these alone. Only change them if your save already has some progress.|新档可以保持默认。只有存档已有进度时才需要修改。
-These are optional, but filling them in helps the planner match your save right away.|这些都不是必填，但填写后规划器会更快贴合你的存档。
-You can change any of this later under More.|这些设置之后都能在“更多”里修改。
-Pick a day, see what’s coming up, then get back to the farm.|选一天看看接下来有什么，再回农场忙自己的事。
-Nothing on the calendar. The day is yours.|日历上没安排，这一天随你发挥。
+What do you enjoy doing on the farm? Pick your goals and we’ll help you plan for them!|告诉规划器你的玩法和目前的目标。
+Keep it low for a short list, or turn it up if you’d like more ideas!|数值低时清单更短，数值高时会提醒更多可做的事。
+Starting fresh? You can skip these! Only fill them in if you’ve already made some progress.|新档可以保持默认。只有存档已有进度时才需要修改。
+Fill in whatever you know! These details are optional, and you can come back to them later.|这些都不是必填，但填写后规划器会更快贴合你的存档。
+You can always tweak these details under More!|这些设置之后都能在“更多”里修改。
+Pick a day and see what’s coming up! A quick peek can help you make room for the things you enjoy.|选一天看看接下来有什么，再回农场忙自己的事。
+Nothing on the calendar. The day is yours!|日历上没安排，这一天随你发挥。
 Good picks for today|今天值得种
-No planting rush today.|今天不用急着种东西。
+No planting rush today! Enjoy a little breathing room.|今天不用急着种东西。
 The bigger picture|看看整个季节
 Plan the season|规划这个季节
-No events or recorded harvests on this day.|这一天没有活动或已记录的收获。
+No events or harvests recorded for this day. What would you like to plan?|这一天没有活动或已记录的收获。
 Based on daily watering.|按每天浇水计算。
-Show the little pixel effects and animations. Your reduced-motion setting still takes priority.|显示像素互动效果和动画。系统的减少动态效果设置仍然优先。
+Add a little movement to your farm! Pixel effects and animations follow your device’s reduced-motion setting.|显示像素互动效果和动画。系统的减少动态效果设置仍然优先。
 Just the things most worth remembering today.|只显示今天最值得记住的事。
-The main priorities, plus a few useful extras.|主要事项，再加几条有用提醒。
-More planning detail and more time-sensitive reminders.|显示更多规划细节和限时提醒。
+Your main priorities, with a few extra ideas to try!|主要事项，再加几条有用提醒。
+More ideas for your day, with extra reminders for things coming up!|显示更多规划细节和限时提醒。
 Need cloud recovery or the full data controls? Switch to Full Mode.|需要云端恢复或完整数据工具时，请切换到完整模式。
-A restored backup stays as a draft until you choose Save farm.|恢复的备份会先作为草稿，点击“保存农场”后才会保存。
-Your saved notes will show up here.|保存的笔记会显示在这里。
+Have a look at your restored journal first! Choose Save farm when you’re ready to keep it.|恢复的备份会先作为草稿，点击“保存农场”后才会保存。
+Got something to remember? Your saved notes will appear here!|保存的笔记会显示在这里。
 Bring your farm into Pelican Planner|把农场导入 Pelican Planner
 Here’s what was found|这是读取到的内容
 A few things to check|有几项需要确认
 Meet Willy and get the Bamboo Pole|去见威利并拿到竹鱼竿
 Finish the Community Center introduction|完成社区中心的前置剧情
 Willy’s “To The Beach” letter first arrives on Spring 2. Meet him at the beach to receive the Bamboo Pole; fishing recommendations stay locked until you record the rod as obtained.|威利的“去沙滩”来信最早会在第1年春季2日送达。去沙滩见他并领取竹鱼竿；在记录已拿到鱼竿前，规划器不会推荐钓鱼任务。
-The quest can be finished later. Pelican Planner will keep this reminder instead of suggesting fishing early.|这个任务不必当天完成。在拿到鱼竿前，鹈鹕规划器会保留这条提醒，而不是提前推荐钓鱼。
+Willy can wait if you’re busy! We’ll keep this reminder here until you have your rod.|这个任务不必当天完成。在拿到鱼竿前，鹈鹕规划器会保留这条提醒，而不是提前推荐钓鱼。
 If Lewis’s cutscene has not triggered: Spring 5+ · non-rainy · enter Pelican Town from the Bus Stop 8am–1pm. Then inspect the golden scroll and meet the Wizard after his letter.|如果还没触发刘易斯的剧情：春季5日之后，非雨天的上午8点到下午1点，从巴士站进入鹈鹕镇。之后查看金色卷轴，收到法师来信后去见他。
-Forest Magic is what lets you read Junimo bundle text. Until then, Pelican Planner will tell you to save bundle items instead of pretending you can donate them.|获得森林魔法后才能读懂祝尼魔的收集包文字。在此之前，鹈鹕规划器只会提醒你把所需物品留好，不会假设你已经可以献祭。
+Forest Magic lets you read the Junimos’ bundles! Until you’ve learned it, we’ll remind you to keep useful items for later.|获得森林魔法后才能读懂祝尼魔的收集包文字。在此之前，鹈鹕规划器只会提醒你把所需物品留好，不会假设你已经可以献祭。
 You can keep farming and saving seasonal items while you finish the introduction.|完成这段前置剧情期间，照常种田，并把当季收集包需要的物品留好即可。
 Crop quality is decided at harvest and improves with Farming level and fertilizer. Growing extras gives you more chances to reach 5 gold-quality crops.|作物品质在收获时决定，会受耕种等级和肥料影响。多种一些，凑齐5个金星品质作物的机会也更大。
 You only need 3 of the 4 Quality Crops options, so another season can cover this slot.|高品质作物收集包的4种作物只需完成其中3种，这一项也可以留到其他季节补上。

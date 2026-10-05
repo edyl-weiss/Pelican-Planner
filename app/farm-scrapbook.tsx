@@ -84,7 +84,7 @@ export function Scrapbook({
         </DialogTitle>
         <DialogDescription>
           {say(
-            "A few memories from the days you recorded. In Krobus we trust.",
+            "Look back at the days you’ve recorded! In Krobus we trust.",
             "把记录过的日子，留成几段回忆。我们相信科罗布斯。",
           )}
         </DialogDescription>
@@ -228,7 +228,7 @@ export function Scrapbook({
           ) : (
             <p>
               {say(
-                "Itemized sales will show which crops and activities contributed to your income.",
+                "Wondering what earned the most? Add itemized sales to see which crops and activities brought in your gold!",
                 "逐项填写交易后，这里会展示哪些物品贡献了收入。",
               )}
             </p>
@@ -249,7 +249,7 @@ export function Scrapbook({
           )}
           <p className="small muted">
             {say(
-              "These are recorded contributions. The journal does not claim how much earlier an alternative plan would have unlocked something.",
+              "Here’s the progress you recorded! These totals show what you contributed, without guessing when another plan might have finished.",
               "这里展示已记录的贡献，不会推测其他计划能提前多少天解锁内容。",
             )}
           </p>
@@ -260,7 +260,7 @@ export function Scrapbook({
             <p>
               {report.buildings.length
                 ? report.buildings.join(" · ")
-                : say("No new buildings recorded yet.", "尚未记录新增建筑。")}
+                : say("Built something new? Record it with your daily progress to see it here!", "尚未记录新增建筑。")}
             </p>
             <h3 className="gap-top">
               {say("Seasons", "四个小篇章")}
@@ -332,7 +332,7 @@ export function Scrapbook({
           ) : (
             <p>
               {say(
-                "Add a memory when you turn the page to a new day.",
+                "When you move to the next day, jot down a memory to keep here!",
                 "翻到新一天时，记下一段小回忆吧。",
               )}
             </p>

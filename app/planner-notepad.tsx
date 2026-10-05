@@ -138,7 +138,7 @@ export default function PlannerNotepad(){
     </div>
    </div>
    {!hidden&&<>
-    <p className="notepad-instructions">Write a note and press Enter to save it. Use Shift+Enter for a new line. You can also highlight text in the Encyclopedia, right-click, and save it here.</p>
+    <p className="notepad-instructions">Jot something down and press Enter to keep it! Use Shift+Enter for a new line. Found a useful Encyclopedia tip? Highlight it, right-click, and save it here too!</p>
     <div className="notepad-composer">
      <textarea
       ref={draftRef}
@@ -156,7 +156,7 @@ export default function PlannerNotepad(){
      <span className="notepad-enter-hint" aria-hidden="true">Enter ↵</span>
     </div>
     <div className="notepad-chunks" aria-live="polite">
-     {chunks.length===0?<p className="notepad-empty">Your saved notes will show up here.</p>:chunks.map(chunk=><article className={`notepad-chunk ${chunk.source==='selection'?'from-selection':''}`} key={chunk.id}>
+     {chunks.length===0?<p className="notepad-empty">Got something to remember? Your saved notes will appear here!</p>:chunks.map(chunk=><article className={`notepad-chunk ${chunk.source==='selection'?'from-selection':''}`} key={chunk.id}>
       <div className="notepad-chunk-head">
        <span>{chunk.source==='selection'?<><BookOpen size={13}/>Encyclopedia</>:<><FileText size={13}/>Note</>}</span>
        <button type="button" className="notepad-chunk-delete" onClick={()=>removeChunk(chunk.id)} aria-label="Delete this note" title="Delete note"><X size={15}/></button>

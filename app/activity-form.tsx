@@ -203,7 +203,7 @@ export default function ActivityForm({
       <p className="small muted">
         {t("Pelican Planner")} ·{" "}
         {say(
-          "You can revisit these notes in your scrapbook.",
+          "Your scrapbook will keep these notes for you!",
           "你可以在剪贴簿中重新查看这些记录。",
         )}
       </p>

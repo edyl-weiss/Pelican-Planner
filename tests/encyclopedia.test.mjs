@@ -7,7 +7,7 @@ import ts from 'typescript';
 
 const out=new URL('../.sites-runtime/encyclopedia-test/',import.meta.url);
 await mkdir(out,{recursive:true});
-for(const name of ['data','obtain','villager-profiles','villager-heart-events','encyclopedia-crafting','encyclopedia','encyclopedia-offline']){
+for(const name of ['data','obtain','villager-profiles','villager-heart-events','encyclopedia-crafting','encyclopedia-details','encyclopedia','encyclopedia-offline']){
   const input=await readFile(new URL(`../lib/game/${name}.ts`,import.meta.url),'utf8');
   const code=ts.transpileModule(input,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText
     .replace(/from '(\.\/[^']+)'/g,(full,spec)=>`from '${spec.endsWith('.json')?spec:spec+'.js'}'${spec.endsWith('.json')?" with {type:'json'}":''}`);
