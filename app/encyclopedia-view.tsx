@@ -41,7 +41,7 @@ function GiftChip({name,onOpen}:{name:string;onOpen:(entry:EncyclopediaEntry)=>v
 
 function GiftTasteBlock({taste,items,onOpen,universal=false}:{taste:GiftTaste;items:string[];onOpen:(entry:EncyclopediaEntry)=>void;universal?:boolean}){
  const meta=giftTasteLabels[taste];
- return <section className={`villager-gift-group taste-${taste}`}><div className="villager-gift-heading"><div><h4>{universal?'Universal ':''}{meta.label}</h4><span>{meta.points}{universal?' · unless this villager overrides it':''}</span></div><strong>{items.length}</strong></div>{items.length?<div className="villager-gift-grid">{items.map((name,index)=><GiftChip key={`${taste}-${name}-${index}`} name={name} onOpen={onOpen}/>)}</div>:<p className="small muted villager-no-overrides">No personal overrides in this tier. Universal gift rules still apply.</p>}</section>;
+ return <section className={`villager-gift-group taste-${taste}`}><div className="villager-gift-heading"><div><h4>{universal?'Universal ':''}{meta.label}</h4><span>{meta.points}{universal?' · unless this villager overrides it':''}</span></div><strong>{items.length}</strong></div>{items.length?<div className="villager-gift-grid">{items.map((name,index)=><GiftChip key={`${taste}-${name}-${index}`} name={name} onOpen={onOpen}/>)}</div>:<p className="small muted villager-no-overrides">No villager-specific gifts in this tier. Universal gift rules still apply.</p>}</section>;
 }
 
 

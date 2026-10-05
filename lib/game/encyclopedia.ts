@@ -114,7 +114,7 @@ function villagerEntry(event:CalendarEvent):EncyclopediaEntry{
   profile?.roommate?'Relationship: can become the player’s roommate.':profile?.marriageable?'Relationship: marriage candidate.':'',
   profile?.availability??(event.requires?`Requires ${event.requires} access.`:''),
   profile?.loves.length?`Loved gifts include ${profile.loves.slice(0,2).join(' and ')}. Check the full gift list below for more choices.`:'',
-  profile?.hates.length?`Avoid giving ${profile.hates.slice(0,2).join(' or ')}; these are hated gifts.`:'',
+  profile?.hates.length?`Hated gifts: ${profile.hates.join(', ')}.`:'',
   'Birthday gifts have a much larger effect on friendship, so choosing something they love is especially worthwhile.',
   'Use the gift guide below to check personal exceptions as well as the universal gift rules.'
  ]);

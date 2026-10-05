@@ -162,7 +162,7 @@ html[data-effects="on"] .season-details i{animation:season-drift 4.5s ease-in-ou
 .outlook-main>.outlook-activity,.outlook-main>span:not(.sprite-fallback){flex:0 1 auto;width:auto;min-width:0;margin:0;text-align:left;line-height:1.25;overflow-wrap:anywhere;}
 .community-room-image{position:relative;display:block;min-width:0;}
 .community-room-image img{display:block;}
-.room-complete-check{position:absolute;z-index:2;inset:0;display:flex;align-items:center;justify-content:center;color:#39d353;font-family:Arial,sans-serif;font-size:42px;font-weight:900;line-height:1;pointer-events:none;text-shadow:-2px -2px 0 #174b26,2px -2px 0 #174b26,-2px 2px 0 #174b26,2px 2px 0 #174b26,0 3px 2px #102c2580;}
+.room-complete-check{position:absolute;z-index:2;inset:0;display:flex;align-items:center;justify-content:center;color:#39d353;font-family:var(--font-display);font-size:42px;font-weight:900;line-height:1;pointer-events:none;text-shadow:-2px -2px 0 #174b26,2px -2px 0 #174b26,-2px 2px 0 #174b26,2px 2px 0 #174b26,0 3px 2px #102c2580;}
 .room-tab .room-complete-check{bottom:12px;font-size:40px;}
 .community-room-image .room-complete-check{font-size:34px;}
 
