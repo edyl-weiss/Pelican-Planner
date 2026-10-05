@@ -72,19 +72,36 @@ export const WALNUT_ACTIVITIES:WalnutActivity[]=[
 
 export const TOTAL_GOLDEN_WALNUTS=WALNUT_ACTIVITIES.reduce((sum,item)=>sum+item.max,0);
 
+// The 1.6 Ginger Island world map is 400×244 px. The wiki's Map template stores
+// landmark coordinates at the top-left of a 20px marker, while Pelican Planner
+// centers each hotspot on its coordinate. Convert the wiki marker to its center so
+// our dots line up with the same landmark instead of sitting ~10px northwest.
+export const GINGER_ISLAND_MAP_SIZE={width:400,height:244} as const;
+const mapPoint=(x:number,y:number)=>({
+ x:Number((x/GINGER_ISLAND_MAP_SIZE.width*100).toFixed(3)),
+ y:Number((y/GINGER_ISLAND_MAP_SIZE.height*100).toFixed(3)),
+});
+const wikiMarkerPoint=(left:number,top:number)=>mapPoint(left+10,top+10);
+
 export const ISLAND_HOTSPOTS=[
- {id:'volcano',name:'Volcano Dungeon',region:'North' as IslandRegion,x:51,y:13,subtitle:'Forge · dungeon · walnuts'},
- {id:'dig-site',name:'Dig Site',region:'North' as IslandRegion,x:33,y:35,subtitle:'Fossils · Field Office'},
- {id:'field-office',name:'Field Office',region:'North' as IslandRegion,x:53,y:40,subtitle:'Professor Snail · surveys'},
- {id:'island-trader',name:'Island Trader',region:'North' as IslandRegion,x:67,y:38,subtitle:'Trading hub'},
- {id:'farm',name:'Island Farm',region:'West' as IslandRegion,x:29,y:61,subtitle:'Crops · Gourmand Frog'},
- {id:'qi-room',name:'Qi’s Walnut Room',region:'West' as IslandRegion,x:10,y:63,subtitle:'Late-game walnut milestone'},
- {id:'tiger-grove',name:'Tiger Slime Grove',region:'West' as IslandRegion,x:18,y:51,subtitle:'Slimes · hidden paths'},
- {id:'simon-cave',name:'Crystal Cave',region:'West' as IslandRegion,x:22,y:70,subtitle:'Simon Says puzzle'},
- {id:'leo',name:'Leo’s Hut',region:'East' as IslandRegion,x:79,y:53,subtitle:'Jungle · Banana Shrine'},
- {id:'gem-birds',name:'Gem Birds Shrine',region:'East' as IslandRegion,x:87,y:62,subtitle:'Rainy-day puzzle'},
- {id:'docks',name:'Island Docks',region:'South' as IslandRegion,x:49,y:87,subtitle:'Arrival · south beach'},
- {id:'resort',name:'Island Resort',region:'South' as IslandRegion,x:67,y:84,subtitle:'Resort beach'},
- {id:'pirate-cove',name:'Pirate Cove',region:'South' as IslandRegion,x:83,y:80,subtitle:'Pirates · darts'},
- {id:'mermaid',name:'Mermaid Beach',region:'South' as IslandRegion,x:70,y:93,subtitle:'Rainy-day puzzle'},
+ // Canonical 1.6 map coordinates from the Stardew Valley Wiki map markers.
+ {id:'volcano',name:'Volcano Dungeon',region:'North' as IslandRegion,...wikiMarkerPoint(203,50),subtitle:'Forge · dungeon · walnuts'},
+ {id:'dig-site',name:'Dig Site',region:'North' as IslandRegion,...wikiMarkerPoint(172,93),subtitle:'Fossils · Field Office'},
+ {id:'field-office',name:'Field Office',region:'North' as IslandRegion,...wikiMarkerPoint(210,82),subtitle:'Professor Snail · surveys'},
+ {id:'island-trader',name:'Island Trader',region:'North' as IslandRegion,...wikiMarkerPoint(200,110),subtitle:'Trading hub'},
+ {id:'farm',name:'Island Farm',region:'West' as IslandRegion,...wikiMarkerPoint(130,140),subtitle:'Crops · Gourmand Frog'},
+ {id:'qi-room',name:'Qi’s Walnut Room',region:'West' as IslandRegion,...wikiMarkerPoint(65,115),subtitle:'Late-game walnut milestone'},
+ {id:'pirate-cove',name:'Pirate Cove',region:'South' as IslandRegion,...wikiMarkerPoint(260,145),subtitle:'Pirates · darts'},
+
+ // Landmarks the wiki doesn't expose as standalone map-marker coordinates. These
+ // are placed against the same 400×244 1.6 map using the in-game regional layout:
+ // Tiger Grove north of the pond; Crystal Cave northeast of the grove; Gem Birds
+ // east of Leo's jungle; and South/Southeast landmarks around the dock and cove.
+ {id:'tiger-grove',name:'Tiger Slime Grove',region:'West' as IslandRegion,...mapPoint(101,126),subtitle:'Slimes · hidden paths'},
+ {id:'simon-cave',name:'Crystal Cave',region:'West' as IslandRegion,...mapPoint(124,108),subtitle:'Simon Says puzzle'},
+ {id:'leo',name:'Leo’s Hut',region:'East' as IslandRegion,...mapPoint(322,126),subtitle:'Jungle · Banana Shrine'},
+ {id:'gem-birds',name:'Gem Birds Shrine',region:'East' as IslandRegion,...mapPoint(354,119),subtitle:'Rainy-day puzzle'},
+ {id:'docks',name:'Island Docks',region:'South' as IslandRegion,...mapPoint(203,181),subtitle:'Arrival · south beach'},
+ {id:'resort',name:'Island Resort',region:'South' as IslandRegion,...mapPoint(222,166),subtitle:'Resort beach'},
+ {id:'mermaid',name:'Mermaid Beach',region:'South' as IslandRegion,...mapPoint(281,175),subtitle:'Rainy-day puzzle'},
 ];
