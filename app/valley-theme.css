@@ -716,13 +716,19 @@ button.villager-gift-chip{font:inherit;cursor:pointer;}
 .plan-subnav{
   display:flex;
   gap:6px;
-  overflow-x:auto;
-  overscroll-behavior-x:contain;
-  scrollbar-width:thin;
-  padding-bottom:5px;
+  flex-wrap:wrap;
+  overflow:visible;
+  padding:0 0 9px;
+  margin-bottom:20px;
+  border-bottom:3px solid #a98551;
   justify-content:flex-start!important;
 }
-.plan-subnav [data-slot=tabs-trigger]{flex:0 0 auto;white-space:nowrap;}
+.plan-subnav [data-slot=tabs-trigger]{
+  flex:0 0 auto;
+  white-space:nowrap;
+  border-bottom-width:3px;
+}
+.plan-subnav [data-slot=tabs-trigger][data-state=active]{border-bottom-color:#6c452c;}
 
 .week-ahead,.machine-planner,.island-page{width:100%;min-width:0;max-width:100%;}
 .week-ahead *,.machine-planner *,.island-page *{box-sizing:border-box;}
@@ -1041,25 +1047,40 @@ button.villager-gift-chip{font:inherit;cursor:pointer;}
   background:#bd5b32;
   box-shadow:0 0 0 3px #5b3523,2px 3px #0003;
 }
-.hotspot-label{
+.hotspot-tooltip{
   position:absolute;
   left:50%;
-  top:22px;
-  transform:translateX(-50%);
-  max-width:132px;
+  top:26px;
+  z-index:8;
+  width:max-content;
+  max-width:180px;
+  transform:translate(-50%,4px);
   overflow-wrap:anywhere;
-  background:#fff3cbdc;
+  background:#fff3cbf2;
   border:2px solid #735037;
-  padding:2px 5px;
+  padding:5px 7px 6px;
+  color:#37261a;
   font-family:FarmHand,"Comic Sans MS",cursive;
   font-size:.95rem;
-  line-height:1.05;
+  line-height:1.08;
   text-align:center;
   white-space:normal;
-  box-shadow:2px 2px #3e2c1d33;
+  box-shadow:2px 3px #3e2c1d33;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .12s ease,transform .12s ease,visibility 0s linear .12s;
 }
+.hotspot-tooltip strong,.hotspot-tooltip small{display:block;}
+.hotspot-tooltip small{margin-top:3px;font-size:.78rem;line-height:1.15;color:#6d553c;}
 .island-hotspot:hover .hotspot-dot,.island-hotspot.active .hotspot-dot{background:#ffd65f;transform:scale(1.15);}
-.island-hotspot.active .hotspot-label{background:#fff0a7;border-color:#4d7c43;}
+.island-hotspot:hover .hotspot-tooltip,.island-hotspot:focus-visible .hotspot-tooltip{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%,0);
+  transition-delay:0s;
+}
+.island-hotspot.active .hotspot-tooltip{border-color:#4d7c43;}
 .island-hotspot.muted-pin{opacity:.42;}
 .island-hotspot:focus-visible{outline:0;}
 .island-hotspot:focus-visible .hotspot-dot{outline:3px solid #fff8cf;outline-offset:4px;}
@@ -1194,8 +1215,17 @@ button.villager-gift-chip{font:inherit;cursor:pointer;}
   .check-label{min-width:0;white-space:normal;}
   .walnut-row{grid-template-columns:20px minmax(0,1fr);}
   .walnut-actions{grid-column:2;justify-content:flex-start;}
-  .hotspot-label{font-size:.83rem;}
-  .plan-subnav{margin-left:-6px;margin-right:-6px;padding-left:6px;padding-right:6px;}
+  .hotspot-tooltip{font-size:.83rem;max-width:160px;}
+  .plan-subnav{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
+    overscroll-behavior-x:contain;
+    scrollbar-width:thin;
+    margin-left:-6px;
+    margin-right:-6px;
+    padding:0 6px 12px;
+  }
 }
 
 @media(max-width:480px){
@@ -1208,7 +1238,7 @@ button.villager-gift-chip{font:inherit;cursor:pointer;}
   .ginger-map-shell{padding:6px;}
   .ginger-map-viewport{min-height:255px;}
   .ginger-map-stage{min-width:460px;min-height:281px;}
-  .hotspot-label{max-width:110px;font-size:.78rem;}
+  .hotspot-tooltip{max-width:145px;font-size:.78rem;}
   .map-location-strip button{flex-basis:122px;max-width:122px;}
   .walnut-row{grid-template-columns:18px minmax(0,1fr);gap:7px;}
   .walnut-actions{grid-column:1 / -1;padding-left:25px;justify-content:flex-start;}
